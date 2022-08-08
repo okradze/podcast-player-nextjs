@@ -5,8 +5,10 @@ import { useSelector } from 'react-redux'
 import HomeSvg from '../../svg/HomeSvg'
 import SearchSvg from '../../svg/SearchSvg'
 import styles from './Sidebar.module.scss'
+import { useRouter } from 'next/router'
 
 export const Sidebar = () => {
+  const router = useRouter()
   const playingPodcastId = 10
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
@@ -41,12 +43,12 @@ export const Sidebar = () => {
           <h4 className={styles.Title}>PODCAST</h4>
           <ul>
             <li className={styles.ListItem}>
-              <Link
-                href='/'
-                // className={styles.Link}
-                // activeClassName={styles.ActiveLink}
-              >
-                <a className={styles.Link}>
+              <Link href='/'>
+                <a
+                  className={`${styles.Link} ${
+                    router.pathname === '/' ? styles.ActiveLink : 0
+                  }`}
+                >
                   <HomeSvg className={styles.LinkIcon} />
                   Home
                 </a>
@@ -54,12 +56,12 @@ export const Sidebar = () => {
             </li>
 
             <li className={styles.ListItem}>
-              <Link
-                href='/discover'
-
-                // activeClassName={styles.ActiveLink}
-              >
-                <a className={styles.Link}>
+              <Link href='/discover'>
+                <a
+                  className={`${styles.Link} ${
+                    router.pathname === '/discover' ? styles.ActiveLink : 0
+                  }`}
+                >
                   <SearchSvg className={styles.LinkIcon} />
                   Discover
                 </a>
@@ -68,11 +70,12 @@ export const Sidebar = () => {
 
             {playingPodcastId && (
               <li className={styles.ListItem}>
-                <Link
-                  href={`/podcast/${playingPodcastId}`}
-                  // activeClassName={playingPodcastId ? styles.ActiveLink : ''}
-                >
-                  <a className={styles.Link}>
+                <Link href={`/podcast/${playingPodcastId}`}>
+                  <a
+                    className={`${styles.Link} ${
+                      router.pathname === '/podcast/' ? styles.ActiveLink : 0
+                    }`}
+                  >
                     <SearchSvg className={styles.LinkIcon} />
                     Now Playing
                   </a>

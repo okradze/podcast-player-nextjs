@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import PodcastList from '../components/PodcastList'
 import PODCASTS_FIXTURE, { PODCASTS_DATA } from '../fixtures/podcasts'
-import styles from '../styles/Home.module.css'
 
 type HomeProps = {
   initialPodcasts: any[]

@@ -11,7 +11,6 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = (props) => {
   const podcasts = props.initialPodcasts
 
-  console.log(podcasts)
   return (
     <div>
       <Head>

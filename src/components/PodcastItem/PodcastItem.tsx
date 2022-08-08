@@ -23,8 +23,8 @@ export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProp
         {title}
       </EllipsisText>
 
-      <Link href={`/podcast/${id}`} className={styles.Button}>
-        View More
+      <Link href={`/podcast/${id}`}>
+        <a className={styles.Button}>View More</a>
       </Link>
     </div>
   </div>

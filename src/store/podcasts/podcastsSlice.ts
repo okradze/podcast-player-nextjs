@@ -3,7 +3,6 @@ import listenNotesApi from '../../api/listenNotesApi'
 
 export interface PodcastsState {
   isFetching: boolean
-  page: number
   lastFetchedPage: number | null
   hasNextPage: boolean
   podcasts: any[]
@@ -12,7 +11,6 @@ export interface PodcastsState {
 
 export const initialState: PodcastsState = {
   isFetching: false,
-  page: 1,
   lastFetchedPage: null,
   hasNextPage: false,
   podcasts: [],
@@ -38,13 +36,10 @@ export const podcastsSlice = createSlice({
     setError(state, action) {
       state.error = action.payload
     },
-    nextPage(state) {
-      state.page++
-    },
   },
 })
 
-export const { setLoading, setPodcasts, setError, nextPage } = podcastsSlice.actions
+export const { setLoading, setPodcasts, setError } = podcastsSlice.actions
 
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {

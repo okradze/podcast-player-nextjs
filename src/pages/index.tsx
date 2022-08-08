@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { createRef, useEffect, useRef } from 'react'
+import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import listenNotesApi from '../api/listenNotesApi'
 import PodcastList from '../components/PodcastList'
@@ -15,7 +15,7 @@ type HomeProps = {
 
 const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
   const dispatch = useDispatch()
-  const { podcasts, isFetching, hasNextPage, page, lastFetchedPage } = useSelector(
+  const { podcasts, isFetching, hasNextPage, lastFetchedPage } = useSelector(
     (state: RootState) => state.podcasts,
   )
   const infiniteScrollRef = createRef<HTMLDivElement>()
@@ -31,7 +31,7 @@ const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
     if (isLoadMoreButtonOnScreen && lastFetchedPage) {
       fetchPodcasts(dispatch, lastFetchedPage + 1)
     }
-  }, [dispatch, isLoadMoreButtonOnScreen, page, lastFetchedPage])
+  }, [dispatch, isLoadMoreButtonOnScreen, lastFetchedPage])
 
   return (
     <div>

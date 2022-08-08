@@ -1,14 +1,37 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { createRef, useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import listenNotesApi from '../api/listenNotesApi'
 import PodcastList from '../components/PodcastList'
-import PODCASTS_FIXTURE, { PODCASTS_DATA } from '../fixtures/podcasts'
+import Spinner from '../components/Spinner'
+import useOnScreen from '../hooks/useOnScreen'
+import { fetchPodcasts, setPodcasts } from '../store/podcasts/podcastsSlice'
+import { RootState } from '../store/rootReducer'
 
 type HomeProps = {
-  initialPodcasts: any[]
+  initialPodcasts: any
 }
 
-const Home: NextPage<HomeProps> = (props) => {
-  const podcasts = props.initialPodcasts
+const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
+  const dispatch = useDispatch()
+  const { podcasts, isFetching, hasNextPage, page, lastFetchedPage } = useSelector(
+    (state: RootState) => state.podcasts,
+  )
+  const infiniteScrollRef = createRef<HTMLDivElement>()
+  const isLoadMoreButtonOnScreen = useOnScreen(infiniteScrollRef)
+
+  useEffect(() => {
+    if (!podcasts.length) {
+      dispatch(setPodcasts(initialPodcasts))
+    }
+  }, [dispatch, initialPodcasts, podcasts.length])
+
+  useEffect(() => {
+    if (isLoadMoreButtonOnScreen && lastFetchedPage) {
+      fetchPodcasts(dispatch, lastFetchedPage + 1)
+    }
+  }, [dispatch, isLoadMoreButtonOnScreen, page, lastFetchedPage])
 
   return (
     <div>
@@ -18,14 +41,19 @@ const Home: NextPage<HomeProps> = (props) => {
       </Head>
 
       {podcasts.length > 0 && <PodcastList podcasts={podcasts} />}
+      {isFetching && <Spinner />}
+      {!isFetching && hasNextPage && (
+        <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />
+      )}
     </div>
   )
 }
 
 export const getServerSideProps = async () => {
+  const { data } = await listenNotesApi.fetchBestPodcasts(1)
   return {
     props: {
-      initialPodcasts: PODCASTS_DATA.podcasts,
+      initialPodcasts: data,
     },
   }
 }

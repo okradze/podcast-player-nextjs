@@ -1,7 +1,7 @@
 import { createSlice, Dispatch } from '@reduxjs/toolkit'
 import listenNotesApi from '../../api/listenNotesApi'
 
-interface PodcastsState {
+export interface PodcastsState {
   isFetching: boolean
   page: number
   lastFetchedPage: number | null
@@ -46,19 +46,11 @@ export const podcastsSlice = createSlice({
 
 export const { setLoading, setPodcasts, setError, nextPage } = podcastsSlice.actions
 
-export const fetchPodcasts = async (
-  dispatch: Dispatch,
-  page: number,
-  lastFetchedPage: number,
-) => {
+export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {
-    if (page > lastFetchedPage) {
-      dispatch(setLoading())
-
-      const { data } = await listenNotesApi.fetchBestPodcasts(page)
-
-      dispatch(setPodcasts(data))
-    }
+    dispatch(setLoading())
+    const { data } = await listenNotesApi.fetchBestPodcasts(page)
+    dispatch(setPodcasts(data))
   } catch (error) {
     dispatch(setError(error))
   }

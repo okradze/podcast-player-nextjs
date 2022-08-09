@@ -1,9 +1,10 @@
 import React from 'react'
+import { IPodcast } from '../../api/listenNotesApi'
 import PodcastItem from '../PodcastItem'
 import styles from './PodcastList.module.scss'
 
 type PodcastListProps = {
-  podcasts: any[]
+  podcasts: IPodcast[]
   title?: string
 }
 

@@ -1,18 +1,15 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { IPodcast } from '../../api/listenNotesApi'
 import EllipsisText from '../EllipsisText'
 import styles from './PodcastItem.module.scss'
 
-type PodcastItemProps = {
-  id: string
-  thumbnail: string
-  title: string
-  publisher: string
-}
+type PodcastItemProps = IPodcast
 
 export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProps) => (
   <div className={styles.Item} key={id}>
     <div className={styles.ImageWrapper}>
-      <img className={styles.Image} src={thumbnail} alt='' />
+      <Image width={300} height={300} className={styles.Image} src={thumbnail} alt='' />
     </div>
     <div className={styles.Content}>
       <EllipsisText tagName='p' className={styles.Publisher}>

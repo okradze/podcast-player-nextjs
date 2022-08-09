@@ -9,7 +9,7 @@ type PodcastItemProps = IPodcast
 export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProps) => (
   <div className={styles.Item} key={id}>
     <div className={styles.ImageWrapper}>
-      <Image width={300} height={300} className={styles.Image} src={thumbnail} alt='' />
+      <Image width={150} height={150} className={styles.Image} src={thumbnail} alt='' />
     </div>
     <div className={styles.Content}>
       <EllipsisText tagName='p' className={styles.Publisher}>

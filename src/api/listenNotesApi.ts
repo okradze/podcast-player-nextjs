@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 const client = axios.create({
   baseURL: 'https://listen-api.listennotes.com/api/v2',
@@ -7,11 +7,36 @@ const client = axios.create({
   },
 })
 
+export interface IPodcast {
+  id: string
+  thumbnail: string
+  title: string
+  publisher: string
+}
+
+export interface IBestPodcasts {
+  podcasts: IPodcast[]
+  has_next: boolean
+  page_number: number
+}
+
 export const fetchBestPodcasts = (page: number) =>
-  client.get(`/best_podcasts?page=${page}`)
+  client.get<any, AxiosResponse<IBestPodcasts>>(`/best_podcasts?page=${page}`)
+
+export interface ICuratedPodcastList {
+  id: string
+  title: string
+  podcasts: IPodcast[]
+}
+
+export interface ICuratedPodcasts {
+  curated_lists: ICuratedPodcastList[]
+  has_next: boolean
+  page_number: number
+}
 
 export const fetchCuratedPodcasts = (page: number) =>
-  client.get(`curated_podcasts?page=${page}`)
+  client.get<any, AxiosResponse<ICuratedPodcasts>>(`curated_podcasts?page=${page}`)
 
 const listenNotesApi = {
   fetchBestPodcasts,

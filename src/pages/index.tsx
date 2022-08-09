@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import listenNotesApi from '../api/listenNotesApi'
+import listenNotesApi, { IBestPodcasts } from '../api/listenNotesApi'
 import PodcastList from '../components/PodcastList'
 import Spinner from '../components/Spinner'
 import useOnScreen from '../hooks/useOnScreen'
@@ -10,7 +10,7 @@ import { fetchPodcasts, setPodcasts } from '../store/podcasts/podcastsSlice'
 import { RootState } from '../store/rootReducer'
 
 type HomeProps = {
-  initialPodcasts: any
+  initialPodcasts: IBestPodcasts
 }
 
 const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {

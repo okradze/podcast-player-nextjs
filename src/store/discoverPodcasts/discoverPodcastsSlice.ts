@@ -1,11 +1,14 @@
-import { createSlice, Dispatch } from '@reduxjs/toolkit'
-import listenNotesApi from '../../api/listenNotesApi'
+import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
+import listenNotesApi, {
+  ICuratedPodcastList,
+  ICuratedPodcasts,
+} from '../../api/listenNotesApi'
 
 export interface DiscoverPodcastsState {
   isFetching: boolean
   lastFetchedPage: number | null
   hasNextPage: boolean
-  curated_lists: any[][]
+  curated_lists: ICuratedPodcastList[]
   error: string | null
 }
 
@@ -24,7 +27,7 @@ export const discoverPodcastsSlice = createSlice({
     setLoading(state) {
       state.isFetching = true
     },
-    setPodcastLists(state, action) {
+    setPodcastLists(state, action: PayloadAction<ICuratedPodcasts>) {
       const { has_next, page_number, curated_lists } = action.payload
 
       state.isFetching = false

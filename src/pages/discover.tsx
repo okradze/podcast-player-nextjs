@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import listenNotesApi from '../api/listenNotesApi'
+import listenNotesApi, { ICuratedPodcasts } from '../api/listenNotesApi'
 import { RootState } from '../store/rootReducer'
 import {
   fetchPodcastLists,
@@ -13,7 +13,7 @@ import PodcastList from '../components/PodcastList'
 import Spinner from '../components/Spinner'
 
 type DiscoverProps = {
-  initialLists: any
+  initialLists: ICuratedPodcasts
 }
 
 const Discover: NextPage<DiscoverProps> = ({ initialLists }) => {

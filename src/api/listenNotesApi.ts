@@ -10,8 +10,12 @@ const client = axios.create({
 export const fetchBestPodcasts = (page: number) =>
   client.get(`/best_podcasts?page=${page}`)
 
+export const fetchCuratedPodcasts = (page: number) =>
+  client.get(`curated_podcasts?page=${page}`)
+
 const listenNotesApi = {
   fetchBestPodcasts,
+  fetchCuratedPodcasts,
 }
 
 export default listenNotesApi

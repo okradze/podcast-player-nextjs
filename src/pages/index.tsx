@@ -51,6 +51,7 @@ const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
 
 export const getServerSideProps = async () => {
   const { data } = await listenNotesApi.fetchBestPodcasts(1)
+
   return {
     props: {
       initialPodcasts: data,

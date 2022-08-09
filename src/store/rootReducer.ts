@@ -3,7 +3,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 
 import podcastsReducer, { PodcastsState } from './podcasts/podcastsSlice'
-// import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
+import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
 // import podcastReducer from './podcast/podcastSlice'
 // import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
 
@@ -17,7 +17,7 @@ export type RootState = ReturnType<typeof rootReducer>
 
 export const rootReducer = combineReducers({
   podcasts: podcastsReducer,
-  // discoverPodcasts: discoverPodcastsReducer,
+  discoverPodcasts: discoverPodcastsReducer,
   // podcast: podcastReducer,
   // playingPodcast: playingPodcastReducer,
 })

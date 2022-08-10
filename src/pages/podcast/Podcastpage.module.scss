@@ -1,0 +1,48 @@
+@import '../../styles/utils';
+
+.ThumbnailWrapper {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 3rem;
+  margin-right: 3rem;
+  overflow: hidden;
+  background: $bg;
+  flex-shrink: 0;
+
+  @media only screen and (max-width: 576px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.Thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.Content {
+  display: flex;
+  margin-bottom: 4rem;
+
+  @media only screen and (max-width: 576px) {
+    flex-direction: column;
+  }
+}
+
+.EpisodeList {
+  margin-bottom: 6rem;
+}
+
+.Title {
+  margin-bottom: 3rem;
+}
+
+.Publisher {
+  margin-bottom: 2rem;
+}
+
+.Text {
+  font-size: 1.4rem;
+}

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -49,7 +49,7 @@ const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const { data } = await listenNotesApi.fetchBestPodcasts(1)
 
   return {

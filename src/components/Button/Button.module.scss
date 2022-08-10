@@ -1,0 +1,25 @@
+@import '../../styles/utils';
+
+.Button {
+  text-align: center;
+  padding: 1rem 2rem;
+  background-color: $primary;
+  color: $offset;
+  border: none;
+  border-radius: 100px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px $offset, 0 0 0 4px $primary;
+  }
+}
+
+.Inverted {
+  background-color: $offset;
+  color: $primary;
+}

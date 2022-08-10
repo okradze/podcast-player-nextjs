@@ -12,6 +12,7 @@ export interface IPodcast {
   thumbnail: string
   title: string
   publisher: string
+  description: string
 }
 
 export interface IBestPodcasts {
@@ -38,9 +39,29 @@ export interface ICuratedPodcasts {
 export const fetchCuratedPodcasts = (page: number) =>
   client.get<any, AxiosResponse<ICuratedPodcasts>>(`curated_podcasts?page=${page}`)
 
+export const fetchPodcast = (podcastId: string) =>
+  client.get<any, AxiosResponse<IPodcast>>(`/podcasts/${podcastId}`)
+
+export interface IRecommendations {
+  recommendations: IPodcast[]
+}
+
+export const fetchRecommendations = (podcastId: string) =>
+  client.get<any, AxiosResponse<IRecommendations>>(
+    `/podcasts/${podcastId}/recommendations`,
+  )
+
+export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
+  client.get<any, AxiosResponse<any>>(
+    `/podcasts/${podcastId}?next_episode_pub_date=${nextEpisodePubDate}`,
+  )
+
 const listenNotesApi = {
   fetchBestPodcasts,
   fetchCuratedPodcasts,
+  fetchPodcast,
+  fetchRecommendations,
+  fetchEpisodes,
 }
 
 export default listenNotesApi

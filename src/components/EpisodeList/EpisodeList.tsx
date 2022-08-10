@@ -1,9 +1,9 @@
-import EpisodeItem from '../EpisodeItem/EpisodeItem'
+import { Dispatch, SetStateAction, useState } from 'react'
+import listenNotesApi, { IPodcastDetails } from '../../api/listenNotesApi'
+import EpisodeItem from '../EpisodeItem'
 import Button from '../Button'
 import Spinner from '../Spinner/Spinner'
 import styles from './EpisodeList.module.scss'
-import listenNotesApi, { IPodcastDetails } from '../../api/listenNotesApi'
-import { Dispatch, SetStateAction, useState } from 'react'
 
 type EpisodeListProps = {
   podcast: IPodcastDetails

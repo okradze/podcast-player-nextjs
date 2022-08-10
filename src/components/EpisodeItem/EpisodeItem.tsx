@@ -1,13 +1,14 @@
 import React from 'react'
-import EllipsisText from '../EllipsisText/EllipsisText'
+import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import { IEpisode } from '../../api/listenNotesApi'
 // import { playEpisode } from '../../store/playingPodcast/playingPodcastSlice'
+import EllipsisText from '../EllipsisText'
 import PlaySvg from '../../svg/PlaySvg'
 import styles from './EpisodeItem.module.scss'
-import { useDispatch } from 'react-redux'
-import { useRouter } from 'next/router'
 
 type EpisodeItemProps = {
-  episode: any
+  episode: IEpisode
 }
 
 const playEpisode = () => {}

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import PodcastList from '../../components/PodcastList/PodcastList'
 import EpisodeList from '../../components/EpisodeList/EpisodeList'
 import listenNotesApi, { IPodcast, IPodcastDetails } from '../../api/listenNotesApi'
-import styles from './Podcastpage.module.scss'
+import styles from './Podcast.module.scss'
 
 type PodcastProps = {
   initialPodcast?: IPodcastDetails

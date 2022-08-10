@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,6 +14,10 @@ type PodcastProps = {
 
 const Podcast: NextPage<PodcastProps> = ({ initialPodcast, recommendations }) => {
   const [podcast, setPodcast] = useState(initialPodcast)
+
+  useEffect(() => {
+    setPodcast(initialPodcast)
+  }, [initialPodcast])
 
   if (!podcast || !recommendations) {
     return <h1>Error</h1>

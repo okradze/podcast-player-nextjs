@@ -69,12 +69,27 @@ export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
     `/podcasts/${podcastId}?next_episode_pub_date=${nextEpisodePubDate}`,
   )
 
+export interface ITypeahead {
+  podcasts: ITypeaheadPodcast[]
+}
+
+export interface ITypeaheadPodcast {
+  id: string
+  title_original: string
+  publisher_original: string
+  thumbnail: string
+}
+
+export const fetchTypeahead = (searchTerm: string) =>
+  client.get<any, AxiosResponse<ITypeahead>>(`/typeahead?q=${searchTerm}&show_podcasts=1`)
+
 const listenNotesApi = {
   fetchBestPodcasts,
   fetchCuratedPodcasts,
   fetchPodcast,
   fetchRecommendations,
   fetchEpisodes,
+  fetchTypeahead,
 }
 
 export default listenNotesApi

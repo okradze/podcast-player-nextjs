@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import Sidebar from '../components/Sidebar'
 import { store, persistor } from '../store'
+import Sidebar from '../components/Sidebar'
+import SearchBar from '../components/SearchBar'
 import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className='container app'>
           <Sidebar />
           <div className='main-page'>
+            <SearchBar />
             <Component {...pageProps} />
           </div>
         </div>

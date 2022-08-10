@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import listenNotesApi, { IPodcastDetails } from '../../api/listenNotesApi'
 import EpisodeItem from '../EpisodeItem'
 import Button from '../Button'
-import Spinner from '../Spinner/Spinner'
+import Spinner from '../Spinner'
 import styles from './EpisodeList.module.scss'
 
 type EpisodeListProps = {

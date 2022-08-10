@@ -1,17 +1,20 @@
+import { useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import PodcastList from '../../components/PodcastList/PodcastList'
 import EpisodeList from '../../components/EpisodeList/EpisodeList'
-import listenNotesApi, { IPodcast } from '../../api/listenNotesApi'
+import listenNotesApi, { IPodcast, IPodcastDetails } from '../../api/listenNotesApi'
 import styles from './Podcastpage.module.scss'
 
 type PodcastProps = {
-  podcast?: IPodcast
+  initialPodcast?: IPodcastDetails
   recommendations?: IPodcast[]
 }
 
-const Podcast: NextPage<PodcastProps> = ({ podcast, recommendations }) => {
+const Podcast: NextPage<PodcastProps> = ({ initialPodcast, recommendations }) => {
+  const [podcast, setPodcast] = useState(initialPodcast)
+
   if (!podcast || !recommendations) {
     return <h1>Error</h1>
   }
@@ -47,7 +50,9 @@ const Podcast: NextPage<PodcastProps> = ({ podcast, recommendations }) => {
           </div>
         </div>
 
-        <div className={styles.EpisodeList}>{/* <EpisodeList /> */}</div>
+        <div className={styles.EpisodeList}>
+          <EpisodeList podcast={podcast} setPodcast={setPodcast} />
+        </div>
 
         <PodcastList podcasts={recommendations} title='Recommendations' />
       </div>
@@ -68,7 +73,7 @@ export const getServerSideProps: GetServerSideProps<PodcastProps> = async ({
 
   return {
     props: {
-      podcast: podcast.data,
+      initialPodcast: podcast.data,
       recommendations: recommendations.data.recommendations,
     },
   }

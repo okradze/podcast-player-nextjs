@@ -4,7 +4,6 @@ import storage from 'redux-persist/lib/storage'
 
 import podcastsReducer from './podcasts/podcastsSlice'
 import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
-import podcastReducer from './podcast/podcastSlice'
 import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
 
 const persistConfig = {
@@ -18,7 +17,6 @@ export type RootState = ReturnType<typeof rootReducer>
 export const rootReducer = combineReducers({
   podcasts: podcastsReducer,
   discoverPodcasts: discoverPodcastsReducer,
-  podcast: podcastReducer,
   playingPodcast: playingPodcastReducer,
 })
 

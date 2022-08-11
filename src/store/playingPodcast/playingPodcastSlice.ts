@@ -1,15 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IEpisode } from '../../api/listenNotesApi'
 
 export interface PlayingPodcastState {
   minimized: boolean
   podcastId: string
-  playingEpisode: any | null
+  playingEpisode: IEpisode | null
   isPlaying: boolean
   volume: number
   currentTime: number
 }
 
-export const initialState = {
+export const initialState: PlayingPodcastState = {
   minimized: false,
   podcastId: '',
   playingEpisode: null,
@@ -25,13 +26,13 @@ export const playingPodcastSlice = createSlice({
     toggleMinimize(state) {
       state.minimized = !state.minimized
     },
-    playEpisode(state, action) {
+    playEpisode(state, action: PayloadAction<{ podcastId: string; episode: IEpisode }>) {
       const { podcastId, episode } = action.payload
       state.currentTime = 0
       state.podcastId = podcastId
       state.playingEpisode = episode
     },
-    setCurrentTime(state, action) {
+    setCurrentTime(state, action: PayloadAction<number>) {
       state.currentTime = action.payload
     },
     setVolume(state, action) {

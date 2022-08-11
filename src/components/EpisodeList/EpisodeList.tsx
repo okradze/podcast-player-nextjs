@@ -30,7 +30,7 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
     <div>
       <div data-testid='episodes' className={styles.List}>
         {episodes.map((episode: any) => (
-          <EpisodeItem key={episode.id} episode={episode} />
+          <EpisodeItem key={episode.id} podcastId={id} episode={episode} />
         ))}
       </div>
 

@@ -18,21 +18,12 @@
 }
 
 .ImageWrapper {
-  width: 4rem;
-  height: 4rem;
   position: relative;
   margin-right: 2rem;
   overflow: hidden;
   flex-shrink: 0;
   background: $offset;
   border-radius: 5px;
-}
-
-.Image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 
 .Title {

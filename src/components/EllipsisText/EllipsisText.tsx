@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './EllipsisText.module.scss'
 
 type EllipsisTextProps = {
-  tagName: string
+  tagName?: string
   children: React.ReactNode
   className?: string
 }

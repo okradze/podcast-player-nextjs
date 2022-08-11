@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import Slider from 'rc-slider/lib/Slider'
-
+import { RootState } from '../../store/rootReducer'
 import {
   play,
   pause,
@@ -10,14 +11,15 @@ import {
   setCurrentTime,
   toggleMinimize,
 } from '../../store/playingPodcast/playingPodcastSlice'
-import EllipsisText from '../EllipsisText/EllipsisText'
+import { IEpisode } from '../../api/listenNotesApi'
+import EllipsisText from '../EllipsisText'
 import PlaySvg from '../../svg/PlaySvg'
 import PauseSvg from '../../svg/PauseSvg'
 import VolumeSvg from '../../svg/VolumeSvg'
 import 'rc-slider/assets/index.css'
 import styles from './AudioPlayer.module.scss'
 
-const formatTime = (time) => {
+const formatTime = (time: number) => {
   if (time) {
     const SECONDS_IN_HOUR = 3600
     const date = new Date(Math.floor(time * 1000)).toISOString()
@@ -31,10 +33,16 @@ const formatTime = (time) => {
 
 const AudioPlayer = () => {
   const { playingEpisode, podcastId, isPlaying, currentTime, volume, minimized } =
-    useSelector((state) => state.playingPodcast)
+    useSelector((state: RootState) => state.playingPodcast)
   const dispatch = useDispatch()
 
-  const { thumbnail, title, audio: audioSrc, audio_length_sec } = playingEpisode
+  const {
+    thumbnail,
+    title,
+    audio: audioSrc,
+    audio_length_sec,
+  } = playingEpisode as IEpisode
+
   const { current: audio } = useRef(new Audio())
 
   useEffect(() => {
@@ -45,17 +53,12 @@ const AudioPlayer = () => {
   }, [dispatch, audioSrc])
 
   useEffect(() => {
-    const pauseEvent = audio.addEventListener('pause', () => {
-      dispatch(pause())
-    })
-    const playEvent = audio.addEventListener('play', () => {
-      dispatch(play())
-    })
-    const timeUpdateEvent = audio.addEventListener('timeupdate', () => {
+    const pauseListener = () => dispatch(pause())
+    const playListener = () => dispatch(play())
+    const timeUpdateListener = () => {
       dispatch(setCurrentTime(audio.currentTime))
-    })
-
-    const windowEvent = window.addEventListener('keydown', (e) => {
+    }
+    const keydownListener = (e: KeyboardEvent) => {
       if (e.code === 'Space' && e.target === document.body) {
         e.preventDefault()
       }
@@ -66,13 +69,18 @@ const AudioPlayer = () => {
       } else if (e.code === 'ArrowRight') {
         audio.currentTime += 10
       }
-    })
+    }
+
+    audio.addEventListener('pause', pauseListener)
+    audio.addEventListener('play', playListener)
+    audio.addEventListener('timeupdate', timeUpdateListener)
+    window.addEventListener('keydown', keydownListener)
 
     return () => {
-      audio.removeEventListener('pause', pauseEvent)
-      audio.removeEventListener('play', playEvent)
-      audio.removeEventListener('timeupdate', timeUpdateEvent)
-      window.removeEventListener('keydown', windowEvent)
+      audio.removeEventListener('pause', pauseListener)
+      audio.removeEventListener('play', playListener)
+      audio.removeEventListener('timeupdate', timeUpdateListener)
+      window.removeEventListener('keydown', keydownListener)
     }
   }, [dispatch, audio])
 
@@ -91,23 +99,29 @@ const AudioPlayer = () => {
 
       <div className={styles.EpisodeWrapper}>
         <div className={styles.ThumbnailWrapper}>
-          <img className={styles.Thumbnail} src={thumbnail} alt='' />
+          <Image
+            width={40}
+            height={40}
+            className={styles.Thumbnail}
+            src={thumbnail}
+            alt=''
+          />
         </div>
 
-        <Link className={styles.Title} to={`/podcast/${podcastId}`}>
-          <EllipsisText>{title}</EllipsisText>
+        <Link href={`/podcast/${podcastId}`}>
+          <a className={styles.Title}>
+            <EllipsisText tagName='span' className={styles.Title}>
+              {title}
+            </EllipsisText>
+          </a>
         </Link>
       </div>
 
       <div className={styles.ControllsWrapper}>
         {isPlaying ? (
-          <PauseButton
-            tabIndex='0'
-            onClick={() => audio.pause()}
-            className={styles.Pause}
-          />
+          <PauseSvg tabIndex={0} onClick={() => audio.pause()} className={styles.Pause} />
         ) : (
-          <PlayButton tabIndex='0' onClick={() => audio.play()} className={styles.Play} />
+          <PlaySvg tabIndex={0} onClick={() => audio.play()} className={styles.Play} />
         )}
 
         {!minimized && (
@@ -150,7 +164,7 @@ const AudioPlayer = () => {
                   className={styles.Slider}
                 />
               </div>
-              <VolumeIcon className={styles.VolumeIcon} />
+              <VolumeSvg className={styles.VolumeIcon} />
             </div>
           </>
         )}

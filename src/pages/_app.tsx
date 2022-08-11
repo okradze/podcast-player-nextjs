@@ -6,6 +6,7 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Sidebar from '../components/Sidebar'
 import SearchBar from '../components/SearchBar'
 import '../styles/globals.scss'
+import AudioPlayer from '../components/AudioPlayer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ErrorBoundary>
           <div className='container app'>
             <Sidebar />
+            <AudioPlayer />
             <div className='main-page'>
               <SearchBar />
               <Component {...pageProps} />

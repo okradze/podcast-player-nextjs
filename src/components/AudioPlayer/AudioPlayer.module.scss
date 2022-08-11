@@ -1,0 +1,191 @@
+@import '../../styles/utils';
+
+.AudioPlayer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg;
+  z-index: 20;
+  padding: 1rem 3rem;
+  box-shadow: 0px -2px 6px 0px rgba($text, 0.15);
+}
+
+.AudioPlayerMinimized {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr min-content;
+  grid-template-areas: 'minimize minimize' 'episode play';
+
+  .MinimizeWrapper {
+    grid-area: minimize;
+  }
+  .EpisodeWrapper {
+    grid-area: episode;
+    margin-right: 1rem;
+  }
+  .Play,
+  .Pause {
+    grid-area: play;
+  }
+  .ControllsWrapper {
+    margin-top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.EpisodeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ThumbnailWrapper {
+  margin-right: 2rem;
+  position: relative;
+  overflow: hidden;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  background-color: $offset;
+  flex-shrink: 0;
+}
+
+.Thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.Title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: $text;
+  text-decoration: none;
+
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+}
+
+.ControllsWrapper {
+  margin-top: 1rem;
+  display: grid;
+  align-content: center;
+  grid-template-columns: min-content 1fr min-content;
+  grid-column-gap: 3rem;
+  grid-template-areas: 'play track volume';
+
+  @media only screen and (max-width: 576px) {
+    grid-template-rows: repeat(2, min-content);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 'volume play' 'track track';
+  }
+}
+
+.DurationWrapper {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  grid-gap: 2rem;
+  grid-area: track;
+}
+
+.Duration {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.Play,
+.Pause {
+  grid-area: play;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease-in-out;
+  border-radius: 50%;
+  fill: $primary;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px $offset, 0 0 0 4px $primary;
+  }
+}
+
+.VolumeWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  grid-area: volume;
+  justify-self: end;
+
+  &:hover .VolumeSlider,
+  &:focus .VolumeSlider {
+    outline: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.VolumeSlider {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 10rem;
+  visibility: hidden;
+  opacity: 0;
+  background-color: $offset;
+  padding: 1.5rem 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 1px rgba($text, 0.15);
+}
+
+.VolumeIcon {
+  width: 2rem;
+  height: 2rem;
+  fill: $primary;
+}
+
+.Slider {
+  :global(.rc-slider-track) {
+    background-color: $secondary;
+  }
+  :global(.rc-slider-handle) {
+    background-color: $offset;
+    border: 2px solid $primary;
+
+    &:hover {
+      border-color: $primary;
+    }
+    &:focus {
+      border-color: $primary;
+    }
+  }
+}
+
+.Time {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.MinimizeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Minimize {
+  margin: 4px;
+  width: 4rem;
+  height: 0.4rem;
+  border-radius: 5px;
+  background-color: $primary;
+  cursor: pointer;
+}

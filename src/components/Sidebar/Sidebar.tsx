@@ -3,11 +3,16 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import HomeSvg from '../../svg/HomeSvg'
 import SearchSvg from '../../svg/SearchSvg'
+import PodcastSvg from '../../svg/PodcastSvg'
 import styles from './Sidebar.module.scss'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
 
 export const Sidebar = () => {
   const router = useRouter()
-  const playingPodcastId = 10
+  const playingPodcastId = useSelector(
+    (state: RootState) => state.playingPodcast.podcastId,
+  )
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
   return (
@@ -74,7 +79,7 @@ export const Sidebar = () => {
                       router.pathname === '/podcast/' ? styles.ActiveLink : 0
                     }`}
                   >
-                    <SearchSvg className={styles.LinkIcon} />
+                    <PodcastSvg className={styles.LinkIcon} />
                     Now Playing
                   </a>
                 </Link>

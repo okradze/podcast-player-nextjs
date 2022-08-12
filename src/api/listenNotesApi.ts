@@ -60,9 +60,7 @@ export interface IRecommendations {
 }
 
 export const fetchRecommendations = (podcastId: string) =>
-  client.get<any, AxiosResponse<IRecommendations>>(
-    `/podcasts/${podcastId}/recommendations`,
-  )
+  client.get<any, AxiosResponse<IRecommendations>>(`/podcasts/${podcastId}/recommendations`)
 
 export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
   client.get<any, AxiosResponse<IPodcastDetails>>(

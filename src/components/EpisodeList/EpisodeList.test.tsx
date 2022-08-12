@@ -21,7 +21,7 @@ beforeEach(() => {
 })
 
 jest.mock('../../api/listenNotesApi', () => ({
-  fetchEpisodes: jest.fn().mockImplementation(() => Promise.resolve(PODCAST_FIXTURE)),
+  fetchEpisodes: jest.fn().mockImplementation(() => Promise.resolve({ data: PODCAST_FIXTURE })),
 }))
 
 describe('EpisodeList', () => {

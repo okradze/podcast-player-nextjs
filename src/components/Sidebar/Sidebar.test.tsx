@@ -1,6 +1,5 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import { render, screen, cleanup } from '@testing-library/react'
 import { Sidebar } from './Sidebar'
 import { playEpisode } from '../../store/playingPodcast/playingPodcastSlice'
@@ -15,17 +14,26 @@ beforeEach(() => {
   store = createTestStore()
 })
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '/',
+      pathname: '',
+      query: '',
+      asPath: '',
+    }
+  },
+}))
+
 describe('Sidebar', () => {
   it('renders sidebar', () => {
     render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Sidebar />
-        </MemoryRouter>
+        <Sidebar />
       </Provider>,
     )
-    expect(screen.queryByText(/home$/i)).toBeInTheDocument()
-    expect(screen.queryByText(/discover$/i)).toBeInTheDocument()
+    expect(screen.getByText(/home$/i)).toBeInTheDocument()
+    expect(screen.getByText(/discover$/i)).toBeInTheDocument()
     expect(screen.queryByText(/now playing$/i)).not.toBeInTheDocument()
   })
 
@@ -39,12 +47,10 @@ describe('Sidebar', () => {
 
     render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Sidebar />
-        </MemoryRouter>
+        <Sidebar />
       </Provider>,
     )
 
-    expect(screen.queryByText(/now playing$/i)).toBeInTheDocument()
+    expect(screen.getByText(/now playing$/i)).toBeInTheDocument()
   })
 })

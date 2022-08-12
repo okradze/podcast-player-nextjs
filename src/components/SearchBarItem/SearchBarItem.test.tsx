@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, screen, cleanup } from '@testing-library/react'
 import { SearchBarItem } from './SearchBarItem'
 import searchResults from '../../fixtures/search'

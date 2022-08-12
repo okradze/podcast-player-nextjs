@@ -1,4 +1,4 @@
-export default {
+export const PODCAST_FIXTURE = {
   id: '7d1eaa65505446b68149ff0dfc352bb3',
   title: 'Respectful Parenting: Janet Lansbury Unruffled',
   publisher: 'JLML Press',

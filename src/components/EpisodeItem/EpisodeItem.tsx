@@ -17,7 +17,7 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
   const { thumbnail, audio_length_sec, title } = episode
 
   return (
-    <div className={styles.Episode}>
+    <div className={styles.Episode} data-testid='episode'>
       <div className={styles.ImageWrapper}>
         <Image width={40} height={40} src={thumbnail} alt='' />
       </div>

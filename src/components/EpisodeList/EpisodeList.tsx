@@ -9,7 +9,6 @@ type EpisodeListProps = {
   podcast: IPodcastDetails
   setPodcast: Dispatch<SetStateAction<IPodcastDetails | undefined>>
 }
-
 export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
   const [loading, setLoading] = useState(false)
   const { episodes, id, next_episode_pub_date } = podcast
@@ -19,17 +18,18 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
     setLoading(true)
     const { data } = await listenNotesApi.fetchEpisodes(id, next_episode_pub_date)
 
-    setPodcast((prev) => ({
+    setPodcast(prev => ({
       ...data,
       episodes: [...(prev?.episodes || []), ...data.episodes],
     }))
+
     setLoading(false)
   }
 
   return (
     <div>
       <div data-testid='episodes' className={styles.List}>
-        {episodes.map((episode: any) => (
+        {episodes.map(episode => (
           <EpisodeItem key={episode.id} podcastId={id} episode={episode} />
         ))}
       </div>

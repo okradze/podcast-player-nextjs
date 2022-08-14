@@ -4,10 +4,7 @@ import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import listenNotesApi, { ICuratedPodcasts } from '../api/listenNotesApi'
 import { RootState } from '../store/rootReducer'
-import {
-  fetchPodcastLists,
-  setPodcastLists,
-} from '../store/discoverPodcasts/discoverPodcastsSlice'
+import { fetchPodcastLists, setPodcastLists } from '../store/discoverPodcasts/discoverPodcastsSlice'
 import useOnScreen from '../hooks/useOnScreen'
 import PodcastList from '../components/PodcastList'
 import Spinner from '../components/Spinner'
@@ -43,7 +40,6 @@ const Discover: NextPage<DiscoverProps> = ({ initialLists }) => {
     <div>
       <Head>
         <title>Discover Podcasts - Podcast Player</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       {lists.length > 0 &&
@@ -51,9 +47,7 @@ const Discover: NextPage<DiscoverProps> = ({ initialLists }) => {
           <PodcastList key={id} title={title} podcasts={podcasts} />
         ))}
       {isFetching && <Spinner />}
-      {!isFetching && hasNextPage && (
-        <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />
-      )}
+      {!isFetching && hasNextPage && <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />}
     </div>
   )
 }

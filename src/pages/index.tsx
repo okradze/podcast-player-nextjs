@@ -37,14 +37,11 @@ const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
     <div>
       <Head>
         <title>Home - Podcast Player</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       {podcasts.length > 0 && <PodcastList podcasts={podcasts} />}
       {isFetching && <Spinner />}
-      {!isFetching && hasNextPage && (
-        <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />
-      )}
+      {!isFetching && hasNextPage && <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />}
     </div>
   )
 }

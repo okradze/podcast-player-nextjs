@@ -10,9 +10,7 @@ import { RootState } from '../../store/rootReducer'
 
 export const Sidebar = () => {
   const router = useRouter()
-  const playingPodcastId = useSelector(
-    (state: RootState) => state.playingPodcast.podcastId,
-  )
+  const playingPodcastId = useSelector((state: RootState) => state.playingPodcast.podcastId)
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
   return (
@@ -25,19 +23,15 @@ export const Sidebar = () => {
         className={styles.Toggle}
       >
         <span
-          className={`${styles.ToggleIcon} ${
-            isSidebarVisible ? styles.ToggleIconWhenVisible : ''
-          }`}
+          className={`${styles.ToggleIcon} ${isSidebarVisible ? styles.ToggleIconWhenVisible : ''}`}
         />
       </span>
 
       <section
-        className={`${styles.Sidebar} ${
-          isSidebarVisible ? styles.SidebarMobileVisible : ''
-        }`}
+        className={`${styles.Sidebar} ${isSidebarVisible ? styles.SidebarMobileVisible : ''}`}
       >
         <h1 className={styles.Logo}>
-          <Link href='/'>
+          <Link href='/' scroll={false}>
             <a className={styles.LogoLink}>Podcast</a>
           </Link>
         </h1>
@@ -46,12 +40,8 @@ export const Sidebar = () => {
           <h4 className={styles.Title}>PODCAST</h4>
           <ul>
             <li className={styles.ListItem}>
-              <Link href='/'>
-                <a
-                  className={`${styles.Link} ${
-                    router.pathname === '/' ? styles.ActiveLink : 0
-                  }`}
-                >
+              <Link href='/' scroll={false}>
+                <a className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}>
                   <HomeSvg className={styles.LinkIcon} />
                   Home
                 </a>
@@ -59,7 +49,7 @@ export const Sidebar = () => {
             </li>
 
             <li className={styles.ListItem}>
-              <Link href='/discover'>
+              <Link href='/discover' scroll={false}>
                 <a
                   className={`${styles.Link} ${
                     router.pathname === '/discover' ? styles.ActiveLink : 0
@@ -73,7 +63,7 @@ export const Sidebar = () => {
 
             {playingPodcastId && (
               <li className={styles.ListItem}>
-                <Link href={`/podcast/${playingPodcastId}`}>
+                <Link href={`/podcast/${playingPodcastId}`} scroll={false}>
                   <a
                     className={`${styles.Link} ${
                       router.pathname === '/podcast/' ? styles.ActiveLink : 0

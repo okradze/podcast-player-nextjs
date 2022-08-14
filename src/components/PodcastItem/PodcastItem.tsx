@@ -7,9 +7,9 @@ import styles from './PodcastItem.module.scss'
 type PodcastItemProps = IPodcast
 
 export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProps) => (
-  <div className={styles.Item} key={id}>
+  <article className={styles.Item}>
     <div className={styles.ImageWrapper}>
-      <Image width={150} height={150} className={styles.Image} src={thumbnail} alt='' />
+      <Image width={150} height={150} className={styles.Image} src={thumbnail} alt={title} />
     </div>
     <div className={styles.Content}>
       <EllipsisText tagName='p' className={styles.Publisher}>
@@ -23,7 +23,7 @@ export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProp
         <a className={styles.Button}>View More</a>
       </Link>
     </div>
-  </div>
+  </article>
 )
 
 export default PodcastItem

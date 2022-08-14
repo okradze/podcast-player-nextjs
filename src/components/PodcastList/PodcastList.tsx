@@ -9,16 +9,18 @@ type PodcastListProps = {
 }
 
 export const PodcastList = ({ podcasts, title }: PodcastListProps) => (
-  <div className={styles.Wrapper}>
+  <section className={styles.Wrapper}>
     <h2 className={`${styles.Title} ${title && styles.SmallTitle}`}>
       {title || 'Popular Podcasts'}
     </h2>
-    <div className={styles.PodcastList}>
-      {podcasts.map((podcast) => (
-        <PodcastItem key={podcast.id} {...podcast} />
+    <ul className={styles.List}>
+      {podcasts.map(podcast => (
+        <li className={styles.Item} key={podcast.id}>
+          <PodcastItem {...podcast} />
+        </li>
       ))}
-    </div>
-  </div>
+    </ul>
+  </section>
 )
 
 export default React.memo(PodcastList)

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { IEpisode } from '../../api/listenNotesApi'
 import { playEpisode } from '../../store/playingPodcast/playingPodcastSlice'
 import EllipsisText from '../EllipsisText'
-import PlaySvg from '../../svg/PlaySvg'
+import { PlaySvg } from '../../svg'
 import styles from './EpisodeItem.module.scss'
 
 type EpisodeItemProps = {

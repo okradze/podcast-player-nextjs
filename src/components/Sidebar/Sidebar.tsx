@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import HomeSvg from '../../svg/HomeSvg'
-import SearchSvg from '../../svg/SearchSvg'
-import PodcastSvg from '../../svg/PodcastSvg'
-import styles from './Sidebar.module.scss'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/rootReducer'
+import { HomeSvg, SearchSvg, PodcastSvg } from '../../svg'
+import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {
   const router = useRouter()

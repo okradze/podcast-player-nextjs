@@ -13,9 +13,7 @@ import {
 } from '../../store/playingPodcast/playingPodcastSlice'
 import { IEpisode } from '../../api/listenNotesApi'
 import EllipsisText from '../EllipsisText'
-import PlaySvg from '../../svg/PlaySvg'
-import PauseSvg from '../../svg/PauseSvg'
-import VolumeSvg from '../../svg/VolumeSvg'
+import { PlaySvg, PauseSvg, VolumeSvg } from '../../svg'
 import 'rc-slider/assets/index.css'
 import styles from './AudioPlayer.module.scss'
 
@@ -32,16 +30,12 @@ const formatTime = (time: number) => {
 }
 
 const AudioPlayer = () => {
-  const { playingEpisode, podcastId, isPlaying, currentTime, volume, minimized } =
-    useSelector((state: RootState) => state.playingPodcast)
+  const { playingEpisode, podcastId, isPlaying, currentTime, volume, minimized } = useSelector(
+    (state: RootState) => state.playingPodcast,
+  )
   const dispatch = useDispatch()
 
-  const {
-    thumbnail,
-    title,
-    audio: audioSrc,
-    audio_length_sec,
-  } = playingEpisode as IEpisode
+  const { thumbnail, title, audio: audioSrc, audio_length_sec } = playingEpisode as IEpisode
 
   const { current: audio } = useRef(new Audio())
 
@@ -85,9 +79,7 @@ const AudioPlayer = () => {
   }, [dispatch, audio])
 
   return (
-    <div
-      className={`${styles.AudioPlayer} ${minimized ? styles.AudioPlayerMinimized : ''}`}
-    >
+    <div className={`${styles.AudioPlayer} ${minimized ? styles.AudioPlayerMinimized : ''}`}>
       <div className={styles.MinimizeWrapper}>
         <span
           onClick={() => dispatch(toggleMinimize())}
@@ -99,13 +91,7 @@ const AudioPlayer = () => {
 
       <div className={styles.EpisodeWrapper}>
         <div className={styles.ThumbnailWrapper}>
-          <Image
-            width={40}
-            height={40}
-            className={styles.Thumbnail}
-            src={thumbnail}
-            alt=''
-          />
+          <Image width={40} height={40} className={styles.Thumbnail} src={thumbnail} alt='' />
         </div>
 
         <Link href={`/podcast/${podcastId}`}>
@@ -131,7 +117,7 @@ const AudioPlayer = () => {
 
               <div className={styles.Duration}>
                 <Slider
-                  onChange={(value) => {
+                  onChange={value => {
                     dispatch(setCurrentTime(value))
                     audio.currentTime = value
                   }}
@@ -143,16 +129,14 @@ const AudioPlayer = () => {
                 />
               </div>
 
-              <span className={styles.Time}>
-                -{formatTime(audio.duration - audio.currentTime)}
-              </span>
+              <span className={styles.Time}>-{formatTime(audio.duration - audio.currentTime)}</span>
             </div>
 
             <div className={styles.VolumeWrapper}>
               <div className={styles.VolumeSlider}>
                 <Slider
                   tabIndex={0}
-                  onChange={(value) => {
+                  onChange={value => {
                     audio.volume = value
                     dispatch(setVolume(value))
                   }}

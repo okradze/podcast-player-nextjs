@@ -1,9 +1,12 @@
 import axios, { AxiosResponse } from 'axios'
 
+if (!process.env.NEXT_PUBLIC_LISTEN_NOTES_API_KEY)
+  throw new Error('NEXT_PUBLIC_LISTEN_NOTES_API_KEY is not configured in .env.local')
+
 const client = axios.create({
   baseURL: 'https://listen-api.listennotes.com/api/v2',
   headers: {
-    'X-ListenAPI-Key': process.env.NEXT_PUBLIC_LISTEN_NOTES_API_KEY || '',
+    'X-ListenAPI-Key': process.env.NEXT_PUBLIC_LISTEN_NOTES_API_KEY,
   },
 })
 

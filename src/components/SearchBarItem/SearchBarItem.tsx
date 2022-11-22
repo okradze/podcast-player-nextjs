@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ITypeaheadPodcast } from '../../api/listenNotesApi'
+import { ITypeaheadPodcast } from '../../api/api'
 import EllipsisText from '../EllipsisText/EllipsisText'
 import styles from './SearchBarItem.module.scss'
 

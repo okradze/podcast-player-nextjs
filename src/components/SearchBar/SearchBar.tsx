@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import listenNotesApi, { ITypeaheadPodcast } from '../../api/listenNotesApi'
+import api, { ITypeaheadPodcast } from '../../api/api'
 import SearchBarItem from '../SearchBarItem'
 import Spinner from '../Spinner'
 import styles from './SearchBar.module.scss'
@@ -15,7 +15,7 @@ export const SearchBar = () => {
         setIsLoading(true)
         const {
           data: { podcasts },
-        } = await listenNotesApi.fetchTypeahead(searchTerm)
+        } = await api.fetchTypeahead(searchTerm)
         if (podcasts.length) setSearchResults(podcasts)
         setIsLoading(false)
       }
@@ -33,7 +33,7 @@ export const SearchBar = () => {
           className={`${styles.Input} ${searchTerm && styles.InputWhenSearching}`}
           type='search'
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           placeholder='Search shows and podcasts'
         />
         {searchTerm && (
@@ -44,7 +44,7 @@ export const SearchBar = () => {
                   <Spinner />
                 </div>
               )}
-              {searchResults?.map((podcast) => (
+              {searchResults?.map(podcast => (
                 <SearchBarItem
                   clearSearch={() => setSearchTerm('')}
                   key={podcast.id}

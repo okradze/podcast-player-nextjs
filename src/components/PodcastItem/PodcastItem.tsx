@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { IPodcast } from '../../api/listenNotesApi'
+import { IPodcast } from '../../api/api'
 import EllipsisText from '../EllipsisText'
 import styles from './PodcastItem.module.scss'
 

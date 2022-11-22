@@ -11,7 +11,7 @@ import mockSearch from '../../fixtures/search'
 
 afterEach(cleanup)
 
-jest.mock('../../api/listenNotesApi', () => ({
+jest.mock('../../api/api', () => ({
   fetchTypeahead: jest.fn().mockImplementation(() => Promise.resolve({ data: mockSearch })),
 }))
 

@@ -1,5 +1,5 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
-import listenNotesApi, { IBestPodcasts, IPodcast } from '../../api/listenNotesApi'
+import api, { IBestPodcasts, IPodcast } from '../../api/api'
 
 export interface PodcastsState {
   isFetching: boolean
@@ -44,7 +44,7 @@ export const { setLoading, setPodcasts, setError } = podcastsSlice.actions
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {
     dispatch(setLoading())
-    const { data } = await listenNotesApi.fetchBestPodcasts(page)
+    const { data } = await api.fetchBestPodcasts(page)
     dispatch(setPodcasts(data))
   } catch (error) {
     dispatch(setError(error))

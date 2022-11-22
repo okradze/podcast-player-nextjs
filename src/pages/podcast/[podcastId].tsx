@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import PodcastList from '../../components/PodcastList/PodcastList'
 import EpisodeList from '../../components/EpisodeList/EpisodeList'
-import listenNotesApi, { IPodcast, IPodcastDetails } from '../../api/listenNotesApi'
+import api, { IPodcast, IPodcastDetails } from '../../api/api'
 import styles from '../../styles/Podcast.module.scss'
 
 type PodcastProps = {
@@ -63,8 +63,8 @@ export const getServerSideProps: GetServerSideProps<PodcastProps> = async ({ par
   if (!podcastId || typeof podcastId !== 'string') return { props: {} }
 
   const [podcast, recommendations] = await Promise.all([
-    listenNotesApi.fetchPodcast(podcastId),
-    listenNotesApi.fetchRecommendations(podcastId),
+    api.fetchPodcast(podcastId),
+    api.fetchRecommendations(podcastId),
   ])
 
   return {

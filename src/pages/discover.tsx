@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import listenNotesApi, { ICuratedPodcasts } from '../api/listenNotesApi'
+import api, { ICuratedPodcasts } from '../api/api'
 import { RootState } from '../store/rootReducer'
 import { fetchPodcastLists, setPodcastLists } from '../store/discoverPodcasts/discoverPodcastsSlice'
 import useOnScreen from '../hooks/useOnScreen'
@@ -53,7 +53,7 @@ const Discover: NextPage<DiscoverProps> = ({ initialLists }) => {
 }
 
 export const getServerSideProps: GetServerSideProps<DiscoverProps> = async () => {
-  const { data } = await listenNotesApi.fetchCuratedPodcasts(1)
+  const { data } = await api.fetchCuratedPodcasts(1)
 
   return {
     props: {

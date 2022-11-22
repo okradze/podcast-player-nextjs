@@ -1,8 +1,5 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
-import listenNotesApi, {
-  ICuratedPodcastList,
-  ICuratedPodcasts,
-} from '../../api/listenNotesApi'
+import api, { ICuratedPodcastList, ICuratedPodcasts } from '../../api/api'
 
 export interface DiscoverPodcastsState {
   isFetching: boolean
@@ -47,7 +44,7 @@ export const { setLoading, setPodcastLists, setError } = discoverPodcastsSlice.a
 export const fetchPodcastLists = async (dispatch: Dispatch, page: number) => {
   try {
     dispatch(setLoading())
-    const { data } = await listenNotesApi.fetchCuratedPodcasts(page)
+    const { data } = await api.fetchCuratedPodcasts(page)
     dispatch(setPodcastLists(data))
   } catch (error) {
     dispatch(setError(error))

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IPodcast } from '../../api/listenNotesApi'
+import { IPodcast } from '../../api/api'
 import PodcastItem from '../PodcastItem'
 import styles from './PodcastList.module.scss'
 

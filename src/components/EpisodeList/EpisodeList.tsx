@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import listenNotesApi, { IPodcastDetails } from '../../api/listenNotesApi'
+import api, { IPodcastDetails } from '../../api/api'
 import EpisodeItem from '../EpisodeItem'
 import Button from '../Button'
 import Spinner from '../Spinner'
@@ -16,7 +16,7 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
 
   const fetchEpisodes = async () => {
     setLoading(true)
-    const { data } = await listenNotesApi.fetchEpisodes(id, next_episode_pub_date)
+    const { data } = await api.fetchEpisodes(id, next_episode_pub_date)
 
     setPodcast(prev => ({
       ...data,

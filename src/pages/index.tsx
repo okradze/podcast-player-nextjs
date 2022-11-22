@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import listenNotesApi, { IBestPodcasts } from '../api/listenNotesApi'
+import api, { IBestPodcasts } from '../api/api'
 import PodcastList from '../components/PodcastList'
 import Spinner from '../components/Spinner'
 import useOnScreen from '../hooks/useOnScreen'
@@ -47,7 +47,7 @@ const Home: NextPage<HomeProps> = ({ initialPodcasts }) => {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const { data } = await listenNotesApi.fetchBestPodcasts(1)
+  const { data } = await api.fetchBestPodcasts(1)
 
   return {
     props: {

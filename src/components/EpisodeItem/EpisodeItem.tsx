@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import { IEpisode } from '../../api/listenNotesApi'
+import { IEpisode } from '../../api/api'
 import { playEpisode } from '../../store/playingPodcast/playingPodcastSlice'
 import EllipsisText from '../EllipsisText'
 import { PlaySvg } from '../../svg'

@@ -1,13 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
-if (!process.env.NEXT_PUBLIC_LISTEN_NOTES_API_KEY)
-  throw new Error('NEXT_PUBLIC_LISTEN_NOTES_API_KEY is not configured in .env.local')
-
 const client = axios.create({
-  baseURL: 'https://listen-api.listennotes.com/api/v2',
-  headers: {
-    'X-ListenAPI-Key': process.env.NEXT_PUBLIC_LISTEN_NOTES_API_KEY,
-  },
+  baseURL: 'http://localhost:8000',
 })
 
 export interface IPodcast {
@@ -25,7 +19,7 @@ export interface IBestPodcasts {
 }
 
 export const fetchBestPodcasts = (page: number) =>
-  client.get<any, AxiosResponse<IBestPodcasts>>(`/best_podcasts?page=${page}`)
+  client.get<any, AxiosResponse<IBestPodcasts>>(`/podcasts/best?page=${page}`)
 
 export interface ICuratedPodcastList {
   id: string
@@ -40,7 +34,7 @@ export interface ICuratedPodcasts {
 }
 
 export const fetchCuratedPodcasts = (page: number) =>
-  client.get<any, AxiosResponse<ICuratedPodcasts>>(`curated_podcasts?page=${page}`)
+  client.get<any, AxiosResponse<ICuratedPodcasts>>(`/podcasts/curated?page=${page}`)
 
 export interface IPodcastDetails extends IPodcast {
   episodes: IEpisode[]
@@ -67,7 +61,7 @@ export const fetchRecommendations = (podcastId: string) =>
 
 export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
   client.get<any, AxiosResponse<IPodcastDetails>>(
-    `/podcasts/${podcastId}?next_episode_pub_date=${nextEpisodePubDate}`,
+    `/podcasts/${podcastId}?nextEpisodePubDate=${nextEpisodePubDate}`,
   )
 
 export interface ITypeahead {
@@ -82,9 +76,9 @@ export interface ITypeaheadPodcast {
 }
 
 export const fetchTypeahead = (searchTerm: string) =>
-  client.get<any, AxiosResponse<ITypeahead>>(`/typeahead?q=${searchTerm}&show_podcasts=1`)
+  client.get<any, AxiosResponse<ITypeahead>>(`/podcasts/typeahead?q=${searchTerm}`)
 
-const listenNotesApi = {
+const api = {
   fetchBestPodcasts,
   fetchCuratedPodcasts,
   fetchPodcast,
@@ -93,4 +87,4 @@ const listenNotesApi = {
   fetchTypeahead,
 }
 
-export default listenNotesApi
+export default api

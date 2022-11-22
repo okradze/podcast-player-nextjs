@@ -20,7 +20,7 @@ beforeEach(() => {
   store = createTestStore()
 })
 
-jest.mock('../../api/listenNotesApi', () => ({
+jest.mock('../../api/api', () => ({
   fetchEpisodes: jest.fn().mockImplementation(() => Promise.resolve({ data: PODCAST_FIXTURE })),
 }))
 

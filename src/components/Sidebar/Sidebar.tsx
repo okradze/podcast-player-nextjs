@@ -11,6 +11,10 @@ export const Sidebar = () => {
   const playingPodcastId = useSelector((state: RootState) => state.playingPodcast.podcastId)
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
+  const closeSidebar = () => {
+    if (isSidebarVisible) setIsSidebarVisible(false)
+  }
+
   return (
     <aside>
       <span
@@ -30,7 +34,9 @@ export const Sidebar = () => {
       >
         <h1 className={styles.Logo}>
           <Link href='/' scroll={false}>
-            <a className={styles.LogoLink}>Podcast</a>
+            <a onClick={closeSidebar} className={styles.LogoLink}>
+              Podcast
+            </a>
           </Link>
         </h1>
 
@@ -39,7 +45,10 @@ export const Sidebar = () => {
           <ul>
             <li className={styles.ListItem}>
               <Link href='/' scroll={false}>
-                <a className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}>
+                <a
+                  onClick={closeSidebar}
+                  className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}
+                >
                   <HomeSvg className={styles.LinkIcon} />
                   Home
                 </a>
@@ -49,6 +58,7 @@ export const Sidebar = () => {
             <li className={styles.ListItem}>
               <Link href='/discover' scroll={false}>
                 <a
+                  onClick={closeSidebar}
                   className={`${styles.Link} ${
                     router.pathname === '/discover' ? styles.ActiveLink : 0
                   }`}
@@ -63,6 +73,7 @@ export const Sidebar = () => {
               <li className={styles.ListItem}>
                 <Link href={`/podcast/${playingPodcastId}`} scroll={false}>
                   <a
+                    onClick={closeSidebar}
                     className={`${styles.Link} ${
                       router.pathname === '/podcast/' ? styles.ActiveLink : 0
                     }`}

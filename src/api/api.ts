@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
 const client = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:8000/v1',
 })
 
 export interface IPodcast {

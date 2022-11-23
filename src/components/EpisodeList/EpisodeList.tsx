@@ -9,6 +9,7 @@ type EpisodeListProps = {
   podcast: IPodcastDetails
   setPodcast: Dispatch<SetStateAction<IPodcastDetails | undefined>>
 }
+
 export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
   const [loading, setLoading] = useState(false)
   const { episodes, id, next_episode_pub_date, total_episodes } = podcast

@@ -11,8 +11,7 @@ type EpisodeListProps = {
 }
 export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
   const [loading, setLoading] = useState(false)
-  const { episodes, id, next_episode_pub_date } = podcast
-  const areMoreEpisodes = !!next_episode_pub_date
+  const { episodes, id, next_episode_pub_date, total_episodes } = podcast
 
   const fetchEpisodes = async () => {
     setLoading(true)
@@ -25,6 +24,8 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
 
     setLoading(false)
   }
+
+  const areMoreEpisodes = episodes.length < total_episodes
 
   return (
     <div>

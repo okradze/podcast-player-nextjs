@@ -39,6 +39,7 @@ export const fetchCuratedPodcasts = (page: number) =>
 export interface IPodcastDetails extends IPodcast {
   episodes: IEpisode[]
   next_episode_pub_date: number
+  total_episodes: number
 }
 
 export interface IEpisode {

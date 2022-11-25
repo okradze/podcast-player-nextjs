@@ -1,0 +1,18 @@
+@import '../../styles/utils';
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.input {
+  border-radius: 30px;
+  padding: 1.2rem 2rem;
+  border: 1px solid $light-text;
+}

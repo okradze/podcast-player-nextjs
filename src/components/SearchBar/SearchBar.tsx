@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import api, { ITypeaheadPodcast } from '../../api/api'
+import ProfileButton from '../ProfileButton'
 import SearchBarItem from '../SearchBarItem'
 import Spinner from '../Spinner'
 import styles from './SearchBar.module.scss'
@@ -55,6 +56,7 @@ export const SearchBar = () => {
           </div>
         )}
       </div>
+      <ProfileButton fullName='Mirian Okradze' />
     </header>
   )
 }

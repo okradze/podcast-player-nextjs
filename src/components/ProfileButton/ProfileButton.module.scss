@@ -1,0 +1,28 @@
+@import '../../styles/utils';
+
+.Button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 0;
+  color: $text;
+  background: none;
+}
+
+.Avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  background: $primary;
+  border-radius: 50%;
+  color: $offset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

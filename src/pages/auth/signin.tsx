@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FormEvent, useRef } from 'react'
-import Input from '../components/Input'
-import styles from '../styles/SignUp.module.scss'
+import Input from '../../components/Input'
+import styles from '../../styles/SignUp.module.scss'
 
 type SignUpProps = {}
 
@@ -22,25 +22,13 @@ const SignUp: NextPage<SignUpProps> = () => {
   return (
     <section>
       <Head>
-        <title>Sign Up - Podcast Player</title>
+        <title>Sign In - Podcast Player</title>
       </Head>
 
-      <h2>Sign Up</h2>
-      <p>
-        Already a member?{' '}
-        <Link href='/signin'>
-          <a>Sign in</a>
-        </Link>
-      </p>
+      <h2>Sign In</h2>
+      <p>Sign in to See your favorite podcasts</p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          label='Full Name'
-          name='fullName'
-          placeholder='John Doe'
-          onChange={e => (values.current.fullName = e.target.value)}
-        />
-
         <Input
           label='Email'
           name='email'
@@ -51,12 +39,23 @@ const SignUp: NextPage<SignUpProps> = () => {
         <Input
           label='Password'
           name='password'
-          placeholder='Min 8 characters'
+          placeholder=''
           onChange={e => (values.current.password = e.target.value)}
         />
 
+        <p>
+          <a href=''>Forget password?</a>
+        </p>
+
         <button type='submit'>Sign Up</button>
       </form>
+
+      <p>
+        Not registered yet?{' '}
+        <Link href='/auth/signup'>
+          <a>Create an account</a>
+        </Link>
+      </p>
     </section>
   )
 }

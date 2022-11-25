@@ -5,19 +5,12 @@ import Link from 'next/link'
 import { FormEvent, useRef } from 'react'
 import { client, ITokensResponse } from '../../api/api'
 import Input from '../../components/Input'
-import styles from './SignUp.module.scss'
+import styles from './SignIn.module.scss'
 
-type SignUpProps = {}
+type SignInProps = {}
 
-interface SignUpBody {
-  fullName: string
-  email: string
-  password: string
-}
-
-const SignUp: NextPage<SignUpProps> = () => {
-  const values = useRef<SignUpBody>({
-    fullName: '',
+const SignIn: NextPage<SignInProps> = () => {
+  const values = useRef({
     email: '',
     password: '',
   })
@@ -27,7 +20,7 @@ const SignUp: NextPage<SignUpProps> = () => {
 
     try {
       const { data } = await client.post<any, AxiosResponse<ITokensResponse>>(
-        '/auth/signup',
+        '/auth/signin',
         values.current,
       )
       console.log(data)
@@ -39,25 +32,13 @@ const SignUp: NextPage<SignUpProps> = () => {
   return (
     <section>
       <Head>
-        <title>Sign Up - Podcast Player</title>
+        <title>Sign In - Podcast Player</title>
       </Head>
 
-      <h2>Sign Up</h2>
-      <p>
-        Already a member?{' '}
-        <Link href='/auth/signin'>
-          <a>Sign in</a>
-        </Link>
-      </p>
+      <h2>Sign In</h2>
+      <p>Sign in to See your favorite podcasts</p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          label='Full Name'
-          name='fullName'
-          placeholder='John Doe'
-          onChange={e => (values.current.fullName = e.target.value)}
-        />
-
         <Input
           label='Email'
           name='email'
@@ -69,14 +50,24 @@ const SignUp: NextPage<SignUpProps> = () => {
           label='Password'
           name='password'
           type='password'
-          placeholder='Min 8 characters'
           onChange={e => (values.current.password = e.target.value)}
         />
 
+        <p>
+          <a href=''>Forget password?</a>
+        </p>
+
         <button type='submit'>Sign Up</button>
       </form>
+
+      <p>
+        Not registered yet?{' '}
+        <Link href='/auth/signin'>
+          <a>Create an account</a>
+        </Link>
+      </p>
     </section>
   )
 }
 
-export default SignUp
+export default SignIn

@@ -79,6 +79,11 @@ export interface ITypeaheadPodcast {
 export const fetchTypeahead = (searchTerm: string) =>
   client.get<any, AxiosResponse<ITypeahead>>(`/podcasts/typeahead?q=${searchTerm}`)
 
+export interface ITokensResponse {
+  accessToken: string
+  refreshToken: string
+}
+
 const api = {
   fetchBestPodcasts,
   fetchCuratedPodcasts,

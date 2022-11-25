@@ -23,6 +23,12 @@ const SignIn: NextPage<SignInProps> = () => {
         '/auth/signin',
         values.current,
       )
+
+      // const res = await client.get<any, AxiosResponse<any>>('/auth/me', {
+      //   headers: {
+      //     Authorization: `Bearer ${data.accessToken}`,
+      //   },
+      // })
       console.log(data)
     } catch (error) {
       console.log(error)
@@ -57,12 +63,12 @@ const SignIn: NextPage<SignInProps> = () => {
           <a href=''>Forget password?</a>
         </p>
 
-        <button type='submit'>Sign Up</button>
+        <button type='submit'>Sign In</button>
       </form>
 
       <p>
         Not registered yet?{' '}
-        <Link href='/auth/signin'>
+        <Link href='/auth/signup'>
           <a>Create an account</a>
         </Link>
       </p>

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios, { AxiosRequestHeaders, AxiosError } from 'axios'
-import { client } from '../../../api/api'
+import cookie from 'cookie'
+import { client, ITokensResponse } from '../../../api/api'
 
 const routes = ['signup', 'signin', 'signout', 'refresh']
 
@@ -17,6 +18,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
 
     Object.entries(headers).forEach(header => res.setHeader(header[0], header[1] as string))
+
+    if (route === 'signout') {
+      res.setHeader('Set-Cookie', [
+        cookie.serialize('accessToken', '', {
+          httpOnly: true,
+          maxAge: 0,
+          path: '/',
+        }),
+        cookie.serialize('refreshToken', '', {
+          httpOnly: true,
+          maxAge: 0,
+          path: '/',
+        }),
+      ])
+    } else {
+      const { accessToken, refreshToken } = data as ITokensResponse
+
+      res.setHeader('Set-Cookie', [
+        cookie.serialize('accessToken', accessToken, {
+          httpOnly: true,
+          maxAge: 60 * 15,
+          path: '/',
+        }),
+        cookie.serialize('refreshToken', refreshToken, {
+          httpOnly: true,
+          maxAge: 3600 * 24 * 7,
+          path: '/',
+        }),
+      ])
+    }
 
     res.status(status).send(data)
   } catch (error: unknown) {

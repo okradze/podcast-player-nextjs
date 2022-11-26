@@ -1,8 +1,7 @@
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
+import client from './client'
 
-export const client = axios.create({
-  baseURL: 'http://localhost:8000/v1',
-})
+export { default as client } from './client'
 
 export interface IPodcast {
   id: string

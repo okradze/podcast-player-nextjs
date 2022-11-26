@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -23,20 +23,22 @@ const SignIn: NextPage<SignInProps> = () => {
     e.preventDefault()
 
     try {
-      const { data } = await client.post<any, AxiosResponse<ITokensResponse>>(
-        '/auth/signin',
+      const { data } = await axios.post<any, AxiosResponse<ITokensResponse>>(
+        '/api/auth/signin',
         values.current,
       )
 
-      dispatch(setAuthTokens(data))
+      console.log(data)
 
-      const res = await client.get<any, AxiosResponse<Me>>('/auth/me', {
-        headers: {
-          Authorization: `Bearer ${data.accessToken}`,
-        },
-      })
+      // dispatch(setAuthTokens(data))
 
-      dispatch(setMe(res.data))
+      // const res = await client.get<any, AxiosResponse<Me>>('/auth/me', {
+      //   headers: {
+      //     Authorization: `Bearer ${data.accessToken}`,
+      //   },
+      // })
+
+      // dispatch(setMe(res.data))
     } catch (error) {
       console.log(error)
     }

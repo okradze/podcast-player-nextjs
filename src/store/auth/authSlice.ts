@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ITokensResponse } from '../../api/api'
 
-interface Me {
+export interface Me {
   id: number
   fullName: string
   email: string
@@ -21,9 +22,14 @@ export const authSlice = createSlice({
     setMe(state, action: PayloadAction<Me>) {
       state.me = action.payload
     },
+    setAuthTokens(state, action: PayloadAction<ITokensResponse>) {
+      const { accessToken, refreshToken } = action.payload
+      state.accessToken = accessToken
+      state.refreshToken = refreshToken
+    },
   },
 })
 
-export const { setMe } = authSlice.actions
+export const { setMe, setAuthTokens } = authSlice.actions
 
 export default authSlice.reducer

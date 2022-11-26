@@ -3,13 +3,17 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FormEvent, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 import { client, ITokensResponse } from '../../api/api'
 import Input from '../../components/Input'
+import { Me, setAuthTokens, setMe } from '../../store/auth/authSlice'
 import styles from './SignIn.module.scss'
 
 type SignInProps = {}
 
 const SignIn: NextPage<SignInProps> = () => {
+  const dispatch = useDispatch()
+
   const values = useRef({
     email: '',
     password: '',
@@ -24,12 +28,15 @@ const SignIn: NextPage<SignInProps> = () => {
         values.current,
       )
 
-      // const res = await client.get<any, AxiosResponse<any>>('/auth/me', {
-      //   headers: {
-      //     Authorization: `Bearer ${data.accessToken}`,
-      //   },
-      // })
-      console.log(data)
+      dispatch(setAuthTokens(data))
+
+      const res = await client.get<any, AxiosResponse<Me>>('/auth/me', {
+        headers: {
+          Authorization: `Bearer ${data.accessToken}`,
+        },
+      })
+
+      dispatch(setMe(res.data))
     } catch (error) {
       console.log(error)
     }

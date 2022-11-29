@@ -1,12 +1,11 @@
-import axios, { AxiosResponse } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FormEvent, useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { client, ITokensResponse } from '../../api/api'
+import * as authApi from '../../api/auth'
+import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
-import { Me, setAuthTokens, setMe } from '../../store/auth/authSlice'
 import styles from './SignIn.module.scss'
 
 type SignInProps = {}
@@ -23,15 +22,8 @@ const SignIn: NextPage<SignInProps> = () => {
     e.preventDefault()
 
     try {
-      const { data: tokens } = await client.post<any, AxiosResponse<ITokensResponse>>(
-        '/auth/signin',
-        values.current,
-      )
-
-      const { data: me } = await client.get<any, AxiosResponse<Me>>('/auth/me')
-
-      // dispatch(setAuthTokens(tokens))
-      // dispatch(setMe(me))
+      const { data } = await authApi.signin(values.current)
+      dispatch(setMe(data))
     } catch (error) {
       console.log(error)
     }

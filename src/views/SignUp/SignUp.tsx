@@ -1,22 +1,19 @@
-import { AxiosResponse } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FormEvent, useRef } from 'react'
-import { client, ITokensResponse } from '../../api/api'
+import { useDispatch } from 'react-redux'
+import * as authApi from '../../api/auth'
+import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
 import styles from './SignUp.module.scss'
 
 type SignUpProps = {}
 
-interface SignUpBody {
-  fullName: string
-  email: string
-  password: string
-}
-
 const SignUp: NextPage<SignUpProps> = () => {
-  const values = useRef<SignUpBody>({
+  const dispatch = useDispatch()
+
+  const values = useRef({
     fullName: '',
     email: '',
     password: '',
@@ -26,11 +23,8 @@ const SignUp: NextPage<SignUpProps> = () => {
     e.preventDefault()
 
     try {
-      const { data } = await client.post<any, AxiosResponse<ITokensResponse>>(
-        '/auth/signup',
-        values.current,
-      )
-      console.log(data)
+      const { data } = await authApi.signup(values.current)
+      dispatch(setMe(data))
     } catch (error) {
       console.log(error)
     }

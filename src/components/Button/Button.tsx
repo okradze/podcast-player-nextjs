@@ -2,14 +2,20 @@ import React from 'react'
 import styles from './Button.module.scss'
 
 type ButtonProps = {
+  variant?: 'contained' | 'outlined'
+  color?: 'primary' | 'secondary'
   children: React.ReactNode
-  inverted?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button = ({ children, inverted, ...otherProps }: ButtonProps) => (
+export const Button = ({
+  variant = 'contained',
+  color = 'primary',
+  children,
+  ...otherProps
+}: ButtonProps) => (
   <button
     type='button'
-    className={`${styles.Button} ${inverted ? styles.Inverted : ''}`}
+    className={`${styles.button} ${styles[variant]} ${styles[color]}`}
     {...otherProps}
   >
     {children}

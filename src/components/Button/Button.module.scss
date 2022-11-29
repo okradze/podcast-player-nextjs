@@ -1,23 +1,64 @@
-.Button {
+.button {
+  font-size: 1.4rem;
   text-align: center;
   padding: 1rem 2rem;
-  background-color: var(--primary);
-  color: var(--offset);
   border: none;
   border-radius: 100px;
   font-weight: 600;
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  transition: box-shadow 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 
   &:focus {
     outline: 0;
+  }
+}
+
+.contained {
+  color: var(--offset);
+}
+
+.contained.primary {
+  background-color: var(--primary);
+
+  &:focus {
     box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--primary);
   }
 }
 
-.Inverted {
-  background-color: var(--offset);
+.contained.secondary {
+  background-color: var(--secondary);
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--secondary);
+  }
+}
+
+.outlined {
+  border: 2px solid;
+}
+
+.outlined.primary {
   color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--offset);
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary);
+    color: var(--offset);
+  }
+}
+
+.outlined.secondary {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  background-color: var(--offset);
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary);
+    color: var(--offset);
+  }
 }

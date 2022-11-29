@@ -37,7 +37,11 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
       </div>
 
       {loading && <Spinner />}
-      {!loading && areMoreEpisodes && <Button onClick={fetchEpisodes}>Load More</Button>}
+      {!loading && areMoreEpisodes && (
+        <Button variant='outlined' color='primary' onClick={fetchEpisodes}>
+          Load More
+        </Button>
+      )}
     </div>
   )
 }

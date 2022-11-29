@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { IPodcast } from '../../api/api'
 import EllipsisText from '../EllipsisText'
 import styles from './PodcastItem.module.scss'
+import Button from '../Button'
 
 type PodcastItemProps = IPodcast
 
@@ -20,7 +21,9 @@ export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProp
       </EllipsisText>
 
       <Link href={`/podcast/${id}`}>
-        <a className={styles.Button}>View More</a>
+        <Button variant='outlined' className={styles.button}>
+          View More
+        </Button>
       </Link>
     </div>
   </article>

@@ -5,21 +5,30 @@ type ButtonProps = {
   variant?: 'contained' | 'outlined'
   color?: 'primary' | 'secondary'
   children: React.ReactNode
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+  element?: 'button' | 'link'
+  className?: string
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 export const Button = ({
   variant = 'contained',
   color = 'primary',
+  element = 'button',
   children,
+  className,
   ...otherProps
-}: ButtonProps) => (
-  <button
-    type='button'
-    className={`${styles.button} ${styles[variant]} ${styles[color]}`}
-    {...otherProps}
-  >
-    {children}
-  </button>
-)
+}: ButtonProps) => {
+  const classNames = `${styles.button} ${styles[variant]} ${styles[color]} ${className || ''}`
+
+  return element === 'link' ? (
+    <a className={classNames} {...otherProps}>
+      {children}
+    </a>
+  ) : (
+    <button type='button' className={classNames} {...otherProps}>
+      {children}
+    </button>
+  )
+}
 
 export default Button

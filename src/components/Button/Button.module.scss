@@ -1,13 +1,12 @@
 .button {
   font-size: 1.4rem;
   text-align: center;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   border: none;
   border-radius: 100px;
   font-weight: 600;
+  display: inline-block;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
   transition: all 0.15s ease-in-out;
 
   &:focus {

@@ -40,22 +40,7 @@
   font-size: 1.4rem;
 }
 
-.Button {
-  padding: 0.5rem 1.5rem;
-  text-align: center;
-  border: 1px solid var(--primary);
-  border-radius: 100px;
-  color: var(--primary);
-  text-decoration: none;
+.button {
   align-self: flex-start;
-  font-size: 1.5rem;
-  font-weight: 600;
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-
-  &:focus,
-  &:hover {
-    outline: 0;
-    color: var(--offset);
-    background-color: var(--primary);
-  }
+  border-width: 2px;
 }

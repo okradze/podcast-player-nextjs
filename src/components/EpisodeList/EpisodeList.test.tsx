@@ -51,10 +51,7 @@ describe('EpisodeList', () => {
   it('does not render load more button when there are no more episodes', () => {
     render(
       <Provider store={store}>
-        <EpisodeList
-          podcast={{ ...PODCAST_FIXTURE, next_episode_pub_date: null! }}
-          setPodcast={() => {}}
-        />
+        <EpisodeList podcast={{ ...PODCAST_FIXTURE, total_episodes: 10 }} setPodcast={() => {}} />
       </Provider>,
     )
 

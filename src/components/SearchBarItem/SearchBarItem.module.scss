@@ -1,5 +1,3 @@
-@import '../../styles/utils';
-
 .Item {
   list-style: none;
 }
@@ -10,13 +8,13 @@
   align-items: center;
   width: 100%;
   text-decoration: none;
-  color: $text;
+  color: var(--text);
   transition: background-color 0.15s ease-in-out;
 
   &:focus,
   &:hover {
     outline: 0;
-    background-color: $bg;
+    background-color: var(--bg);
   }
 }
 
@@ -28,11 +26,11 @@
 }
 
 .Title {
-  color: $text;
+  color: var(--text);
   font-size: 1.5rem;
 }
 
 .Publisher {
-  color: $light-text;
+  color: var(--light-text);
   font-size: 1.4rem;
 }

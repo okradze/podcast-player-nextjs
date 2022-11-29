@@ -1,11 +1,9 @@
-@import '../../styles/utils';
-
 .Button {
   display: flex;
   align-items: center;
   gap: 1rem;
   border: 0;
-  color: $text;
+  color: var(--text);
   background: none;
 }
 
@@ -14,9 +12,9 @@
   height: 3.5rem;
   font-size: 1.8rem;
   font-weight: 600;
-  background: $primary;
+  background: var(--primary);
   border-radius: 50%;
-  color: $offset;
+  color: var(--offset);
   display: flex;
   align-items: center;
   justify-content: center;

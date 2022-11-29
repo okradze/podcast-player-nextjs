@@ -1,10 +1,8 @@
-@import '../../styles/utils';
-
 .Button {
   text-align: center;
   padding: 1rem 2rem;
-  background-color: $primary;
-  color: $offset;
+  background-color: var(--primary);
+  color: var(--offset);
   border: none;
   border-radius: 100px;
   font-weight: 600;
@@ -15,11 +13,11 @@
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px $offset, 0 0 0 4px $primary;
+    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--primary);
   }
 }
 
 .Inverted {
-  background-color: $offset;
-  color: $primary;
+  background-color: var(--offset);
+  color: var(--primary);
 }

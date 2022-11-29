@@ -1,12 +1,10 @@
-@import '../../styles/utils';
-
 .Episode {
   display: flex;
   align-items: center;
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 5px;
-  background-color: $bg;
+  background-color: var(--bg);
   transition: transform 0.25s ease-in-out;
 }
 
@@ -22,19 +20,19 @@
   margin-right: 2rem;
   overflow: hidden;
   flex-shrink: 0;
-  background: $offset;
+  background: var(--offset);
   border-radius: 5px;
 }
 
 .Title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: $text;
+  color: var(--text);
 }
 
 .Duration {
   font-size: 1.4rem;
-  color: $light-text;
+  color: var(--light-text);
 }
 
 .Play {
@@ -42,13 +40,13 @@
   width: 3.5rem;
   height: 3.5rem;
   margin-left: 2rem;
-  fill: $primary;
+  fill: var(--primary);
   cursor: pointer;
   border-radius: 50%;
   transition: box-shadow 0.15s ease-in-out;
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px $offset, 0 0 0 4px $primary;
+    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--primary);
   }
 }

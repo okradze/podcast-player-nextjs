@@ -1,13 +1,11 @@
-@import '../../styles/utils';
-
 .Sidebar {
   position: fixed;
   width: 20rem;
 
   @media only screen and (max-width: 850px) {
     padding: 8rem 2rem 4rem 2rem;
-    background-color: $offset;
-    box-shadow: 2px 0 4px rgba($text, 0.15);
+    background-color: var(--offset);
+    box-shadow: 2px 0 4px rgba(var(--text), 0.15);
     z-index: 20;
     top: 0;
     left: 0;
@@ -29,14 +27,14 @@
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  background-color: $primary;
+  background-color: var(--primary);
   position: fixed;
   top: 2rem;
   left: 2rem;
   z-index: 30;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 2rem 1px rgba($text, 0.2);
+  box-shadow: 0 0 2rem 1px rgba(var(--text), 0.2);
   cursor: pointer;
 
   @media only screen and (max-width: 850px) {
@@ -50,10 +48,9 @@
   display: inline-block;
   width: 2.5rem;
   height: 2px;
-  background-color: $offset;
+  background-color: var(--offset);
   border-radius: 1rem;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out,
-    top 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
 .ToggleIcon {
@@ -108,17 +105,17 @@
 }
 
 .LogoLink {
-  color: $primary;
+  color: var(--primary);
   text-decoration: none;
 
   &:focus {
-    outline: 2px solid $primary;
+    outline: 2px solid var(--primary);
     outline-offset: 5px;
   }
 }
 
 .Title {
-  color: $light-text;
+  color: var(--light-text);
   padding: 0 2rem;
   font-size: 1.5rem;
   margin-bottom: 2rem;
@@ -134,7 +131,7 @@
   display: inline-flex;
   align-items: center;
   width: 100%;
-  color: $text;
+  color: var(--text);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.4rem;
@@ -145,22 +142,22 @@
 
   &:focus {
     outline: none;
-    border-color: $secondary;
+    border-color: var(--secondary);
   }
 }
 
 .LinkIcon {
-  fill: $text;
+  fill: var(--text);
   width: 1.6rem;
   height: 1.6rem;
   margin-right: 1rem;
 }
 
 .ActiveLink {
-  background-color: $secondary;
-  color: $offset;
+  background-color: var(--secondary);
+  color: var(--offset);
 
   .LinkIcon {
-    fill: $offset;
+    fill: var(--offset);
   }
 }

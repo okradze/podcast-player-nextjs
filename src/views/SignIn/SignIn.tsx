@@ -23,19 +23,15 @@ const SignIn: NextPage<SignInProps> = () => {
     e.preventDefault()
 
     try {
-      const { data: tokens } = await axios.post<any, AxiosResponse<ITokensResponse>>(
-        '/api/auth/signin',
+      const { data: tokens } = await client.post<any, AxiosResponse<ITokensResponse>>(
+        '/auth/signin',
         values.current,
       )
 
-      const { data: me } = await client.get<any, AxiosResponse<Me>>('/auth/me', {
-        headers: {
-          Authorization: `Bearer ${tokens.accessToken}`,
-        },
-      })
+      const { data: me } = await client.get<any, AxiosResponse<Me>>('/auth/me')
 
-      dispatch(setAuthTokens(tokens))
-      dispatch(setMe(me))
+      // dispatch(setAuthTokens(tokens))
+      // dispatch(setMe(me))
     } catch (error) {
       console.log(error)
     }

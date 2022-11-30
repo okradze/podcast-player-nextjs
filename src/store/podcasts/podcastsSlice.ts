@@ -1,4 +1,5 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
+import { HYDRATE } from 'next-redux-wrapper'
 import api, { IBestPodcasts, IPodcast } from '../../api/api'
 
 export interface PodcastsState {
@@ -35,6 +36,17 @@ export const podcastsSlice = createSlice({
     },
     setError(state, action) {
       state.error = action.payload
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      if (state.podcasts.length > 0) return state
+
+      return {
+        ...state,
+        ...action.payload.podcasts,
+        podcasts: action.payload.podcasts.podcasts,
+      }
     },
   },
 })

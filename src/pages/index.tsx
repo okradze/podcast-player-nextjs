@@ -1,16 +1,18 @@
 import type { GetServerSideProps } from 'next'
 import api from '../api/api'
+import { wrapper } from '../store'
+import { setPodcasts } from '../store/podcasts/podcastsSlice'
 import Home from '../views/Home'
-import type { HomeProps } from '../views/Home/Home'
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const { data } = await api.fetchBestPodcasts(1)
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+  store => async () => {
+    const { data } = await api.fetchBestPodcasts(1)
+    store.dispatch(setPodcasts(data))
 
-  return {
-    props: {
-      initialPodcasts: data,
-    },
-  }
-}
+    return {
+      props: {},
+    }
+  },
+)

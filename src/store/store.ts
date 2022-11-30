@@ -1,23 +1,29 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist'
+import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
+import { createWrapper } from 'next-redux-wrapper'
 import rootReducer from './rootReducer'
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-})
+const makeStore = () =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
+  })
 
-export const persistor = persistStore(store)
+export const wrapper = createWrapper(makeStore)
+
+// export const store = configureStore({
+//   reducer: rootReducer,
+//   middleware: getDefaultMiddleware =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
+// })
+
+// export const persistor = persistStore(store)

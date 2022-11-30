@@ -22,4 +22,5 @@ export const rootReducer = combineReducers({
   playingPodcast: playingPodcastReducer,
 })
 
-export default persistReducer(persistConfig, rootReducer)
+// export default persistReducer(persistConfig, rootReducer)
+export default rootReducer

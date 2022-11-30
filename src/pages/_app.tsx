@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
+import { wrapper } from '../store'
 import '../styles/globals.scss'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -10,4 +11,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

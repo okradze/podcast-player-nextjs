@@ -15,6 +15,7 @@
     "axios-auth-refresh": "^3.3.4",
     "cookie": "^0.5.0",
     "next": "12.2.4",
+    "next-redux-wrapper": "^8.0.0",
     "nextjs-progressbar": "^0.0.14",
     "rc-slider": "9.7.5",
     "react": "18.2.0",

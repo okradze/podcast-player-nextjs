@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ITokensResponse } from '../../api/api'
 
 export interface Me {
   id: number
@@ -9,8 +8,6 @@ export interface Me {
 
 export interface AuthState {
   me?: Me
-  accessToken?: string
-  refreshToken?: string
 }
 
 export const initialState: AuthState = {}
@@ -22,14 +19,12 @@ export const authSlice = createSlice({
     setMe(state, action: PayloadAction<Me>) {
       state.me = action.payload
     },
-    setAuthTokens(state, action: PayloadAction<ITokensResponse>) {
-      const { accessToken, refreshToken } = action.payload
-      state.accessToken = accessToken
-      state.refreshToken = refreshToken
+    reset(state) {
+      state = initialState
     },
   },
 })
 
-export const { setMe, setAuthTokens } = authSlice.actions
+export const { setMe, reset } = authSlice.actions
 
 export default authSlice.reducer

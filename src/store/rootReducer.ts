@@ -13,16 +13,10 @@ const persistConfig = {
   whitelist: ['playingPodcast'],
 }
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['accessToken', 'refreshToken'],
-}
-
 export type RootState = ReturnType<typeof rootReducer>
 
 export const rootReducer = combineReducers({
-  auth: persistReducer(authPersistConfig, authReducer),
+  auth: authReducer,
   podcasts: podcastsReducer,
   discoverPodcasts: discoverPodcastsReducer,
   playingPodcast: playingPodcastReducer,

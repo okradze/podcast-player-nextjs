@@ -1,4 +1,5 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
+import { HYDRATE } from 'next-redux-wrapper'
 import api, { ICuratedPodcastList, ICuratedPodcasts } from '../../api/api'
 
 export interface DiscoverPodcastsState {
@@ -35,6 +36,17 @@ export const discoverPodcastsSlice = createSlice({
     },
     setError(state, action) {
       state.error = action.payload
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      if (state.curated_lists.length > 0) return state
+
+      return {
+        ...state,
+        ...action.payload.discoverPodcasts,
+        curated_lists: action.payload.discoverPodcasts.curated_lists,
+      }
     },
   },
 })

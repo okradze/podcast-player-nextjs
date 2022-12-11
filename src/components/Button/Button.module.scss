@@ -8,6 +8,8 @@
   display: inline-block;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  line-height: 1;
 
   &:focus {
     outline: 0;

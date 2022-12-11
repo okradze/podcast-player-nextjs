@@ -11,6 +11,6 @@ export const getAuthUser = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-export const withAuth = (cb: ) => wrapper.getServerSideProps((store) => (ctx) => {
-  
-})
+// export const withAuth = (cb: ) => wrapper.getServerSideProps((store) => (ctx) => {
+
+// })

@@ -4,7 +4,7 @@ import NextNProgress from 'nextjs-progressbar'
 import ErrorBoundary from '../ErrorBoundary'
 import Sidebar from '../Sidebar'
 import AudioPlayer from '../AudioPlayer'
-import SearchBar from '../SearchBar'
+import Header from '../Header'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => (
       <Sidebar />
       <AudioPlayer />
       <div className='main-page'>
-        <SearchBar />
+        <Header />
         {children}
       </div>
     </div>

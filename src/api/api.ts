@@ -83,6 +83,23 @@ export interface ITokensResponse {
   refreshToken: string
 }
 
+export interface IFavoritePodcast {
+  id: number
+  podcast: {
+    id: string
+    thumbnail: string
+    title: string
+    publisher: string
+  }
+}
+
+export const fetchFavoritePodcasts = () =>
+  client.get<any, AxiosResponse<IFavoritePodcast[]>>('/podcasts/favorites')
+
+export const addPodcastToFavorites = (id: string) => client.post(`/podcasts/favorites/${id}`)
+
+export const removePodcastFromFavorites = (id: string) => client.delete(`/podcasts/favorites/${id}`)
+
 const api = {
   fetchBestPodcasts,
   fetchCuratedPodcasts,
@@ -90,6 +107,9 @@ const api = {
   fetchRecommendations,
   fetchEpisodes,
   fetchTypeahead,
+  fetchFavoritePodcasts,
+  addPodcastToFavorites,
+  removePodcastFromFavorites,
 }
 
 export default api

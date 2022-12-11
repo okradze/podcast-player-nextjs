@@ -40,7 +40,30 @@
   font-size: 1.4rem;
 }
 
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .button {
-  align-self: flex-start;
-  border-width: 2px;
+  height: 100%;
+}
+
+.iconButton {
+  background: none;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.iconButtonSvg {
+  fill: var(--primary);
+  width: 2rem;
+  height: 2rem;
 }

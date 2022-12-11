@@ -78,11 +78,6 @@ export interface ITypeaheadPodcast {
 export const fetchTypeahead = (searchTerm: string) =>
   client.get<any, AxiosResponse<ITypeahead>>(`/podcasts/typeahead?q=${searchTerm}`)
 
-export interface ITokensResponse {
-  accessToken: string
-  refreshToken: string
-}
-
 export interface IFavoritePodcast {
   id: number
   podcast: {
@@ -93,8 +88,10 @@ export interface IFavoritePodcast {
   }
 }
 
-export const fetchFavoritePodcasts = () =>
-  client.get<any, AxiosResponse<IFavoritePodcast[]>>('/podcasts/favorites')
+export const fetchFavoritePodcasts = (token?: string) =>
+  client.get<any, AxiosResponse<IFavoritePodcast[]>>('/podcasts/favorites', {
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
 export const addPodcastToFavorites = (id: string) => client.post(`/podcasts/favorites/${id}`)
 

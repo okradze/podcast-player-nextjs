@@ -6,6 +6,7 @@ import authReducer from './auth/authSlice'
 import podcastsReducer from './podcasts/podcastsSlice'
 import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
 import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
+import favoritesReducer from './favorites/favoritesSlice'
 
 const persistConfig = {
   key: 'root',
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   podcasts: podcastsReducer,
   discoverPodcasts: discoverPodcastsReducer,
+  favorites: favoritesReducer,
   playingPodcast: playingPodcastReducer,
 })
 

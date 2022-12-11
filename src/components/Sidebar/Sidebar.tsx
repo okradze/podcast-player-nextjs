@@ -3,7 +3,11 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/rootReducer'
-import { HomeSvg, SearchSvg, PodcastSvg } from '../../svg'
+import HomeIcon from '@mui/icons-material/Home'
+import SearchIcon from '@mui/icons-material/Search'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import PodcastsIcon from '@mui/icons-material/Podcasts'
 import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {
@@ -49,7 +53,7 @@ export const Sidebar = () => {
                   onClick={closeSidebar}
                   className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}
                 >
-                  <HomeSvg className={styles.LinkIcon} />
+                  <HomeIcon className={styles.LinkIcon} />
                   Home
                 </a>
               </Link>
@@ -63,8 +67,26 @@ export const Sidebar = () => {
                     router.pathname === '/discover' ? styles.ActiveLink : 0
                   }`}
                 >
-                  <SearchSvg className={styles.LinkIcon} />
+                  <SearchIcon className={styles.LinkIcon} />
                   Discover
+                </a>
+              </Link>
+            </li>
+
+            <li className={styles.ListItem}>
+              <Link href='/favorites' scroll={false}>
+                <a
+                  onClick={closeSidebar}
+                  className={`${styles.Link} ${
+                    router.pathname === '/favorites' ? styles.ActiveLink : 0
+                  }`}
+                >
+                  {router.pathname === '/favorites' ? (
+                    <FavoriteIcon className={styles.LinkIcon} />
+                  ) : (
+                    <FavoriteBorderIcon className={styles.LinkIcon} />
+                  )}
+                  Favorites
                 </a>
               </Link>
             </li>
@@ -75,10 +97,10 @@ export const Sidebar = () => {
                   <a
                     onClick={closeSidebar}
                     className={`${styles.Link} ${
-                      router.pathname === '/podcast/' ? styles.ActiveLink : 0
+                      router.asPath === `/podcast/${playingPodcastId}` ? styles.ActiveLink : 0
                     }`}
                   >
-                    <PodcastSvg className={styles.LinkIcon} />
+                    <PodcastsIcon className={styles.LinkIcon} />
                     Now Playing
                   </a>
                 </Link>

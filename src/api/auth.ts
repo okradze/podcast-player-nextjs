@@ -20,17 +20,17 @@ export const signin = (body: ISigninBody) =>
 
 export const signout = () => client.post('/auth/signout')
 
-export const refresh = () => client.post('/auth/refresh')
+export const refresh = () => client.post('/auth/refresh', undefined, { skipAuthRefresh: true })
 
-export const me = () => client.get<any, AxiosResponse<Me>>('/auth/me')
+export const me = (token?: string) =>
+  client.get<any, AxiosResponse<Me>>('/auth/me', { headers: { Authorization: `Bearer ${token}` } })
 
-const refreshAuthLogic = async (failedRequest: any) => {
-  try {
-    const res = await refresh()
+const refreshAuthLogic = async (failedRequest: any) =>
+  refresh().then(res => {
     const cookie = res.headers['set-cookie']
     failedRequest.response.config.headers['set-cookie'] = cookie
-    console.log({ failedRequest, cookie })
-  } catch (error) {}
-}
+    // console.log({ failedRequest, cookie })
+    return Promise.resolve()
+  })
 
-createAuthRefreshInterceptor(client, refreshAuthLogic)
+// createAuthRefreshInterceptor(client, refreshAuthLogic)

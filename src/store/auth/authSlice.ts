@@ -21,7 +21,7 @@ export const authSlice = createSlice({
       state.me = action.payload
     },
     reset(state) {
-      state = initialState
+      state.me = null
     },
   },
   extraReducers: {

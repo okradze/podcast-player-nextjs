@@ -9,7 +9,7 @@ type ProfileButtonProps = {
 
 export const ProfileButton = ({ fullName }: ProfileButtonProps) => (
   <section className={styles.section}>
-    <button className={styles.button}>
+    <button tabIndex={0} className={styles.button}>
       <div className={styles.avatar}>{fullName[0]}</div>
       <p className={styles.name}>{fullName}</p>
     </button>

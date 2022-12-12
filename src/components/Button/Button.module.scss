@@ -2,14 +2,14 @@
   font-size: 1.4rem;
   text-align: center;
   padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 100px;
   font-weight: 600;
   display: inline-block;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   text-decoration: none;
   line-height: 1;
+  border-radius: 100px;
+  border: 2px solid transparent;
 
   &:focus {
     outline: 0;
@@ -34,10 +34,6 @@
   &:focus {
     box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--secondary);
   }
-}
-
-.outlined {
-  border: 2px solid;
 }
 
 .outlined.primary {

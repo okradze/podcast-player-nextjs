@@ -15,7 +15,7 @@ export type ContextWithStore = Omit<
 
 export type CallbackArgs = {
   user: Me | null
-  accessToken: string | undefined
+  accessToken?: string
   store: Store<RootState, AnyAction>
   ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
 }
@@ -35,25 +35,16 @@ export const getAuthUser = async (token: string) => {
 
 type WithAuthProps = {
   callback?: Callback
-  redirect?: boolean
 }
 
-export const withAuth = ({ callback, redirect }: WithAuthProps) =>
+export const withAuth = ({ callback }: WithAuthProps) =>
   wrapper.getServerSideProps(store => async ctx => {
     let accessToken = ctx.req.cookies['accessToken']
     const refreshToken = ctx.req.cookies['refreshToken']
 
     if (!refreshToken) {
       store.dispatch(reset())
-
-      if (redirect) {
-        return {
-          redirect: {
-            destination: '/',
-            permanent: false,
-          },
-        }
-      }
+      return callback ? callback({ user: null, store, ctx }) : { props: {} }
     }
 
     if (!accessToken) {
@@ -67,15 +58,7 @@ export const withAuth = ({ callback, redirect }: WithAuthProps) =>
         }
       } catch (error) {
         store.dispatch(reset())
-
-        if (redirect) {
-          return {
-            redirect: {
-              destination: '/',
-              permanent: false,
-            },
-          }
-        }
+        return callback ? callback({ user: null, store, ctx }) : { props: {} }
       }
     }
 
@@ -84,15 +67,6 @@ export const withAuth = ({ callback, redirect }: WithAuthProps) =>
     if (accessToken) {
       user = await getAuthUser(accessToken)
       store.dispatch(setMe(user))
-
-      if (!user && redirect) {
-        return {
-          redirect: {
-            destination: '/',
-            permanent: false,
-          },
-        }
-      }
     }
 
     return callback ? callback({ user, accessToken, store, ctx }) : { props: {} }

@@ -9,9 +9,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import PodcastsIcon from '@mui/icons-material/Podcasts'
 import styles from './Sidebar.module.scss'
+import useMe from '../../hooks/useMe'
 
 export const Sidebar = () => {
   const router = useRouter()
+  const me = useMe()
   const playingPodcastId = useSelector((state: RootState) => state.playingPodcast.podcastId)
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
@@ -73,23 +75,25 @@ export const Sidebar = () => {
               </Link>
             </li>
 
-            <li className={styles.ListItem}>
-              <Link href='/favorites' scroll={false}>
-                <a
-                  onClick={closeSidebar}
-                  className={`${styles.Link} ${
-                    router.pathname === '/favorites' ? styles.ActiveLink : 0
-                  }`}
-                >
-                  {router.pathname === '/favorites' ? (
-                    <FavoriteIcon className={styles.LinkIcon} />
-                  ) : (
-                    <FavoriteBorderIcon className={styles.LinkIcon} />
-                  )}
-                  Favorites
-                </a>
-              </Link>
-            </li>
+            {me && (
+              <li className={styles.ListItem}>
+                <Link href='/favorites' scroll={false}>
+                  <a
+                    onClick={closeSidebar}
+                    className={`${styles.Link} ${
+                      router.pathname === '/favorites' ? styles.ActiveLink : 0
+                    }`}
+                  >
+                    {router.pathname === '/favorites' ? (
+                      <FavoriteIcon className={styles.LinkIcon} />
+                    ) : (
+                      <FavoriteBorderIcon className={styles.LinkIcon} />
+                    )}
+                    Favorites
+                  </a>
+                </Link>
+              </li>
+            )}
 
             {playingPodcastId && (
               <li className={styles.ListItem}>

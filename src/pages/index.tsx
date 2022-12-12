@@ -10,8 +10,6 @@ export const getServerSideProps: GetServerSideProps = withAuth({
   callback: async ({ store }) => {
     const { data } = await api.fetchBestPodcasts(1)
     store.dispatch(setPodcasts(data))
-    return {
-      props: {},
-    }
+    return { props: {} }
   },
 })

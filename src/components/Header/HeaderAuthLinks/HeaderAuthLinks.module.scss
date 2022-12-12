@@ -1,0 +1,10 @@
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+
+  .link {
+    font-size: 1.5rem;
+  }
+}

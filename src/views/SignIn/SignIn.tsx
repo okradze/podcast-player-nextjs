@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FormEvent, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import * as authApi from '../../api/auth'
@@ -12,6 +13,7 @@ type SignInProps = {}
 
 const SignIn: NextPage<SignInProps> = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const values = useRef({
     email: '',
@@ -24,6 +26,7 @@ const SignIn: NextPage<SignInProps> = () => {
     try {
       const { data } = await authApi.signin(values.current)
       dispatch(setMe(data))
+      router.push('/')
     } catch (error) {
       console.log(error)
     }

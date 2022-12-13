@@ -7,7 +7,9 @@ import { useDispatch } from 'react-redux'
 import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
+import Button from '../../components/Button'
 import styles from './SignIn.module.scss'
+import PodcastIllustrationSvg from '../../svg/PodcastIllustrationSvg'
 
 type SignInProps = {}
 
@@ -33,42 +35,50 @@ const SignIn: NextPage<SignInProps> = () => {
   }
 
   return (
-    <section>
+    <section className={styles.section}>
       <Head>
         <title>Sign In - Podcast Player</title>
       </Head>
 
-      <h2>Sign In</h2>
-      <p>Sign in to See your favorite podcasts</p>
+      <PodcastIllustrationSvg className={styles.illustration} />
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          label='Email'
-          name='email'
-          placeholder='mail@website.com'
-          onChange={e => (values.current.email = e.target.value)}
-        />
+      <section className={styles.formSection}>
+        <h2 className={styles.title}>Sign In</h2>
+        <p className={styles.subtitle}>See your favorite podcasts</p>
 
-        <Input
-          label='Password'
-          name='password'
-          type='password'
-          onChange={e => (values.current.password = e.target.value)}
-        />
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <Input
+            label='Email'
+            name='email'
+            placeholder='mail@website.com'
+            onChange={e => (values.current.email = e.target.value)}
+          />
 
-        <p>
-          <a href=''>Forget password?</a>
+          <Input
+            label='Password'
+            name='password'
+            type='password'
+            onChange={e => (values.current.password = e.target.value)}
+          />
+
+          <p className={styles.forgetPassword}>
+            <Button variant='text'>Forget password?</Button>
+          </p>
+
+          <Button className={styles.button} type='submit'>
+            Sign In
+          </Button>
+        </form>
+
+        <p className={styles.registerText}>
+          Not registered yet?{' '}
+          <Link passHref href='/auth/signup'>
+            <Button element='link' variant='text'>
+              Create an account
+            </Button>
+          </Link>
         </p>
-
-        <button type='submit'>Sign In</button>
-      </form>
-
-      <p>
-        Not registered yet?{' '}
-        <Link href='/auth/signup'>
-          <a>Create an account</a>
-        </Link>
-      </p>
+      </section>
     </section>
   )
 }

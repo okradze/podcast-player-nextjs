@@ -3,7 +3,7 @@ import { ForwardRefRenderFunction } from 'react'
 import styles from './Button.module.scss'
 
 type ButtonProps = {
-  variant?: 'contained' | 'outlined'
+  variant?: 'contained' | 'outlined' | 'text'
   color?: 'primary' | 'secondary'
   children: React.ReactNode
   element?: 'button' | 'link'

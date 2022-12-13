@@ -1,16 +1,29 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .label {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
 .input {
   border-radius: 30px;
-  padding: 1.2rem 2rem;
+  height: 4.3rem;
+  padding: 0 2rem;
   border: 1px solid var(--light-text);
+  transition: all 0.2s;
+  font-size: 1.5rem;
+
+  &::placeholder {
+    font-size: 1.5rem;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--primary);
+    outline: 0;
+    border-color: transparent;
+  }
 }

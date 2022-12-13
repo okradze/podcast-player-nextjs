@@ -63,3 +63,22 @@
     color: var(--offset);
   }
 }
+
+.text {
+  padding: 0;
+  border: 0;
+  background: 0;
+}
+
+.text.primary {
+  color: var(--primary);
+
+  &:hover,
+  &:focus {
+    color: var(--primary-hover);
+  }
+}
+
+.text.secondary {
+  color: var(--secondary);
+}

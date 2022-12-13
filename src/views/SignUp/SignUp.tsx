@@ -8,6 +8,8 @@ import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
 import styles from './SignUp.module.scss'
+import AuthLayout from '../../components/AuthLayout'
+import Button from '../../components/Button'
 
 type SignUpProps = {}
 
@@ -34,45 +36,49 @@ const SignUp: NextPage<SignUpProps> = () => {
   }
 
   return (
-    <section>
-      <Head>
-        <title>Sign Up - Podcast Player</title>
-      </Head>
+    <AuthLayout title='Sign Up - Podcast Player'>
+      <section className={styles.formSection}>
+        <h2 className={styles.title}>Sign Up</h2>
+        <p className={styles.subtitle}>Sign up to save favorite podcasts</p>
 
-      <h2>Sign Up</h2>
-      <p>
-        Already a member?{' '}
-        <Link href='/auth/signin'>
-          <a>Sign in</a>
-        </Link>
-      </p>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <Input
+            label='Full Name'
+            name='fullName'
+            placeholder='John Doe'
+            onChange={e => (values.current.fullName = e.target.value)}
+          />
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <Input
-          label='Full Name'
-          name='fullName'
-          placeholder='John Doe'
-          onChange={e => (values.current.fullName = e.target.value)}
-        />
+          <Input
+            label='Email'
+            name='email'
+            placeholder='mail@website.com'
+            onChange={e => (values.current.email = e.target.value)}
+          />
 
-        <Input
-          label='Email'
-          name='email'
-          placeholder='mail@website.com'
-          onChange={e => (values.current.email = e.target.value)}
-        />
+          <Input
+            label='Password'
+            name='password'
+            type='password'
+            placeholder='Min 8 characters'
+            onChange={e => (values.current.password = e.target.value)}
+          />
 
-        <Input
-          label='Password'
-          name='password'
-          type='password'
-          placeholder='Min 8 characters'
-          onChange={e => (values.current.password = e.target.value)}
-        />
+          <Button className={styles.button} type='submit'>
+            Sign Up
+          </Button>
+        </form>
 
-        <button type='submit'>Sign Up</button>
-      </form>
-    </section>
+        <p className={styles.memberText}>
+          Already a member?{' '}
+          <Link passHref href='/auth/signin'>
+            <Button element='link' variant='text'>
+              Sign In
+            </Button>
+          </Link>
+        </p>
+      </section>
+    </AuthLayout>
   )
 }
 

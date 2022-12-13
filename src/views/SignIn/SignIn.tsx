@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FormEvent, useRef } from 'react'
@@ -8,8 +7,8 @@ import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import AuthLayout from '../../components/AuthLayout'
 import styles from './SignIn.module.scss'
-import PodcastIllustrationSvg from '../../svg/PodcastIllustrationSvg'
 
 type SignInProps = {}
 
@@ -35,16 +34,10 @@ const SignIn: NextPage<SignInProps> = () => {
   }
 
   return (
-    <section className={styles.section}>
-      <Head>
-        <title>Sign In - Podcast Player</title>
-      </Head>
-
-      <PodcastIllustrationSvg className={styles.illustration} />
-
+    <AuthLayout title='Sign In - Podcast Player'>
       <section className={styles.formSection}>
         <h2 className={styles.title}>Sign In</h2>
-        <p className={styles.subtitle}>See your favorite podcasts</p>
+        <p className={styles.subtitle}>Sign in to see your favorite podcasts</p>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <Input
@@ -79,7 +72,7 @@ const SignIn: NextPage<SignInProps> = () => {
           </Link>
         </p>
       </section>
-    </section>
+    </AuthLayout>
   )
 }
 

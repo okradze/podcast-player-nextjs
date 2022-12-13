@@ -1,13 +1,17 @@
 .button {
   text-align: center;
   font-size: 1.5rem;
-  padding: 0.8rem 2rem;
   font-weight: 600;
   display: inline-block;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   text-decoration: none;
   line-height: 1;
+}
+
+.contained,
+.outlined {
+  padding: 0.8rem 2rem;
   border-radius: 100px;
   border: 2px solid transparent;
 
@@ -65,17 +69,21 @@
 }
 
 .text {
-  padding: 0;
   border: 0;
   background: 0;
 }
 
 .text.primary {
   color: var(--primary);
+  outline: 2px solid transparent;
+  outline-offset: 5px;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: var(--primary-hover);
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary);
   }
 }
 

@@ -7,15 +7,17 @@ import { useDispatch } from 'react-redux'
 import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
-import styles from './SignUp.module.scss'
 import AuthLayout from '../../components/AuthLayout'
 import Button from '../../components/Button'
+import useAuthReset from '../../hooks/useAuthReset'
+import styles from './SignUp.module.scss'
 
 type SignUpProps = {}
 
 const SignUp: NextPage<SignUpProps> = () => {
   const dispatch = useDispatch()
   const router = useRouter()
+  const resetAuth = useAuthReset()
 
   const values = useRef({
     fullName: '',
@@ -28,6 +30,7 @@ const SignUp: NextPage<SignUpProps> = () => {
 
     try {
       const { data } = await authApi.signup(values.current)
+      resetAuth()
       dispatch(setMe(data))
       router.push('/')
     } catch (error) {

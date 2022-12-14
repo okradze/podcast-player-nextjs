@@ -37,6 +37,9 @@ export const podcastsSlice = createSlice({
     setError(state, action) {
       state.error = action.payload
     },
+    reset() {
+      return { ...initialState }
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -51,7 +54,7 @@ export const podcastsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPodcasts, setError } = podcastsSlice.actions
+export const { setLoading, setPodcasts, setError, reset } = podcastsSlice.actions
 
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {

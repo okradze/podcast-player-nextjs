@@ -8,6 +8,7 @@ import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import AuthLayout from '../../components/AuthLayout'
+import useAuthReset from '../../hooks/useAuthReset'
 import styles from './SignIn.module.scss'
 
 type SignInProps = {}
@@ -15,6 +16,7 @@ type SignInProps = {}
 const SignIn: NextPage<SignInProps> = () => {
   const dispatch = useDispatch()
   const router = useRouter()
+  const resetAuth = useAuthReset()
 
   const values = useRef({
     email: '',
@@ -26,6 +28,7 @@ const SignIn: NextPage<SignInProps> = () => {
 
     try {
       const { data } = await authApi.signin(values.current)
+      resetAuth()
       dispatch(setMe(data))
       router.push('/')
     } catch (error) {

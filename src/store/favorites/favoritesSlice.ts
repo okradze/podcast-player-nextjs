@@ -1,6 +1,6 @@
-import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import api, { IBestPodcasts, IPodcast } from '../../api/api'
+import { IPodcast } from '../../api/api'
 
 export interface FavoritesState {
   podcasts: IPodcast[]
@@ -17,6 +17,9 @@ export const podcastsSlice = createSlice({
     setFavorites(state, action: PayloadAction<IPodcast[]>) {
       state.podcasts = [...state.podcasts, ...action.payload]
     },
+    reset() {
+      return { ...initialState }
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -30,6 +33,6 @@ export const podcastsSlice = createSlice({
   },
 })
 
-export const { setFavorites } = podcastsSlice.actions
+export const { setFavorites, reset } = podcastsSlice.actions
 
 export default podcastsSlice.reducer

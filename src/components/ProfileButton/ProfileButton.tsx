@@ -1,21 +1,20 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import * as authApi from '../../api/auth'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
 import styles from './ProfileButton.module.scss'
-import { useDispatch } from 'react-redux'
-import { reset } from '../../store/auth/authSlice'
 
 type ProfileButtonProps = {
   fullName: string
 }
 
 export const ProfileButton = ({ fullName }: ProfileButtonProps) => {
-  const dispatch = useDispatch()
+  const router = useRouter()
 
   const handleSignout = async () => {
     await authApi.signout()
-    dispatch(reset())
+    router.reload()
   }
 
   return (

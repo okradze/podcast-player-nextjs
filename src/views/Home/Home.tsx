@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <title>Home - Podcast Player</title>
       </Head>
 
-      {podcasts.length > 0 && <PodcastList podcasts={podcasts} />}
+      {podcasts.length > 0 && <PodcastList title='Popular Podcasts' podcasts={podcasts} />}
       {isFetching && <Spinner />}
       {!isFetching && hasNextPage && <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />}
     </div>

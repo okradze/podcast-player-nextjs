@@ -13,7 +13,7 @@ export interface ISignupBody extends ISigninBody {
 }
 
 export const signup = (body: ISignupBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/signup', body)
+  client.post<any, AxiosResponse<Me>>('/auth/signup', body, { skipAuthRefresh: true })
 
 export interface ISigninBody {
   email: string
@@ -21,7 +21,7 @@ export interface ISigninBody {
 }
 
 export const signin = (body: ISigninBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/signin', body)
+  client.post<any, AxiosResponse<Me>>('/auth/signin', body, { skipAuthRefresh: true })
 
 export const signout = () => client.post('/auth/signout')
 

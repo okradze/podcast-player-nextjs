@@ -6,13 +6,12 @@ import styles from './PodcastList.module.scss'
 type PodcastListProps = {
   podcasts: IPodcast[]
   title?: string
+  isSmallerTitle?: boolean
 }
 
-export const PodcastList = ({ podcasts, title }: PodcastListProps) => (
+export const PodcastList = ({ podcasts, title, isSmallerTitle }: PodcastListProps) => (
   <section className={styles.Wrapper}>
-    <h2 className={`${styles.Title} ${title && styles.SmallTitle}`}>
-      {title || 'Popular Podcasts'}
-    </h2>
+    <h2 className={`${styles.Title} ${isSmallerTitle ? styles.SmallTitle : ''}`}>{title}</h2>
     <ul className={styles.List}>
       {podcasts.map(podcast => (
         <li className={styles.Item} key={podcast.id}>

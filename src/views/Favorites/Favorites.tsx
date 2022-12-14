@@ -10,9 +10,7 @@ import { RootState } from '../../store/rootReducer'
 
 const Favorites: NextPage = () => {
   // const dispatch = useDispatch()
-  // const { podcasts, isFetching, hasNextPage, lastFetchedPage } = useSelector(
-  //   (state: RootState) => state.podcasts,
-  // )
+  const { podcasts } = useSelector((state: RootState) => state.favorites)
   // const infiniteScrollRef = createRef<HTMLDivElement>()
   // const isLoadMoreButtonOnScreen = useOnScreen(infiniteScrollRef)
 
@@ -27,6 +25,8 @@ const Favorites: NextPage = () => {
       <Head>
         <title>Favorites - Podcast Player</title>
       </Head>
+
+      <PodcastList title='Favorite Podcasts' podcasts={podcasts} />
     </div>
   )
 }

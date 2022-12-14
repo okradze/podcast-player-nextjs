@@ -3,13 +3,11 @@ import Image from 'next/image'
 import { IPodcast } from '../../api/api'
 import EllipsisText from '../EllipsisText'
 import Button from '../Button'
-import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 import styles from './PodcastItem.module.scss'
 
-type PodcastItemProps = IPodcast
-
-export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProps) => (
+export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPodcast) => (
   <article className={styles.Item}>
     <div className={styles.ImageWrapper}>
       <Image width={150} height={150} className={styles.Image} src={thumbnail} alt={title} />
@@ -30,11 +28,13 @@ export const PodcastItem = ({ id, thumbnail, title, publisher }: PodcastItemProp
         </Link>
 
         <button aria-label='Add podcast to favorites' className={styles.iconButton}>
-          <FavoriteBorderIcon className={styles.iconButtonSvg} />
+          {isFavorite ? (
+            <FavoriteIcon className={styles.iconButtonSvg} />
+          ) : (
+            <FavoriteBorderIcon className={styles.iconButtonSvg} />
+          )}
         </button>
       </section>
-
-      {/* <FavoriteIcon /> */}
     </div>
   </article>
 )

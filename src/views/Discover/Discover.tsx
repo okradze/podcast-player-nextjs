@@ -33,7 +33,7 @@ const Discover: NextPage = () => {
 
       {lists.length > 0 &&
         lists.map(({ id, title, podcasts }) => (
-          <PodcastList key={id} title={title} podcasts={podcasts} />
+          <PodcastList key={id} title={title} isSmallerTitle podcasts={podcasts} />
         ))}
       {isFetching && <Spinner />}
       {!isFetching && hasNextPage && <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />}

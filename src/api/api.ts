@@ -8,7 +8,7 @@ export interface IPodcast {
   thumbnail: string
   title: string
   publisher: string
-  description: string
+  isFavorite?: boolean
 }
 
 export interface IBestPodcasts {
@@ -17,8 +17,10 @@ export interface IBestPodcasts {
   page_number: number
 }
 
-export const fetchBestPodcasts = (page: number) =>
-  client.get<any, AxiosResponse<IBestPodcasts>>(`/podcasts/best?page=${page}`)
+export const fetchBestPodcasts = (page: number, token?: string) =>
+  client.get<any, AxiosResponse<IBestPodcasts>>(`/podcasts/best?page=${page}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
 export interface ICuratedPodcastList {
   id: string
@@ -37,6 +39,7 @@ export const fetchCuratedPodcasts = (page: number) =>
 
 export interface IPodcastDetails extends IPodcast {
   episodes: IEpisode[]
+  description: string
   next_episode_pub_date: number
   total_episodes: number
 }
@@ -78,18 +81,8 @@ export interface ITypeaheadPodcast {
 export const fetchTypeahead = (searchTerm: string) =>
   client.get<any, AxiosResponse<ITypeahead>>(`/podcasts/typeahead?q=${searchTerm}`)
 
-export interface IFavoritePodcast {
-  id: number
-  podcast: {
-    id: string
-    thumbnail: string
-    title: string
-    publisher: string
-  }
-}
-
 export const fetchFavoritePodcasts = (token?: string) =>
-  client.get<any, AxiosResponse<IFavoritePodcast[]>>('/podcasts/favorites', {
+  client.get<any, AxiosResponse<IPodcast[]>>('/podcasts/favorites', {
     headers: { Authorization: `Bearer ${token}` },
   })
 

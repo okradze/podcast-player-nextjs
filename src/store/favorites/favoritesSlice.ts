@@ -17,14 +17,22 @@ export const podcastsSlice = createSlice({
     setFavorites(state, action: PayloadAction<IPodcast[]>) {
       state.podcasts = [...state.podcasts, ...action.payload]
     },
+    removeFavoriteById(state, action: PayloadAction<string>) {
+      const index = state.podcasts.findIndex(podcast => podcast.id === action.payload)
+
+      if (index > -1) {
+        state.podcasts.splice(index, 1)
+      }
+    },
+    addFavorite(state, action: PayloadAction<IPodcast>) {
+      state.podcasts.unshift(action.payload)
+    },
     reset() {
       return { ...initialState }
     },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      if (state.podcasts.length > 0) return state
-
       return {
         ...state,
         podcasts: action.payload.favorites.podcasts,
@@ -33,6 +41,6 @@ export const podcastsSlice = createSlice({
   },
 })
 
-export const { setFavorites, reset } = podcastsSlice.actions
+export const { setFavorites, reset, addFavorite, removeFavoriteById } = podcastsSlice.actions
 
 export default podcastsSlice.reducer

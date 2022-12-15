@@ -34,6 +34,13 @@ export const podcastsSlice = createSlice({
       state.lastFetchedPage = page_number
       state.podcasts = [...state.podcasts, ...podcasts]
     },
+    toggleFavoritePodcast(state, action: PayloadAction<string>) {
+      const podcast = state.podcasts.find(podcast => podcast.id === action.payload)
+
+      if (podcast) {
+        podcast.isFavorite = !podcast.isFavorite
+      }
+    },
     setError(state, action) {
       state.error = action.payload
     },
@@ -54,7 +61,8 @@ export const podcastsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPodcasts, setError, reset } = podcastsSlice.actions
+export const { setLoading, setPodcasts, setError, reset, toggleFavoritePodcast } =
+  podcastsSlice.actions
 
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {

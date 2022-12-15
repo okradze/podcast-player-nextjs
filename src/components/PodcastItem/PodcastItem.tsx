@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 import { IPodcast } from '../../api/api'
 import EllipsisText from '../EllipsisText'
 import Button from '../Button'
@@ -7,9 +8,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import styles from './PodcastItem.module.scss'
 import useMe from '../../hooks/useMe'
+import useFavoritePodcast from '../../hooks/useFavoritePodcast'
 
 export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPodcast) => {
   const me = useMe()
+
+  const { addOrRemoveFavorite } = useFavoritePodcast({ isFavorite, id })
 
   return (
     <article className={styles.Item}>
@@ -32,7 +36,11 @@ export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPo
           </Link>
 
           {me && (
-            <button aria-label='Add podcast to favorites' className={styles.iconButton}>
+            <button
+              onClick={addOrRemoveFavorite}
+              aria-label='Add podcast to favorites'
+              className={styles.iconButton}
+            >
               {isFavorite ? (
                 <FavoriteIcon className={styles.iconButtonSvg} />
               ) : (

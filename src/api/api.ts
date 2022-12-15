@@ -34,8 +34,10 @@ export interface ICuratedPodcasts {
   page_number: number
 }
 
-export const fetchCuratedPodcasts = (page: number) =>
-  client.get<any, AxiosResponse<ICuratedPodcasts>>(`/podcasts/curated?page=${page}`)
+export const fetchCuratedPodcasts = (page: number, token?: string) =>
+  client.get<any, AxiosResponse<ICuratedPodcasts>>(`/podcasts/curated?page=${page}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
 export interface IPodcastDetails extends IPodcast {
   episodes: IEpisode[]
@@ -59,8 +61,10 @@ export interface IRecommendations {
   recommendations: IPodcast[]
 }
 
-export const fetchRecommendations = (podcastId: string) =>
-  client.get<any, AxiosResponse<IRecommendations>>(`/podcasts/${podcastId}/recommendations`)
+export const fetchRecommendations = (podcastId: string, token?: string) =>
+  client.get<any, AxiosResponse<IRecommendations>>(`/podcasts/${podcastId}/recommendations`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
 export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
   client.get<any, AxiosResponse<IPodcastDetails>>(

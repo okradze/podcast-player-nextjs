@@ -7,14 +7,14 @@ import type { PodcastProps } from '../../views/Podcast/Podcast'
 export default Podcast
 
 export const getServerSideProps: GetServerSideProps<PodcastProps> = withAuth({
-  callback: async ({ ctx }) => {
+  callback: async ({ ctx, accessToken }) => {
     const { params } = ctx
     const podcastId = params?.podcastId
     if (!podcastId || typeof podcastId !== 'string') return { props: {} }
 
     const [podcast, recommendations] = await Promise.all([
       api.fetchPodcast(podcastId),
-      api.fetchRecommendations(podcastId),
+      api.fetchRecommendations(podcastId, accessToken),
     ])
 
     return {

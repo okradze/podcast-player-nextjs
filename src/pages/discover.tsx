@@ -7,8 +7,8 @@ import Discover from '../views/Discover'
 export default Discover
 
 export const getServerSideProps: GetServerSideProps = withAuth({
-  callback: async ({ store }) => {
-    const { data } = await api.fetchCuratedPodcasts(1)
+  callback: async ({ store, accessToken }) => {
+    const { data } = await api.fetchCuratedPodcasts(1, accessToken)
     store.dispatch(setPodcastLists(data))
     return { props: {} }
   },

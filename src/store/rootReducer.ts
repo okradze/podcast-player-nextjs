@@ -3,8 +3,9 @@ import { combineReducers } from '@reduxjs/toolkit'
 import authReducer from './auth/authSlice'
 import podcastsReducer from './podcasts/podcastsSlice'
 import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
-import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
 import favoritesReducer from './favorites/favoritesSlice'
+import podcastReducer from './podcast/podcastSlice'
+import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
 
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -13,6 +14,7 @@ export const rootReducer = combineReducers({
   podcasts: podcastsReducer,
   discoverPodcasts: discoverPodcastsReducer,
   favorites: favoritesReducer,
+  podcast: podcastReducer,
   playingPodcast: playingPodcastReducer,
 })
 

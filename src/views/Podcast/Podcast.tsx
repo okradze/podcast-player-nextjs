@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import PodcastList from '../../components/PodcastList/PodcastList'
 import EpisodeList from '../../components/EpisodeList/EpisodeList'
-import { IPodcast, IPodcastDetails } from '../../api/api'
 import styles from './Podcast.module.scss'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
 
-export type PodcastProps = {
-  initialPodcast?: IPodcastDetails
-  recommendations?: IPodcast[]
-}
-
-const Podcast: NextPage<PodcastProps> = ({ initialPodcast, recommendations }) => {
-  const [podcast, setPodcast] = useState(initialPodcast)
-
-  useEffect(() => {
-    setPodcast(initialPodcast)
-  }, [initialPodcast])
+const Podcast: NextPage = () => {
+  const { podcast, recommendations } = useSelector((state: RootState) => state.podcast)
 
   if (!podcast || !recommendations) {
-    return <h1>Error</h1>
+    return <h1>Could not load podcast</h1>
   }
 
   const { thumbnail, publisher, description, title } = podcast
@@ -49,7 +40,7 @@ const Podcast: NextPage<PodcastProps> = ({ initialPodcast, recommendations }) =>
         </div>
 
         <div className={styles.EpisodeList}>
-          <EpisodeList podcast={podcast} setPodcast={setPodcast} />
+          <EpisodeList />
         </div>
 
         <PodcastList podcasts={recommendations} title='Recommendations' />

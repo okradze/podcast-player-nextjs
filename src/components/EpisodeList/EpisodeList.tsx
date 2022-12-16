@@ -1,31 +1,17 @@
-import { Dispatch, SetStateAction, useState } from 'react'
-import api, { IPodcastDetails } from '../../api/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { fetchEpisodes } from '../../store/podcast/podcastSlice'
 import EpisodeItem from '../EpisodeItem'
 import Button from '../Button'
 import Spinner from '../Spinner'
 import styles from './EpisodeList.module.scss'
 
-type EpisodeListProps = {
-  podcast: IPodcastDetails
-  setPodcast: Dispatch<SetStateAction<IPodcastDetails | undefined>>
-}
+export const EpisodeList = () => {
+  const dispatch = useDispatch()
+  const { areEpisodesFetching, podcast } = useSelector((state: RootState) => state.podcast)
 
-export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
-  const [loading, setLoading] = useState(false)
+  if (!podcast) return null
   const { episodes, id, next_episode_pub_date, total_episodes } = podcast
-
-  const fetchEpisodes = async () => {
-    setLoading(true)
-    const { data } = await api.fetchEpisodes(id, next_episode_pub_date)
-
-    setPodcast(prev => ({
-      ...data,
-      episodes: [...(prev?.episodes || []), ...data.episodes],
-    }))
-
-    setLoading(false)
-  }
-
   const areMoreEpisodes = episodes.length < total_episodes
 
   return (
@@ -36,12 +22,12 @@ export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
         ))}
       </div>
 
-      {loading && <Spinner />}
-      {!loading && areMoreEpisodes && (
+      {areEpisodesFetching && <Spinner />}
+      {!areEpisodesFetching && areMoreEpisodes && (
         <Button
           variant='outlined'
           color='primary'
-          onClick={fetchEpisodes}
+          onClick={() => fetchEpisodes(dispatch, id, next_episode_pub_date)}
           className={styles.button}
         >
           Load More

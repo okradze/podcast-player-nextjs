@@ -8,7 +8,7 @@ export default Favorites
 
 export const getServerSideProps: GetServerSideProps = withAuth({
   callback: async ({ user, accessToken, store }) => {
-    if (!user) return { redirect: { destination: '/auth/signin', permanent: false } }
+    if (!user) return { redirect: { destination: '/', permanent: false } }
 
     const { data } = await api.fetchFavoritePodcasts(accessToken)
     store.dispatch(setFavorites(data))

@@ -10,17 +10,13 @@ import Input from '../../components/Input'
 import AuthLayout from '../../components/AuthLayout'
 import Button from '../../components/Button'
 import useAuthReset from '../../hooks/useAuthReset'
-import { validateFullName, validateEmail } from '../../utils/validators'
+import { validateFullName, validateEmail, validatePassword } from '../../utils/validators'
 import styles from './SignUp.module.scss'
 
 interface SignUpFields {
   fullName: string
   email: string
   password: string
-}
-
-const validatePassword = (password: string) => {
-  if (password.length < 8) return 'Password is required'
 }
 
 const SignUp: NextPage = () => {

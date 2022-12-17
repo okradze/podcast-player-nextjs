@@ -71,7 +71,11 @@ const SignIn: NextPage = () => {
               </Field>
 
               <p className={styles.forgetPassword}>
-                <Button variant='text'>Forget password?</Button>
+                <Link passHref href='/auth/forgot-password'>
+                  <Button element='link' variant='text'>
+                    Forget password?
+                  </Button>
+                </Link>
               </p>
 
               {submitError && <p className={styles.error}>{submitError}</p>}

@@ -1,6 +1,7 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import api, { IBestPodcasts, IPodcast } from '../../api/api'
+import { podcastsApi } from '../../api'
+import { IBestPodcasts, IPodcast } from '../../api/podcasts'
 
 export interface PodcastsState {
   isFetching: boolean
@@ -67,7 +68,7 @@ export const { setLoading, setPodcasts, setError, reset, toggleFavoritePodcast }
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
   try {
     dispatch(setLoading())
-    const { data } = await api.fetchBestPodcasts(page)
+    const { data } = await podcastsApi.fetchBestPodcasts(page)
     dispatch(setPodcasts(data))
   } catch (error) {
     dispatch(setError(error))

@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import api from '../../api/api'
+import { podcastsApi } from '../../api'
 import { withAuth } from '../../helpers/auth'
 import { setPodcast, setRecommendations } from '../../store/podcast/podcastSlice'
 import Podcast from '../../views/Podcast'
@@ -13,8 +13,8 @@ export const getServerSideProps: GetServerSideProps = withAuth({
     if (!podcastId || typeof podcastId !== 'string') return { props: {} }
 
     const [podcast, recommendations] = await Promise.all([
-      api.fetchPodcast(podcastId),
-      api.fetchRecommendations(podcastId, accessToken),
+      podcastsApi.fetchPodcast(podcastId),
+      podcastsApi.fetchRecommendations(podcastId, accessToken),
     ])
 
     store.dispatch(setPodcast(podcast.data))

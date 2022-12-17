@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
-import { IPodcast } from '../../api/api'
+import { IPodcast } from '../../api/podcasts'
 import EllipsisText from '../EllipsisText'
 import Button from '../Button'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'

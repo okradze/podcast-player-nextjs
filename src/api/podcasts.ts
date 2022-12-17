@@ -1,8 +1,6 @@
 import { AxiosResponse } from 'axios'
 import client from './client'
 
-export { default as client } from './client'
-
 export interface IPodcast {
   id: string
   thumbnail: string
@@ -93,17 +91,3 @@ export const fetchFavoritePodcasts = (token?: string) =>
 export const addPodcastToFavorites = (id: string) => client.post(`/podcasts/favorites/${id}`)
 
 export const removePodcastFromFavorites = (id: string) => client.delete(`/podcasts/favorites/${id}`)
-
-const api = {
-  fetchBestPodcasts,
-  fetchCuratedPodcasts,
-  fetchPodcast,
-  fetchRecommendations,
-  fetchEpisodes,
-  fetchTypeahead,
-  fetchFavoritePodcasts,
-  addPodcastToFavorites,
-  removePodcastFromFavorites,
-}
-
-export default api

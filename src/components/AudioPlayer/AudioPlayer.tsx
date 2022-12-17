@@ -11,7 +11,7 @@ import {
   setCurrentTime,
   toggleMinimize,
 } from '../../store/playingPodcast/playingPodcastSlice'
-import { IEpisode } from '../../api/api'
+import { IEpisode } from '../../api/podcasts'
 import EllipsisText from '../EllipsisText'
 import { PlaySvg, PauseSvg, VolumeSvg } from '../../svg'
 import 'rc-slider/assets/index.css'

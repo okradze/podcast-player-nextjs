@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IEpisode } from '../../api/api'
+import { IEpisode } from '../../api/podcasts'
 
 export interface PlayingPodcastState {
   minimized: boolean

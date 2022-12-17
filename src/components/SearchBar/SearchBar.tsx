@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import api, { ITypeaheadPodcast } from '../../api/api'
+import { podcastsApi } from '../../api'
+import { ITypeaheadPodcast } from '../../api/podcasts'
 import SearchBarItem from '../SearchBarItem'
 import Spinner from '../Spinner'
 import styles from './SearchBar.module.scss'
@@ -15,7 +16,7 @@ export const SearchBar = () => {
         setIsLoading(true)
         const {
           data: { podcasts },
-        } = await api.fetchTypeahead(searchTerm)
+        } = await podcastsApi.fetchTypeahead(searchTerm)
         if (podcasts.length) setSearchResults(podcasts)
         setIsLoading(false)
       }

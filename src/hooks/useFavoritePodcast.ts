@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import api from '../api/api'
+import { podcastsApi } from '../api'
 import { addFavorite, removeFavoriteById } from '../store/favorites/favoritesSlice'
 import { toggleFavoritePodcast } from '../store/podcasts/podcastsSlice'
 import { toggleFavoritePodcast as toggleFavoritePodcastInDiscover } from '../store/discoverPodcasts/discoverPodcastsSlice'
@@ -25,10 +25,10 @@ const useFavoritePodcast = ({ isFavorite = false, id }: UseFavoritePodcastProps)
       updateFavoritePodcast()
 
       if (isFavorite) {
-        await api.removePodcastFromFavorites(id)
+        await podcastsApi.removePodcastFromFavorites(id)
         dispatch(removeFavoriteById(id))
       } else {
-        const { data } = await api.addPodcastToFavorites(id)
+        const { data } = await podcastsApi.addPodcastToFavorites(id)
         dispatch(addFavorite(data))
       }
     } catch (error) {

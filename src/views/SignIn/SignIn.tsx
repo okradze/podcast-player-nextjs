@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FormEvent, useRef } from 'react'
 import { useDispatch } from 'react-redux'
+import { Field, Form } from 'react-final-form'
+import { FormApi, FORM_ERROR } from 'final-form'
 import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
@@ -11,28 +12,35 @@ import AuthLayout from '../../components/AuthLayout'
 import useAuthReset from '../../hooks/useAuthReset'
 import styles from './SignIn.module.scss'
 
-type SignInProps = {}
+interface SignInFields {
+  email: string
+  password: string
+}
 
-const SignIn: NextPage<SignInProps> = () => {
+const validateEmail = (email: string | undefined) => {
+  if (!email) return
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+  if (!regex.test(email)) return 'Email is not valid'
+}
+
+const validatePassword = (value: string | undefined) => {
+  if (value === '') return 'Password is required'
+}
+
+const SignIn: NextPage = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const resetAuth = useAuthReset()
 
-  const values = useRef({
-    email: '',
-    password: '',
-  })
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
+  const onSubmit = async (values: SignInFields, form: FormApi<SignInFields, SignInFields>) => {
     try {
-      const { data } = await authApi.signin(values.current)
+      const { data } = await authApi.signin(values)
       resetAuth()
       dispatch(setMe(data))
       router.push('/')
     } catch (error) {
-      console.log(error)
+      form.reset()
+      return { [FORM_ERROR]: 'Email or password is incorrect' }
     }
   }
 
@@ -42,29 +50,43 @@ const SignIn: NextPage<SignInProps> = () => {
         <h2 className={styles.title}>Sign In</h2>
         <p className={styles.subtitle}>Sign in to see your favorite podcasts</p>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <Input
-            label='Email'
-            name='email'
-            placeholder='mail@website.com'
-            onChange={e => (values.current.email = e.target.value)}
-          />
+        <Form onSubmit={onSubmit}>
+          {({ handleSubmit, submitting, submitError }) => (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <Field name='email' validate={validateEmail}>
+                {({ input, meta }) => (
+                  <Input
+                    label='Email'
+                    placeholder='mail@website.com'
+                    error={meta.error && meta.touched && meta.error}
+                    {...input}
+                  />
+                )}
+              </Field>
 
-          <Input
-            label='Password'
-            name='password'
-            type='password'
-            onChange={e => (values.current.password = e.target.value)}
-          />
+              <Field name='password' validate={validatePassword}>
+                {({ input, meta }) => (
+                  <Input
+                    label='Password'
+                    type='password'
+                    error={meta.error && meta.touched && meta.error}
+                    {...input}
+                  />
+                )}
+              </Field>
 
-          <p className={styles.forgetPassword}>
-            <Button variant='text'>Forget password?</Button>
-          </p>
+              <p className={styles.forgetPassword}>
+                <Button variant='text'>Forget password?</Button>
+              </p>
 
-          <Button className={styles.button} type='submit'>
-            Sign In
-          </Button>
-        </form>
+              {submitError && <p className={styles.error}>{submitError}</p>}
+
+              <Button className={styles.button} disabled={submitting} type='submit'>
+                Sign In
+              </Button>
+            </form>
+          )}
+        </Form>
 
         <p className={styles.registerText}>
           Not registered yet?{' '}

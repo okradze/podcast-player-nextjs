@@ -10,6 +10,7 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 import AuthLayout from '../../components/AuthLayout'
 import useAuthReset from '../../hooks/useAuthReset'
+import { validateEmail } from '../../utils/validators'
 import styles from './SignIn.module.scss'
 
 interface SignInFields {
@@ -17,14 +18,8 @@ interface SignInFields {
   password: string
 }
 
-const validateEmail = (email: string | undefined) => {
-  if (!email) return
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-  if (!regex.test(email)) return 'Email is not valid'
-}
-
-const validatePassword = (value: string | undefined) => {
-  if (value === '') return 'Password is required'
+const validatePassword = (password: string) => {
+  if (password.length < 1) return 'Password is required'
 }
 
 const SignIn: NextPage = () => {
@@ -39,7 +34,7 @@ const SignIn: NextPage = () => {
       dispatch(setMe(data))
       router.push('/')
     } catch (error) {
-      form.reset()
+      form.restart()
       return { [FORM_ERROR]: 'Email or password is incorrect' }
     }
   }
@@ -50,16 +45,16 @@ const SignIn: NextPage = () => {
         <h2 className={styles.title}>Sign In</h2>
         <p className={styles.subtitle}>Sign in to see your favorite podcasts</p>
 
-        <Form onSubmit={onSubmit}>
+        <Form initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
           {({ handleSubmit, submitting, submitError }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               <Field name='email' validate={validateEmail}>
                 {({ input, meta }) => (
                   <Input
+                    {...input}
                     label='Email'
                     placeholder='mail@website.com'
-                    error={meta.error && meta.touched && meta.error}
-                    {...input}
+                    error={meta.touched && meta.error}
                   />
                 )}
               </Field>
@@ -67,10 +62,10 @@ const SignIn: NextPage = () => {
               <Field name='password' validate={validatePassword}>
                 {({ input, meta }) => (
                   <Input
+                    {...input}
                     label='Password'
                     type='password'
-                    error={meta.error && meta.touched && meta.error}
-                    {...input}
+                    error={meta.touched && meta.error}
                   />
                 )}
               </Field>

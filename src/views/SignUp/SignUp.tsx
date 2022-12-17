@@ -1,40 +1,42 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { FormEvent, useRef } from 'react'
 import { useDispatch } from 'react-redux'
+import { Field, Form } from 'react-final-form'
+import { FormApi, FORM_ERROR } from 'final-form'
 import * as authApi from '../../api/auth'
 import { setMe } from '../../store/auth/authSlice'
 import Input from '../../components/Input'
 import AuthLayout from '../../components/AuthLayout'
 import Button from '../../components/Button'
 import useAuthReset from '../../hooks/useAuthReset'
+import { validateFullName, validateEmail } from '../../utils/validators'
 import styles from './SignUp.module.scss'
 
-type SignUpProps = {}
+interface SignUpFields {
+  fullName: string
+  email: string
+  password: string
+}
 
-const SignUp: NextPage<SignUpProps> = () => {
+const validatePassword = (password: string) => {
+  if (password.length < 8) return 'Password is required'
+}
+
+const SignUp: NextPage = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const resetAuth = useAuthReset()
 
-  const values = useRef({
-    fullName: '',
-    email: '',
-    password: '',
-  })
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
+  const onSubmit = async (values: SignUpFields, form: FormApi<SignUpFields, SignUpFields>) => {
     try {
-      const { data } = await authApi.signup(values.current)
+      const { data } = await authApi.signup(values)
       resetAuth()
       dispatch(setMe(data))
       router.push('/')
     } catch (error) {
-      console.log(error)
+      form.restart()
+      return { [FORM_ERROR]: 'Failed to sign up' }
     }
   }
 
@@ -44,33 +46,50 @@ const SignUp: NextPage<SignUpProps> = () => {
         <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.subtitle}>Sign up to save favorite podcasts</p>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <Input
-            label='Full Name'
-            name='fullName'
-            placeholder='John Doe'
-            onChange={e => (values.current.fullName = e.target.value)}
-          />
+        <Form initialValues={{ fullName: '', email: '', password: '' }} onSubmit={onSubmit}>
+          {({ handleSubmit, submitting, submitError }) => (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <Field name='fullName' validate={validateFullName}>
+                {({ input, meta }) => (
+                  <Input
+                    label='Full Name'
+                    placeholder='John Doe'
+                    error={meta.touched && meta.error}
+                    {...input}
+                  />
+                )}
+              </Field>
 
-          <Input
-            label='Email'
-            name='email'
-            placeholder='mail@website.com'
-            onChange={e => (values.current.email = e.target.value)}
-          />
+              <Field name='email' validate={validateEmail}>
+                {({ input, meta }) => (
+                  <Input
+                    label='Email'
+                    placeholder='mail@website.com'
+                    error={meta.touched && meta.error}
+                    {...input}
+                  />
+                )}
+              </Field>
 
-          <Input
-            label='Password'
-            name='password'
-            type='password'
-            placeholder='Min 8 characters'
-            onChange={e => (values.current.password = e.target.value)}
-          />
+              <Field name='password' validate={validatePassword}>
+                {({ input, meta }) => (
+                  <Input
+                    label='Password'
+                    type='password'
+                    error={meta.touched && meta.error}
+                    {...input}
+                  />
+                )}
+              </Field>
 
-          <Button className={styles.button} type='submit'>
-            Sign Up
-          </Button>
-        </form>
+              {submitError && <p className={styles.error}>{submitError}</p>}
+
+              <Button className={styles.button} disabled={submitting} type='submit'>
+                Sign Up
+              </Button>
+            </form>
+          )}
+        </Form>
 
         <p className={styles.memberText}>
           Already a member?{' '}

@@ -18,8 +18,8 @@ interface SignInFields {
   password: string
 }
 
-const validatePassword = (password: string) => {
-  if (password.length < 1) return 'Password is required'
+const validatePassword = (password?: string) => {
+  if (!password || password.length < 1) return 'Password is required'
 }
 
 const SignIn: NextPage = () => {
@@ -45,7 +45,7 @@ const SignIn: NextPage = () => {
         <h2 className={styles.title}>Sign In</h2>
         <p className={styles.subtitle}>Sign in to see your favorite podcasts</p>
 
-        <Form initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit}>
           {({ handleSubmit, submitting, submitError }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               <Field name='email' validate={validateEmail}>

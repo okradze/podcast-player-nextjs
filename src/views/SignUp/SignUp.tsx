@@ -42,7 +42,7 @@ const SignUp: NextPage = () => {
         <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.subtitle}>Sign up to save favorite podcasts</p>
 
-        <Form initialValues={{ fullName: '', email: '', password: '' }} onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit}>
           {({ handleSubmit, submitting, submitError }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               <Field name='fullName' validate={validateFullName}>

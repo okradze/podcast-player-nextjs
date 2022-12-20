@@ -15,7 +15,7 @@ const ForgotPassword: NextPage = () => {
         <h2 className={styles.title}>Forgot password?</h2>
         <p className={styles.subtitle}>Enter your email to recover account</p>
 
-        <Form initialValues={{ email: '' }} onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit}>
           {({ handleSubmit, submitting, submitError }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               <Field name='email' validate={validateEmail}>

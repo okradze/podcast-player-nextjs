@@ -1,5 +1,8 @@
 import { NextPage } from 'next'
+import { FORM_ERROR } from 'final-form'
+import { useRouter } from 'next/router'
 import { Field, Form } from 'react-final-form'
+import { authApi } from '../../api'
 import AuthLayout from '../../components/AuthLayout'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
@@ -11,10 +14,24 @@ export type ResetPasswordProps = {
   fullName?: string
 }
 
-const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProps) => {
-  if (isTokenExpired) return <h2 className={styles.expiredHeading}>Reset link is expired</h2>
+interface ResetPasswordFields {
+  password: string
+}
 
-  const onSubmit = (values: any) => {}
+const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProps) => {
+  const router = useRouter()
+  const { token } = router.query
+
+  if (!token || typeof token !== 'string' || isTokenExpired)
+    return <h2 className={styles.expiredHeading}>Reset link is expired</h2>
+
+  const onSubmit = async (values: ResetPasswordFields) => {
+    try {
+      await authApi.resetPassword(token, values)
+    } catch (error) {
+      return { [FORM_ERROR]: 'Something went wrong' }
+    }
+  }
 
   return (
     <AuthLayout
@@ -23,7 +40,7 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
       subtitle='Enter your new password'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitError, values }) => (
+        {({ handleSubmit, submitting, submitError, submitSucceeded }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='password' validate={validatePassword}>
               {({ input, meta }) => (
@@ -53,8 +70,15 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
             </Field>
 
             {submitError && <p className={styles.error}>{submitError}</p>}
+            {submitSucceeded && (
+              <p className={styles.success}>New password is set. You can sign in now.</p>
+            )}
 
-            <Button className={styles.button} disabled={submitting} type='submit'>
+            <Button
+              className={styles.button}
+              disabled={submitting || submitSucceeded}
+              type='submit'
+            >
               Set new password
             </Button>
           </form>

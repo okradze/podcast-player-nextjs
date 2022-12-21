@@ -10,34 +10,33 @@ const ForgotPassword: NextPage = () => {
   const onSubmit = (values: any) => {}
 
   return (
-    <AuthLayout title='Forgot Password - Podcast Player'>
-      <section className={styles.formSection}>
-        <h2 className={styles.title}>Forgot password?</h2>
-        <p className={styles.subtitle}>Enter your email to recover account</p>
+    <AuthLayout
+      pageTitle='Forgot Password - Podcast Player'
+      title='Forgot password?'
+      subtitle='Enter your email to recover account'
+    >
+      <Form onSubmit={onSubmit}>
+        {({ handleSubmit, submitting, submitError }) => (
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <Field name='email' validate={validateEmail}>
+              {({ input, meta }) => (
+                <Input
+                  {...input}
+                  label='Email'
+                  placeholder='mail@website.com'
+                  error={meta.touched && meta.error}
+                />
+              )}
+            </Field>
 
-        <Form onSubmit={onSubmit}>
-          {({ handleSubmit, submitting, submitError }) => (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <Field name='email' validate={validateEmail}>
-                {({ input, meta }) => (
-                  <Input
-                    {...input}
-                    label='Email'
-                    placeholder='mail@website.com'
-                    error={meta.touched && meta.error}
-                  />
-                )}
-              </Field>
+            {submitError && <p className={styles.error}>{submitError}</p>}
 
-              {submitError && <p className={styles.error}>{submitError}</p>}
-
-              <Button className={styles.button} disabled={submitting} type='submit'>
-                Send me a recovery link
-              </Button>
-            </form>
-          )}
-        </Form>
-      </section>
+            <Button className={styles.button} disabled={submitting} type='submit'>
+              Send me a recovery link
+            </Button>
+          </form>
+        )}
+      </Form>
     </AuthLayout>
   )
 }

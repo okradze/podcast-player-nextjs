@@ -4,17 +4,24 @@ import styles from './AuthLayout.module.scss'
 
 type AuthLayoutProps = {
   children: React.ReactNode
+  pageTitle: string
   title: string
+  subtitle: string
 }
 
-const AuthLayout = ({ children, title }: AuthLayoutProps) => (
+const AuthLayout = ({ children, pageTitle, title, subtitle }: AuthLayoutProps) => (
   <section className={styles.section}>
     <Head>
-      <title>{title}</title>
+      <title>{pageTitle}</title>
     </Head>
 
     <PodcastIllustrationSvg className={styles.illustration} />
-    {children}
+
+    <section className={styles.formSection}>
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.subtitle}>{subtitle}</p>
+      {children}
+    </section>
   </section>
 )
 

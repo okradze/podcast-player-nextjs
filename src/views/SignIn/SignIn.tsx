@@ -40,62 +40,61 @@ const SignIn: NextPage = () => {
   }
 
   return (
-    <AuthLayout title='Sign In - Podcast Player'>
-      <section className={styles.formSection}>
-        <h2 className={styles.title}>Sign In</h2>
-        <p className={styles.subtitle}>Sign in to see your favorite podcasts</p>
+    <AuthLayout
+      pageTitle='Sign In - Podcast Player'
+      title='Sign In'
+      subtitle='Sign in to see your favorite podcasts'
+    >
+      <Form onSubmit={onSubmit}>
+        {({ handleSubmit, submitting, submitError }) => (
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <Field name='email' validate={validateEmail}>
+              {({ input, meta }) => (
+                <Input
+                  {...input}
+                  label='Email'
+                  placeholder='mail@website.com'
+                  error={meta.touched && meta.error}
+                />
+              )}
+            </Field>
 
-        <Form onSubmit={onSubmit}>
-          {({ handleSubmit, submitting, submitError }) => (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <Field name='email' validate={validateEmail}>
-                {({ input, meta }) => (
-                  <Input
-                    {...input}
-                    label='Email'
-                    placeholder='mail@website.com'
-                    error={meta.touched && meta.error}
-                  />
-                )}
-              </Field>
+            <Field name='password' validate={validatePassword}>
+              {({ input, meta }) => (
+                <Input
+                  {...input}
+                  label='Password'
+                  type='password'
+                  error={meta.touched && meta.error}
+                />
+              )}
+            </Field>
 
-              <Field name='password' validate={validatePassword}>
-                {({ input, meta }) => (
-                  <Input
-                    {...input}
-                    label='Password'
-                    type='password'
-                    error={meta.touched && meta.error}
-                  />
-                )}
-              </Field>
+            <p className={styles.forgetPassword}>
+              <Link passHref href='/auth/forgot-password'>
+                <Button element='link' variant='text'>
+                  Forget password?
+                </Button>
+              </Link>
+            </p>
 
-              <p className={styles.forgetPassword}>
-                <Link passHref href='/auth/forgot-password'>
-                  <Button element='link' variant='text'>
-                    Forget password?
-                  </Button>
-                </Link>
-              </p>
+            {submitError && <p className={styles.error}>{submitError}</p>}
 
-              {submitError && <p className={styles.error}>{submitError}</p>}
-
-              <Button className={styles.button} disabled={submitting} type='submit'>
-                Sign In
-              </Button>
-            </form>
-          )}
-        </Form>
-
-        <p className={styles.registerText}>
-          Not registered yet?{' '}
-          <Link passHref href='/auth/signup'>
-            <Button element='link' variant='text'>
-              Create an account
+            <Button className={styles.button} disabled={submitting} type='submit'>
+              Sign In
             </Button>
-          </Link>
-        </p>
-      </section>
+          </form>
+        )}
+      </Form>
+
+      <p className={styles.registerText}>
+        Not registered yet?{' '}
+        <Link passHref href='/auth/signup'>
+          <Button element='link' variant='text'>
+            Create an account
+          </Button>
+        </Link>
+      </p>
     </AuthLayout>
   )
 }

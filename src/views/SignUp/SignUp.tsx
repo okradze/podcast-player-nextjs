@@ -37,65 +37,64 @@ const SignUp: NextPage = () => {
   }
 
   return (
-    <AuthLayout title='Sign Up - Podcast Player'>
-      <section className={styles.formSection}>
-        <h2 className={styles.title}>Sign Up</h2>
-        <p className={styles.subtitle}>Sign up to save favorite podcasts</p>
+    <AuthLayout
+      pageTitle='Sign Up - Podcast Player'
+      title='Sign Up'
+      subtitle='Sign up to save favorite podcasts'
+    >
+      <Form onSubmit={onSubmit}>
+        {({ handleSubmit, submitting, submitError }) => (
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <Field name='fullName' validate={validateFullName}>
+              {({ input, meta }) => (
+                <Input
+                  label='Full Name'
+                  placeholder='John Doe'
+                  error={meta.touched && meta.error}
+                  {...input}
+                />
+              )}
+            </Field>
 
-        <Form onSubmit={onSubmit}>
-          {({ handleSubmit, submitting, submitError }) => (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <Field name='fullName' validate={validateFullName}>
-                {({ input, meta }) => (
-                  <Input
-                    label='Full Name'
-                    placeholder='John Doe'
-                    error={meta.touched && meta.error}
-                    {...input}
-                  />
-                )}
-              </Field>
+            <Field name='email' validate={validateEmail}>
+              {({ input, meta }) => (
+                <Input
+                  label='Email'
+                  placeholder='mail@website.com'
+                  error={meta.touched && meta.error}
+                  {...input}
+                />
+              )}
+            </Field>
 
-              <Field name='email' validate={validateEmail}>
-                {({ input, meta }) => (
-                  <Input
-                    label='Email'
-                    placeholder='mail@website.com'
-                    error={meta.touched && meta.error}
-                    {...input}
-                  />
-                )}
-              </Field>
+            <Field name='password' validate={validatePassword}>
+              {({ input, meta }) => (
+                <Input
+                  label='Password'
+                  type='password'
+                  error={meta.touched && meta.error}
+                  {...input}
+                />
+              )}
+            </Field>
 
-              <Field name='password' validate={validatePassword}>
-                {({ input, meta }) => (
-                  <Input
-                    label='Password'
-                    type='password'
-                    error={meta.touched && meta.error}
-                    {...input}
-                  />
-                )}
-              </Field>
+            {submitError && <p className={styles.error}>{submitError}</p>}
 
-              {submitError && <p className={styles.error}>{submitError}</p>}
-
-              <Button className={styles.button} disabled={submitting} type='submit'>
-                Sign Up
-              </Button>
-            </form>
-          )}
-        </Form>
-
-        <p className={styles.memberText}>
-          Already a member?{' '}
-          <Link passHref href='/auth/signin'>
-            <Button element='link' variant='text'>
-              Sign In
+            <Button className={styles.button} disabled={submitting} type='submit'>
+              Sign Up
             </Button>
-          </Link>
-        </p>
-      </section>
+          </form>
+        )}
+      </Form>
+
+      <p className={styles.memberText}>
+        Already a member?{' '}
+        <Link passHref href='/auth/signin'>
+          <Button element='link' variant='text'>
+            Sign In
+          </Button>
+        </Link>
+      </p>
     </AuthLayout>
   )
 }

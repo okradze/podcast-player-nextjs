@@ -36,6 +36,30 @@ export const me = (token?: string) =>
     headers: { Authorization: `Bearer ${token}` },
   })
 
+export interface IForgotPasswordBody {
+  email: string
+}
+
+export const forgotPassword = (body: IForgotPasswordBody) =>
+  client.post<AxiosResponse<{ message: string }>, AxiosResponse<{ mes: string }>>(
+    '/auth/forgot-password',
+    body,
+  )
+
+export interface IResetPasswordBody {
+  password: string
+}
+
+export const resetPassword = (resetToken: string, body: IResetPasswordBody) =>
+  client.post(`/auth/reset-password/${resetToken}`, body)
+
+interface IResetPasswordUserResponse {
+  fullName: string
+}
+
+export const fetchResetPasswordUser = (resetToken: string) =>
+  client.get<any, AxiosResponse<IResetPasswordUserResponse>>(`/auth/reset-password/${resetToken}`)
+
 const refreshAuthLogic = async (failedRequest: any) => {
   // console.log(failedRequest)
   console.log('refresh auth logic')

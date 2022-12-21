@@ -1,13 +1,25 @@
 import { NextPage } from 'next'
+import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
+import { authApi } from '../../api'
 import AuthLayout from '../../components/AuthLayout'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import { validateEmail } from '../../utils/validators'
 import styles from './ForgotPassword.module.scss'
 
+interface ForgotPasswordFields {
+  email: string
+}
+
 const ForgotPassword: NextPage = () => {
-  const onSubmit = (values: any) => {}
+  const onSubmit = async (values: ForgotPasswordFields) => {
+    try {
+      await authApi.forgotPassword(values)
+    } catch (error) {
+      return { [FORM_ERROR]: 'Something went wrong' }
+    }
+  }
 
   return (
     <AuthLayout
@@ -16,7 +28,7 @@ const ForgotPassword: NextPage = () => {
       subtitle='Enter your email to recover account'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitError }) => (
+        {({ handleSubmit, submitting, submitSucceeded, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='email' validate={validateEmail}>
               {({ input, meta }) => (
@@ -30,8 +42,17 @@ const ForgotPassword: NextPage = () => {
             </Field>
 
             {submitError && <p className={styles.error}>{submitError}</p>}
+            {submitSucceeded && (
+              <p className={styles.success}>
+                Reset link will be sent if user with this email exists
+              </p>
+            )}
 
-            <Button className={styles.button} disabled={submitting} type='submit'>
+            <Button
+              className={styles.button}
+              disabled={submitting || submitSucceeded}
+              type='submit'
+            >
               Send me a recovery link
             </Button>
           </form>

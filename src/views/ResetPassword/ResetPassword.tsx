@@ -6,13 +6,20 @@ import Input from '../../components/Input'
 import { validatePassword } from '../../utils/validators'
 import styles from './ResetPassword.module.scss'
 
-const ResetPassword: NextPage = () => {
+export type ResetPasswordProps = {
+  isTokenExpired?: boolean
+  fullName?: string
+}
+
+const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProps) => {
+  if (isTokenExpired) return <h2 className={styles.expiredHeading}>Reset link is expired</h2>
+
   const onSubmit = (values: any) => {}
 
   return (
     <AuthLayout
       pageTitle='Reset Password - Podcast Player'
-      title='Reset your password'
+      title={`Hello ${fullName || ''}`}
       subtitle='Enter your new password'
     >
       <Form onSubmit={onSubmit}>

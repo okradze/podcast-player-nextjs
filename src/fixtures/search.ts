@@ -1,4 +1,4 @@
-const SEARCH_FIXTURE = {
+export const SEARCH_FIXTURE = {
   terms: ['abc', 'abraham hicks'],
   genres: [],
   podcasts: [
@@ -40,5 +40,3 @@ const SEARCH_FIXTURE = {
     },
   ],
 }
-
-export default SEARCH_FIXTURE

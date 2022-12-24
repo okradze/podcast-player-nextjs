@@ -9,8 +9,9 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import { EpisodeList } from './EpisodeList'
+import { setPodcast } from '@/store/podcast/podcastSlice'
 import { createTestStore } from '@/utils/createTestStore'
-import { PODCAST_FIXTURE } from '@/fixtures/podcast'
+import { PODCAST_FIXTURE, PODCAST_FIXTURE_PAGE_2 } from '@/fixtures/podcast'
 
 afterEach(cleanup)
 
@@ -20,41 +21,59 @@ beforeEach(() => {
   store = createTestStore()
 })
 
-jest.mock('../../api/api', () => ({
-  fetchEpisodes: jest.fn().mockImplementation(() => Promise.resolve({ data: PODCAST_FIXTURE })),
+let resolveFetchEpisodes: (value: unknown) => void
+
+jest.mock('@/api', () => ({
+  podcastsApi: {
+    fetchEpisodes: jest.fn().mockImplementation(
+      () =>
+        new Promise((resolve, reject) => {
+          resolveFetchEpisodes = resolve
+        }),
+    ),
+  },
 }))
 
 describe('EpisodeList', () => {
   it('renders spinner when fetching', async () => {
+    store.dispatch(setPodcast(PODCAST_FIXTURE))
+
     render(
       <Provider store={store}>
-        <EpisodeList podcast={PODCAST_FIXTURE} setPodcast={() => {}} />
+        <EpisodeList />
       </Provider>,
     )
 
     expect(screen.queryByTestId('spinner')).not.toBeInTheDocument()
+
     fireEvent.click(screen.getByText('Load More'))
     await waitFor(() => screen.getByTestId('spinner'))
+
+    resolveFetchEpisodes({ data: PODCAST_FIXTURE_PAGE_2 })
     await waitForElementToBeRemoved(() => screen.queryByTestId('spinner'))
   })
 
   it('renders load more button when more episodes are available and episodes are not fetching', () => {
+    store.dispatch(setPodcast(PODCAST_FIXTURE))
+
     render(
       <Provider store={store}>
-        <EpisodeList podcast={PODCAST_FIXTURE} setPodcast={() => {}} />
+        <EpisodeList />
       </Provider>,
     )
 
-    expect(screen.getByText(/load more/i)).toBeInTheDocument()
+    expect(screen.getByText('Load More')).toBeInTheDocument()
   })
 
   it('does not render load more button when there are no more episodes', () => {
+    store.dispatch(setPodcast({ ...PODCAST_FIXTURE, total_episodes: 10 }))
+
     render(
       <Provider store={store}>
-        <EpisodeList podcast={{ ...PODCAST_FIXTURE, total_episodes: 10 }} setPodcast={() => {}} />
+        <EpisodeList />
       </Provider>,
     )
 
-    expect(screen.queryByText(/load more/i)).not.toBeInTheDocument()
+    expect(screen.queryByText('Load More')).not.toBeInTheDocument()
   })
 })

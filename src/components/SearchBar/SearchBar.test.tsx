@@ -7,12 +7,14 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import { SearchBar } from './SearchBar'
-import mockSearch from '../../fixtures/search'
+import { SEARCH_FIXTURE } from '@/fixtures/search'
 
 afterEach(cleanup)
 
-jest.mock('../../api/api', () => ({
-  fetchTypeahead: jest.fn().mockImplementation(() => Promise.resolve({ data: mockSearch })),
+jest.mock('@/api', () => ({
+  podcastsApi: {
+    fetchTypeahead: jest.fn().mockImplementation(() => Promise.resolve({ data: SEARCH_FIXTURE })),
+  },
 }))
 
 describe('SearchBar', () => {

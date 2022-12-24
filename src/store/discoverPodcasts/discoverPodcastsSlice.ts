@@ -1,7 +1,7 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import { podcastsApi } from '../../api'
-import { ICuratedPodcastList, ICuratedPodcasts } from '../../api/podcasts'
+import { podcastsApi } from '@/api'
+import { ICuratedPodcastList, ICuratedPodcasts } from '@/api/podcasts'
 
 export interface DiscoverPodcastsState {
   isFetching: boolean

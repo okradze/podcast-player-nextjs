@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import { IPodcast } from '../../api/podcasts'
+import { IPodcast } from '@/api/podcasts'
 
 export interface FavoritesState {
   podcasts: IPodcast[]

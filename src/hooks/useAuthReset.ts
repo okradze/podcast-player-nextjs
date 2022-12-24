@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
-import { reset as resetAuth } from '../store/auth/authSlice'
-import { reset as resetPodcasts } from '../store/podcasts/podcastsSlice'
-import { reset as resetDiscoverPodcasts } from '../store/discoverPodcasts/discoverPodcastsSlice'
-import { reset as resetFavorites } from '../store/favorites/favoritesSlice'
+import { reset as resetAuth } from '@/store/auth/authSlice'
+import { reset as resetPodcasts } from '@/store/podcasts/podcastsSlice'
+import { reset as resetDiscoverPodcasts } from '@/store/discoverPodcasts/discoverPodcastsSlice'
+import { reset as resetFavorites } from '@/store/favorites/favoritesSlice'
 
 const useAuthReset = () => {
   const dispatch = useDispatch()

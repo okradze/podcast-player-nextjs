@@ -10,16 +10,12 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 import AuthLayout from '../../components/AuthLayout'
 import useAuthReset from '../../hooks/useAuthReset'
-import { validateEmail } from '../../utils/validators'
+import { validateEmail, validatePasswordRequired } from '../../utils/validators'
 import styles from './SignIn.module.scss'
 
 interface SignInFields {
   email: string
   password: string
-}
-
-const validatePassword = (password?: string) => {
-  if (!password || password.length < 1) return 'Password is required'
 }
 
 const SignIn: NextPage = () => {
@@ -59,7 +55,7 @@ const SignIn: NextPage = () => {
               )}
             </Field>
 
-            <Field name='password' validate={validatePassword}>
+            <Field name='password' validate={validatePasswordRequired}>
               {({ input, meta }) => (
                 <Input
                   {...input}

@@ -60,6 +60,21 @@ interface IResetPasswordUserResponse {
 export const fetchResetPasswordUser = (resetToken: string) =>
   client.get<any, AxiosResponse<IResetPasswordUserResponse>>(`/auth/reset-password/${resetToken}`)
 
+interface IChangePasswordBody {
+  currentPassword: string
+  password: string
+}
+
+export const changePassword = (body: IChangePasswordBody) =>
+  client.post('/auth/change-password', body)
+
+interface IUpdateUserBody {
+  fullName: string
+}
+
+export const updateUser = (body: IUpdateUserBody) =>
+  client.patch<any, AxiosResponse<Me>>('/auth/update-user', body)
+
 const refreshAuthLogic = async (failedRequest: any) => {
   // console.log(failedRequest)
   console.log('refresh auth logic')

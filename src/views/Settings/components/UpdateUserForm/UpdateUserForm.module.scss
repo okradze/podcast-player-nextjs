@@ -1,0 +1,22 @@
+.section {
+  flex: 0 1 40rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.button {
+  height: 4.3rem;
+}
+
+.success {
+  font-size: 1.5rem;
+}
+
+.error {
+  color: var(--error);
+  font-size: 1.5rem;
+}

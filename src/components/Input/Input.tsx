@@ -3,7 +3,7 @@ import styles from './Input.module.scss'
 
 type InputProps = {
   label: React.ReactNode
-  error: string
+  error?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
 export const Input = ({ label, name, error, ...inputProps }: InputProps) => (

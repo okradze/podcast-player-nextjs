@@ -1,7 +1,5 @@
 import type { GetServerSideProps } from 'next'
-import { podcastsApi } from '../api'
 import { withAuth } from '../helpers/auth'
-import { setPodcasts } from '../store/podcasts/podcastsSlice'
 import Settings from '../views/Settings'
 
 export default Settings

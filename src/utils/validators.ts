@@ -1,3 +1,9 @@
+import { FieldState } from 'final-form'
+
+export const validatePasswordRequired = (password?: string) => {
+  if (!password) return 'Password is required'
+}
+
 export const validateFullName = (fullName?: string) => {
   if (!fullName || fullName.length < 2) return 'Full Name is required'
 }

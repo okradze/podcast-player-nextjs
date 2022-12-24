@@ -1,4 +1,4 @@
-import useMe from '../../hooks/useMe'
+import useMe from '@/hooks/useMe'
 import ChangePasswordForm from './components/ChangePasswordForm'
 import UpdateUserForm from './components/UpdateUserForm'
 import styles from './Settings.module.scss'

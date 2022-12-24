@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next'
 import { podcastsApi } from '../api'
-import { withAuth } from '../helpers/auth'
-import { setPodcastLists } from '../store/discoverPodcasts/discoverPodcastsSlice'
+import { withAuth } from '@/helpers/auth'
+import { setPodcastLists } from '@/store/discoverPodcasts/discoverPodcastsSlice'
 import Discover from '../views/Discover'
 
 export default Discover

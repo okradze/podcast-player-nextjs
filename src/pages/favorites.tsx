@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next'
 import { podcastsApi } from '../api'
-import { withAuth } from '../helpers/auth'
-import { setFavorites } from '../store/favorites/favoritesSlice'
+import { withAuth } from '@/helpers/auth'
+import { setFavorites } from '@/store/favorites/favoritesSlice'
 import Favorites from '../views/Favorites'
 
 export default Favorites

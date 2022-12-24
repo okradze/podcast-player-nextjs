@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { podcastsApi } from '../../api'
-import { withAuth } from '../../helpers/auth'
-import { setPodcast, setRecommendations } from '../../store/podcast/podcastSlice'
+import { withAuth } from '@/helpers/auth'
+import { setPodcast, setRecommendations } from '@/store/podcast/podcastSlice'
 import Podcast from '../../views/Podcast'
 
 export default Podcast

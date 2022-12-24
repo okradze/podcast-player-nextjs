@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { authApi } from '../../../api'
-import { withAuth } from '../../../helpers/auth'
+import { withAuth } from '@/helpers/auth'
 import ResetPassword from '../../../views/ResetPassword'
 
 export default ResetPassword

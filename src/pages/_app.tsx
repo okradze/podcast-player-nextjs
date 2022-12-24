@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import Layout from '../components/Layout'
-import { wrapper } from '../store'
+import Layout from '@/components/Layout'
+import { wrapper } from '@/store'
 import { StyledEngineProvider } from '@mui/material/styles'
 import '../styles/globals.scss'
 

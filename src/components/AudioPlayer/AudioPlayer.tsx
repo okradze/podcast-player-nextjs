@@ -3,14 +3,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import Slider from 'rc-slider/lib/Slider'
-import { RootState } from '../../store/rootReducer'
+import { RootState } from '@/store/rootReducer'
 import {
   play,
   pause,
   setVolume,
   setCurrentTime,
   toggleMinimize,
-} from '../../store/playingPodcast/playingPodcastSlice'
+} from '@/store/playingPodcast/playingPodcastSlice'
 import { IEpisode } from '../../api/podcasts'
 import EllipsisText from '../EllipsisText'
 import { PlaySvg, PauseSvg, VolumeSvg } from '../../svg'

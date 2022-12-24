@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { withAuth } from '../../helpers/auth'
+import { withAuth } from '@/helpers/auth'
 import SignIn from '../../views/SignIn'
 
 export default SignIn

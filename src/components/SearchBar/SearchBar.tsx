@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { podcastsApi } from '../../api'
-import { ITypeaheadPodcast } from '../../api/podcasts'
-import SearchBarItem from '../SearchBarItem'
-import Spinner from '../Spinner'
+import { podcastsApi } from '@/api'
+import { ITypeaheadPodcast } from '@/api/podcasts'
+import Spinner from '@/components/Spinner'
+import SearchBarItem from './SearchBarItem'
 import styles from './SearchBar.module.scss'
 
 export const SearchBar = () => {

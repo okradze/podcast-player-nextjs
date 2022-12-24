@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { IPodcast } from '../../api/podcasts'
-import EllipsisText from '../EllipsisText'
-import Button from '../Button'
-import PodcastFavoriteButton from '../PodcastFavoriteButton'
+import { IPodcast } from '@/api/podcasts'
+import EllipsisText from '@/components/EllipsisText'
+import Button from '@/components/Button'
+import PodcastFavoriteButton from '@/components/PodcastFavoriteButton'
 import styles from './PodcastItem.module.scss'
 
 export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPodcast) => {

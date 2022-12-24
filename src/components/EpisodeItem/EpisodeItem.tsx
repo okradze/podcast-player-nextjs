@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
-import { IEpisode } from '../../api/podcasts'
+import { IEpisode } from '@/api/podcasts'
 import { playEpisode } from '@/store/playingPodcast/playingPodcastSlice'
+import { PlaySvg } from '@/svg'
 import EllipsisText from '../EllipsisText'
-import { PlaySvg } from '../../svg'
 import styles from './EpisodeItem.module.scss'
 
 type EpisodeItemProps = {

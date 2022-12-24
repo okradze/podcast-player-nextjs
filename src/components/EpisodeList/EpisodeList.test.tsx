@@ -9,8 +9,8 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react'
 import { EpisodeList } from './EpisodeList'
-import { createTestStore } from '../../utils/createTestStore'
-import { PODCAST_FIXTURE } from '../../fixtures/podcast'
+import { createTestStore } from '@/utils/createTestStore'
+import { PODCAST_FIXTURE } from '@/fixtures/podcast'
 
 afterEach(cleanup)
 

@@ -23,7 +23,7 @@ export interface ISigninBody {
 export const signin = (body: ISigninBody) =>
   client.post<any, AxiosResponse<Me>>('/auth/signin', body)
 
-export const signout = () => client.post('/auth/signout')
+export const signOut = () => client.post('/auth/signout')
 
 export const refresh = (token?: string) =>
   client.post<any, AxiosResponse<ITokensResponse>>('/auth/refresh', undefined, {

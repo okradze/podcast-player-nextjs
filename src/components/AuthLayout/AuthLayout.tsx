@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import PodcastIllustrationSvg from '../../svg/PodcastIllustrationSvg'
+import { PodcastIllustrationSvg } from '@/svg'
 import styles from './AuthLayout.module.scss'
 
 type AuthLayoutProps = {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, cleanup, screen } from '@testing-library/react'
+import { BEST_PODCASTS_FIXTURE } from '@/fixtures/podcasts'
 import { PodcastList } from './PodcastList'
-import { BEST_PODCASTS_FIXTURE } from '../../fixtures/podcasts'
 
 afterEach(cleanup)
 

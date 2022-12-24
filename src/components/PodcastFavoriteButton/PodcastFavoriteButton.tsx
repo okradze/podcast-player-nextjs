@@ -1,5 +1,5 @@
-import useMe from '../../hooks/useMe'
-import useFavoritePodcast from '../../hooks/useFavoritePodcast'
+import useMe from '@/hooks/useMe'
+import useFavoritePodcast from '@/hooks/useFavoritePodcast'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import styles from './PodcastFavoriteButton.module.scss'

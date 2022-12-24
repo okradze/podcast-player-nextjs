@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, cleanup, screen } from '@testing-library/react'
-import { EpisodeItem } from './EpisodeItem'
-import episode from '../../fixtures/episode'
-import { createTestStore } from '../../utils/createTestStore'
 import { Provider } from 'react-redux'
+import episode from '@/fixtures/episode'
+import { createTestStore } from '@/utils/createTestStore'
+import { EpisodeItem } from './EpisodeItem'
 
 afterEach(cleanup)
 

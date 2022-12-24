@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Button from '../../Button'
+import Button from '@/components/Button'
 import styles from './HeaderAuthLinks.module.scss'
 
 const HeaderAuthLinks = () => (

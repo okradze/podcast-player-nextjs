@@ -1,6 +1,6 @@
 import React from 'react'
-import { IPodcast } from '../../api/podcasts'
-import PodcastItem from '../PodcastItem'
+import { IPodcast } from '@/api/podcasts'
+import PodcastItem from './PodcastItem'
 import styles from './PodcastList.module.scss'
 
 type PodcastListProps = {

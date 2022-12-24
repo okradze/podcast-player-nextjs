@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ITypeaheadPodcast } from '../../api/podcasts'
-import EllipsisText from '../EllipsisText/EllipsisText'
+import { ITypeaheadPodcast } from '@/api/podcasts'
+import EllipsisText from '@/components/EllipsisText'
 import styles from './SearchBarItem.module.scss'
 
 type SearchBarItemProps = ITypeaheadPodcast & {

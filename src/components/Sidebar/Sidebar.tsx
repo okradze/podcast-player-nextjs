@@ -3,13 +3,13 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/rootReducer'
+import useMe from '@/hooks/useMe'
 import HomeIcon from '@mui/icons-material/Home'
 import SearchIcon from '@mui/icons-material/Search'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import PodcastsIcon from '@mui/icons-material/Podcasts'
 import styles from './Sidebar.module.scss'
-import useMe from '../../hooks/useMe'
 
 export const Sidebar = () => {
   const router = useRouter()

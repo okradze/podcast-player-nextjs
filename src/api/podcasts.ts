@@ -52,8 +52,10 @@ export interface IEpisode {
   audio_length_sec: number
 }
 
-export const fetchPodcast = (podcastId: string) =>
-  client.get<any, AxiosResponse<IPodcastDetails>>(`/podcasts/${podcastId}`)
+export const fetchPodcast = (podcastId: string, token?: string) =>
+  client.get<any, AxiosResponse<IPodcastDetails>>(`/podcasts/${podcastId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
 export interface IRecommendations {
   recommendations: IPodcast[]

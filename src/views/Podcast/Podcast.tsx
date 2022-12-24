@@ -6,6 +6,7 @@ import EpisodeList from '../../components/EpisodeList/EpisodeList'
 import styles from './Podcast.module.scss'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/rootReducer'
+import PodcastFavoriteButton from '../../components/PodcastFavoriteButton'
 
 const Podcast: NextPage = () => {
   const { podcast, recommendations } = useSelector((state: RootState) => state.podcast)
@@ -14,7 +15,7 @@ const Podcast: NextPage = () => {
     return <h1>Could not load podcast</h1>
   }
 
-  const { thumbnail, publisher, description, title } = podcast
+  const { thumbnail, publisher, description, title, isFavorite, id } = podcast
 
   return (
     <div>
@@ -23,18 +24,21 @@ const Podcast: NextPage = () => {
       </Head>
 
       <div>
-        <h2 className={styles.Title}>{title}</h2>
+        <header className={styles.header}>
+          <h2 className={styles.title}>{title}</h2>
+          <PodcastFavoriteButton isFavorite={isFavorite} id={id} />
+        </header>
         <div className={styles.Content}>
           <div className={styles.ThumbnailWrapper}>
             <Image width={200} height={200} className={styles.Thumbnail} src={thumbnail} alt='' />
           </div>
           <div>
-            <h3 className={styles.Publisher}>{publisher}</h3>
+            <h3 className={styles.publisher}>{publisher}</h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: description,
               }}
-              className={styles.Text}
+              className={styles.text}
             />
           </div>
         </div>
@@ -43,7 +47,7 @@ const Podcast: NextPage = () => {
           <EpisodeList />
         </div>
 
-        <PodcastList podcasts={recommendations} title='Recommendations' />
+        <PodcastList podcasts={recommendations} title='Recommendations' isSmallerTitle />
       </div>
     </div>
   )

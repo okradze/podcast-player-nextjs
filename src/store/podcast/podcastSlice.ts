@@ -26,6 +26,10 @@ export const podcastSlice = createSlice({
     setRecommendations(state, action: PayloadAction<IPodcast[]>) {
       state.recommendations = action.payload
     },
+    toggleFavoritePodcast(state, action: PayloadAction<string>) {
+      const { podcast } = state
+      if (podcast && podcast.id === action.payload) podcast.isFavorite = !podcast.isFavorite
+    },
     toggleFavoritePodcastInRecommendations(state, action: PayloadAction<string>) {
       const podcast = state.recommendations.find(podcast => podcast.id === action.payload)
 
@@ -63,6 +67,7 @@ export const {
   setRecommendations,
   setEpisodesLoading,
   setEpisodes,
+  toggleFavoritePodcast,
   toggleFavoritePodcastInRecommendations,
 } = podcastSlice.actions
 

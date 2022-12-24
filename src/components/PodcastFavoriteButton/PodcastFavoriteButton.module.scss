@@ -1,0 +1,17 @@
+.button {
+  background: none;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--primary);
+  width: 2rem;
+  height: 2rem;
+}

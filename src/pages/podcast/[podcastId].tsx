@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = withAuth({
     if (!podcastId || typeof podcastId !== 'string') return { props: {} }
 
     const [podcast, recommendations] = await Promise.all([
-      podcastsApi.fetchPodcast(podcastId),
+      podcastsApi.fetchPodcast(podcastId, accessToken),
       podcastsApi.fetchRecommendations(podcastId, accessToken),
     ])
 

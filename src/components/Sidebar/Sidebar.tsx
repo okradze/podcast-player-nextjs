@@ -28,66 +28,66 @@ export const Sidebar = () => {
         role='button'
         aria-label='Toggle menu'
         onClick={() => setIsSidebarVisible(!isSidebarVisible)}
-        className={styles.Toggle}
+        className={styles.toggle}
       >
         <span
-          className={`${styles.ToggleIcon} ${isSidebarVisible ? styles.ToggleIconWhenVisible : ''}`}
+          className={`${styles.toggleIcon} ${isSidebarVisible ? styles.toggleIconWhenVisible : ''}`}
         />
       </span>
 
       <section
-        className={`${styles.Sidebar} ${isSidebarVisible ? styles.SidebarMobileVisible : ''}`}
+        className={`${styles.sidebar} ${isSidebarVisible ? styles.sidebarMobileVisible : ''}`}
       >
-        <h1 className={styles.Logo}>
+        <h1 className={styles.logo}>
           <Link href='/' scroll={false}>
-            <a onClick={closeSidebar} className={styles.LogoLink}>
+            <a onClick={closeSidebar} className={styles.logoLink}>
               Podcast
             </a>
           </Link>
         </h1>
 
-        <nav className={styles.Nav}>
-          <h4 className={styles.Title}>PODCAST</h4>
+        <nav className={styles.nav}>
+          <h4 className={styles.title}>PODCAST</h4>
           <ul>
-            <li className={styles.ListItem}>
+            <li className={styles.listItem}>
               <Link href='/' scroll={false}>
                 <a
                   onClick={closeSidebar}
-                  className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}
+                  className={`${styles.link} ${router.pathname === '/' ? styles.activeLink : 0}`}
                 >
-                  <HomeIcon className={styles.LinkIcon} />
+                  <HomeIcon className={styles.linkIcon} />
                   Home
                 </a>
               </Link>
             </li>
 
-            <li className={styles.ListItem}>
+            <li className={styles.listItem}>
               <Link href='/discover' scroll={false}>
                 <a
                   onClick={closeSidebar}
-                  className={`${styles.Link} ${
-                    router.pathname === '/discover' ? styles.ActiveLink : 0
+                  className={`${styles.link} ${
+                    router.pathname === '/discover' ? styles.activeLink : ''
                   }`}
                 >
-                  <SearchIcon className={styles.LinkIcon} />
+                  <SearchIcon className={styles.linkIcon} />
                   Discover
                 </a>
               </Link>
             </li>
 
             {me && (
-              <li className={styles.ListItem}>
+              <li className={styles.listItem}>
                 <Link href='/favorites' scroll={false}>
                   <a
                     onClick={closeSidebar}
-                    className={`${styles.Link} ${
-                      router.pathname === '/favorites' ? styles.ActiveLink : 0
+                    className={`${styles.link} ${
+                      router.pathname === '/favorites' ? styles.activeLink : ''
                     }`}
                   >
                     {router.pathname === '/favorites' ? (
-                      <FavoriteIcon className={styles.LinkIcon} />
+                      <FavoriteIcon className={styles.linkIcon} />
                     ) : (
-                      <FavoriteBorderIcon className={styles.LinkIcon} />
+                      <FavoriteBorderIcon className={styles.linkIcon} />
                     )}
                     Favorites
                   </a>
@@ -96,15 +96,15 @@ export const Sidebar = () => {
             )}
 
             {playingPodcastId && (
-              <li className={styles.ListItem}>
+              <li className={styles.listItem}>
                 <Link href={`/podcast/${playingPodcastId}`} scroll={false}>
                   <a
                     onClick={closeSidebar}
-                    className={`${styles.Link} ${
-                      router.asPath === `/podcast/${playingPodcastId}` ? styles.ActiveLink : 0
+                    className={`${styles.link} ${
+                      router.asPath === `/podcast/${playingPodcastId}` ? styles.activeLink : ''
                     }`}
                   >
-                    <PodcastsIcon className={styles.LinkIcon} />
+                    <PodcastsIcon className={styles.linkIcon} />
                     Now Playing
                   </a>
                 </Link>

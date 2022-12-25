@@ -1,8 +1,8 @@
-.Sidebar {
+.sidebar {
   position: fixed;
   width: 20rem;
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 976px) {
     padding: 8rem 2rem 4rem 2rem;
     background-color: var(--offset);
     box-shadow: 2px 0 4px rgba(var(--text), 0.15);
@@ -22,7 +22,7 @@
   }
 }
 
-.Toggle {
+.toggle {
   display: none;
   width: 4.5rem;
   height: 4.5rem;
@@ -37,14 +37,14 @@
   box-shadow: 0 0 2rem 1px rgba(var(--text), 0.2);
   cursor: pointer;
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 976px) {
     display: flex;
   }
 }
 
-.ToggleIcon,
-.ToggleIcon::before,
-.ToggleIcon::after {
+.toggleIcon,
+.toggleIcon::before,
+.toggleIcon::after {
   display: inline-block;
   width: 2.5rem;
   height: 2px;
@@ -53,7 +53,7 @@
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
-.ToggleIcon {
+.toggleIcon {
   position: relative;
 
   &::before,
@@ -70,7 +70,7 @@
   }
 }
 
-.ToggleIconWhenVisible {
+.toggleIconWhenVisible {
   background-color: transparent;
 
   &::before {
@@ -83,15 +83,15 @@
   }
 }
 
-.SidebarMobileVisible {
+.sidebarMobileVisible {
   transform: translateX(0);
 }
 
-.Nav {
+.nav {
   height: 100%;
 }
 
-.Logo {
+.logo {
   font-size: 2.8rem;
   padding-left: 2rem;
   margin-bottom: 10rem;
@@ -104,7 +104,7 @@
   }
 }
 
-.LogoLink {
+.logoLink {
   color: var(--primary);
   text-decoration: none;
 
@@ -114,20 +114,20 @@
   }
 }
 
-.Title {
+.title {
   color: var(--light-text);
   padding: 0 2rem;
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
 
-.ListItem {
+.listItem {
   list-style: none;
   display: flex;
   margin: 1rem 0;
 }
 
-.Link {
+.link {
   display: inline-flex;
   align-items: center;
   width: 100%;
@@ -146,18 +146,18 @@
   }
 }
 
-.LinkIcon {
+.linkIcon {
   fill: var(--text);
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
 }
 
-.ActiveLink {
+.activeLink {
   background-color: var(--secondary);
   color: var(--offset);
 
-  .LinkIcon {
+  .linkIcon {
     fill: var(--offset);
   }
 }

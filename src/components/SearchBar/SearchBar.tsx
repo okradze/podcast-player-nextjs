@@ -28,29 +28,27 @@ export const SearchBar = () => {
   }, [searchTerm])
 
   return (
-    <div className={styles.SearchBar}>
+    <section className={styles.container}>
       <input
-        className={`${styles.Input} ${searchTerm && styles.InputWhenSearching}`}
+        className={`${styles.input} ${searchTerm && styles.inputWhenSearching}`}
         type='search'
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         placeholder='Search shows and podcasts'
       />
       {searchTerm && (
-        <div className={styles.Results}>
-          <ul>
-            {isLoading && (
-              <div className={styles.Spinner}>
-                <Spinner />
-              </div>
-            )}
-            {searchResults?.map(podcast => (
-              <SearchBarItem clearSearch={() => setSearchTerm('')} key={podcast.id} {...podcast} />
-            ))}
-          </ul>
-        </div>
+        <ul className={styles.results}>
+          {isLoading && (
+            <div className={styles.spinner}>
+              <Spinner />
+            </div>
+          )}
+          {searchResults?.map(podcast => (
+            <SearchBarItem clearSearch={() => setSearchTerm('')} key={podcast.id} {...podcast} />
+          ))}
+        </ul>
       )}
-    </div>
+    </section>
   )
 }
 

@@ -1,6 +1,13 @@
 .header {
   margin-bottom: 6rem;
-  display: grid;
-  grid-template-columns: 1fr max-content;
+  display: flex;
   gap: 6rem;
+
+  @media screen and (max-width: 1200px) {
+    gap: 3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 }

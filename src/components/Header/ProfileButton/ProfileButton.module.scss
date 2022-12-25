@@ -3,14 +3,14 @@
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 768px) {
-    justify-content: flex-end;
-  }
-
   &:hover .dropdown,
   &:focus-within .dropdown {
     visibility: visible;
     opacity: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-end;
   }
 }
 
@@ -49,6 +49,7 @@
   right: 0;
   width: 15rem;
   border-radius: 3px;
+  background: var(--offset);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.2s;

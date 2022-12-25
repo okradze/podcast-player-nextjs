@@ -8,7 +8,7 @@ const Settings = () => {
   if (!me) return null
 
   return (
-    <section>
+    <section className={styles.section}>
       <h2 className={styles.title}>Settings</h2>
 
       <section className={styles.forms}>

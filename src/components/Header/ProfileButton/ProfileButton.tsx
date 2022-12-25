@@ -28,7 +28,7 @@ export const ProfileButton = ({ fullName }: ProfileButtonProps) => {
         <ul className={styles.dropdownList}>
           <li>
             <Link href='/settings'>
-              <a className={styles.dropdownButton} href=''>
+              <a className={styles.dropdownButton}>
                 <SettingsIcon className={styles.dropdownIcon} /> Settings
               </a>
             </Link>

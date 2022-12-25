@@ -1,14 +1,14 @@
-.Item {
+.item {
   display: flex;
 }
 
-.Content {
+.content {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.ImageWrapper {
+.imageWrapper {
   height: 15rem;
   width: 15rem;
   background-color: var(--bg);
@@ -24,17 +24,17 @@
   }
 }
 
-.Image {
+.image {
   width: 100%;
 }
 
-.Title {
+.title {
   @media only screen and (max-width: 340px) {
     font-size: 1.5rem;
   }
 }
 
-.Publisher {
+.publisher {
   color: var(--light-text);
   font-weight: 600;
   font-size: 1.4rem;

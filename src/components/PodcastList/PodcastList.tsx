@@ -1,4 +1,5 @@
 import React from 'react'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { IPodcast } from '@/api/podcasts'
 import PodcastItem from './PodcastItem'
 import styles from './PodcastList.module.scss'
@@ -10,15 +11,22 @@ type PodcastListProps = {
 }
 
 export const PodcastList = ({ podcasts, title, isSmallerTitle }: PodcastListProps) => (
-  <section className={styles.Wrapper}>
-    <h2 className={`${styles.Title} ${isSmallerTitle ? styles.SmallTitle : ''}`}>{title}</h2>
-    <ul className={styles.List}>
+  <section className={styles.section}>
+    <h2 className={`${styles.title} ${isSmallerTitle ? styles.smallTitle : ''}`}>{title}</h2>
+    <TransitionGroup component='ul' className={styles.list}>
       {podcasts.map(podcast => (
-        <li className={styles.Item} key={podcast.id}>
+        <CSSTransition
+          key={podcast.id}
+          timeout={300}
+          unmountOnExit
+          classNames={{
+            exitActive: styles.itemExitActive,
+          }}
+        >
           <PodcastItem {...podcast} />
-        </li>
+        </CSSTransition>
       ))}
-    </ul>
+    </TransitionGroup>
   </section>
 )
 

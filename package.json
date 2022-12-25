@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-final-form": "^6.5.9",
     "react-redux": "^8.0.2",
+    "react-transition-group": "^4.4.5",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {

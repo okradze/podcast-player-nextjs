@@ -6,17 +6,17 @@ import Button from '@/components/Button'
 import PodcastFavoriteButton from '@/components/PodcastFavoriteButton'
 import styles from './PodcastItem.module.scss'
 
-export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPodcast) => {
-  return (
-    <article className={styles.Item}>
-      <div className={styles.ImageWrapper}>
-        <Image width={150} height={150} className={styles.Image} src={thumbnail} alt={title} />
+export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPodcast) => (
+  <li>
+    <article className={styles.item}>
+      <div className={styles.imageWrapper}>
+        <Image width={150} height={150} className={styles.image} src={thumbnail} alt={title} />
       </div>
-      <div className={styles.Content}>
-        <EllipsisText tagName='p' className={styles.Publisher}>
+      <div className={styles.content}>
+        <EllipsisText tagName='p' className={styles.publisher}>
           {publisher}
         </EllipsisText>
-        <EllipsisText tagName='h4' className={styles.Title}>
+        <EllipsisText tagName='h4' className={styles.title}>
           {title}
         </EllipsisText>
 
@@ -31,7 +31,7 @@ export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPo
         </section>
       </div>
     </article>
-  )
-}
+  </li>
+)
 
 export default PodcastItem

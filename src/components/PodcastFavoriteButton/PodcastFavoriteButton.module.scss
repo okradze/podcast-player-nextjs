@@ -15,3 +15,24 @@
   width: 2rem;
   height: 2rem;
 }
+
+.enter {
+  opacity: 0;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.enterActive {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+}
+
+.enterActive,
+.exitActive {
+  transition: opacity 0.2s;
+}

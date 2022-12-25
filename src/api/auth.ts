@@ -8,22 +8,22 @@ export interface ITokensResponse {
   refreshToken: string
 }
 
-export interface ISignupBody extends ISigninBody {
+export interface ISignUpBody extends ISignInBody {
   fullName: string
 }
 
-export const signup = (body: ISignupBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/signup', body)
+export const signUp = (body: ISignUpBody) =>
+  client.post<any, AxiosResponse<Me>>('/auth/sign-up', body)
 
-export interface ISigninBody {
+export interface ISignInBody {
   email: string
   password: string
 }
 
-export const signin = (body: ISigninBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/signin', body)
+export const signIn = (body: ISignInBody) =>
+  client.post<any, AxiosResponse<Me>>('/auth/sign-in', body)
 
-export const signOut = () => client.post('/auth/signout')
+export const signOut = () => client.post('/auth/sign-out')
 
 export const refresh = (token?: string) =>
   client.post<any, AxiosResponse<ITokensResponse>>('/auth/refresh', undefined, {

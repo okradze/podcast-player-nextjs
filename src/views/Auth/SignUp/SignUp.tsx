@@ -26,7 +26,7 @@ const SignUp: NextPage = () => {
 
   const onSubmit = async (values: SignUpFields, form: FormApi<SignUpFields, SignUpFields>) => {
     try {
-      const { data } = await authApi.signup(values)
+      const { data } = await authApi.signUp(values)
       resetAuth()
       dispatch(setMe(data))
       router.push('/')

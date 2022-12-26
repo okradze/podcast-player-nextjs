@@ -1,7 +1,15 @@
 import { AxiosResponse } from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import { Me } from '@/store/auth/authSlice'
-import client from './client'
+import client, { ApiClient } from './client'
+
+export class AuthApi {
+  constructor(private readonly client: ApiClient) {}
+
+  me() {
+    return this.client.get<Me>('/auth/me')
+  }
+}
 
 export interface ITokensResponse {
   accessToken: string

@@ -1,7 +1,7 @@
 import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
 import { useDispatch } from 'react-redux'
-import { authApi } from '@/api'
+import { clientApi } from '@/api'
 import { setMe } from '@/store/auth/authSlice'
 import useMe from '@/hooks/useMe'
 import { validateFullName } from '@/utils/validators'
@@ -19,12 +19,9 @@ const UpdateUserForm = () => {
   if (!me) return null
 
   const onSubmit = async (values: UpdateUserFormFields) => {
-    try {
-      const { data } = await authApi.updateUser(values)
-      dispatch(setMe(data))
-    } catch (error) {
-      return { [FORM_ERROR]: 'Something went wrong' }
-    }
+    const { data, error } = await clientApi.auth.updateUser(values)
+    if (error) return { [FORM_ERROR]: error.message }
+    dispatch(setMe(data))
   }
 
   return (

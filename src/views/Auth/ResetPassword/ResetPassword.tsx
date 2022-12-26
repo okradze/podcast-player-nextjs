@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { FORM_ERROR } from 'final-form'
 import { useRouter } from 'next/router'
 import { Field, Form } from 'react-final-form'
-import { authApi } from '@/api'
+import { clientApi } from '@/api'
 import { validatePassword } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
@@ -26,11 +26,8 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
     return <h2 className={styles.expiredHeading}>Reset link is expired</h2>
 
   const onSubmit = async (values: ResetPasswordFields) => {
-    try {
-      await authApi.resetPassword(token, values)
-    } catch (error) {
-      return { [FORM_ERROR]: 'Something went wrong' }
-    }
+    const { error } = await clientApi.auth.resetPassword(token, values)
+    if (error) return { [FORM_ERROR]: 'Something went wrong' }
   }
 
   return (

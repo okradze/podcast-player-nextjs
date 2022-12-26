@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
-import { authApi } from '@/api'
+import { clientApi } from '@/api'
 import { validateEmail } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
@@ -14,11 +14,8 @@ interface ForgotPasswordFields {
 
 const ForgotPassword: NextPage = () => {
   const onSubmit = async (values: ForgotPasswordFields) => {
-    try {
-      await authApi.forgotPassword(values)
-    } catch (error) {
-      return { [FORM_ERROR]: 'Something went wrong' }
-    }
+    const { error } = await clientApi.auth.forgotPassword(values)
+    if (error) return { [FORM_ERROR]: 'Something went wrong' }
   }
 
   return (

@@ -1,7 +1,5 @@
-import { AxiosResponse } from 'axios'
-import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import { Me } from '@/store/auth/authSlice'
-import client, { ApiClient } from './client'
+import { ApiClient } from './client'
 
 export class AuthApi {
   constructor(private readonly client: ApiClient) {}
@@ -27,60 +25,62 @@ export class AuthApi {
       headers: { Authorization: `Bearer ${refreshToken}` },
     })
   }
+
+  forgotPassword(body: IForgotPasswordBody) {
+    return this.client.post('/auth/forgot-password', body)
+  }
+
+  resetPassword(resetToken: string, body: IResetPasswordBody) {
+    return this.client.post(`/auth/reset-password/${resetToken}`, body)
+  }
+
+  fetchResetPasswordUser(resetToken: string) {
+    return this.client.get<IResetPasswordUserResponse>(`/auth/reset-password/${resetToken}`)
+  }
+
+  changePassword(body: IChangePasswordBody) {
+    return this.client.post('/auth/change-password', body)
+  }
+
+  updateUser(body: IUpdateUserBody) {
+    return this.client.patch<Me>('/auth/update-user', body)
+  }
 }
 
-export interface ITokensResponse {
+interface ITokensResponse {
   accessToken: string
   refreshToken: string
 }
 
-export interface ISignUpBody extends ISignInBody {
+interface ISignUpBody extends ISignInBody {
   fullName: string
 }
 
-export interface ISignInBody {
+interface ISignInBody {
   email: string
   password: string
 }
 
-export interface IForgotPasswordBody {
+interface IForgotPasswordBody {
   email: string
 }
 
-export const forgotPassword = (body: IForgotPasswordBody) =>
-  client.post<AxiosResponse<{ message: string }>, AxiosResponse<{ mes: string }>>(
-    '/auth/forgot-password',
-    body,
-  )
-
-export interface IResetPasswordBody {
+interface IResetPasswordBody {
   password: string
 }
-
-export const resetPassword = (resetToken: string, body: IResetPasswordBody) =>
-  client.post(`/auth/reset-password/${resetToken}`, body)
 
 interface IResetPasswordUserResponse {
   fullName: string
 }
-
-export const fetchResetPasswordUser = (resetToken: string) =>
-  client.get<any, AxiosResponse<IResetPasswordUserResponse>>(`/auth/reset-password/${resetToken}`)
 
 interface IChangePasswordBody {
   currentPassword: string
   password: string
 }
 
-export const changePassword = (body: IChangePasswordBody) =>
-  client.post('/auth/change-password', body)
-
 interface IUpdateUserBody {
   fullName: string
 }
-
-export const updateUser = (body: IUpdateUserBody) =>
-  client.patch<any, AxiosResponse<Me>>('/auth/update-user', body)
 
 // const refreshAuthLogic = async (failedRequest: any) => {
 //   // console.log(failedRequest)

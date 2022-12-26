@@ -1,5 +1,3 @@
-import { FieldState } from 'final-form'
-
 export const validatePasswordRequired = (password?: string) => {
   if (!password) return 'Password is required'
 }
@@ -9,7 +7,7 @@ export const validateFullName = (fullName?: string) => {
 }
 
 export const validateEmail = (email?: string) => {
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g
   if (!email || !regex.test(email)) return 'Email is not valid'
 }
 

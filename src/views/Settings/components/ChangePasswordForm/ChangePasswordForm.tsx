@@ -1,6 +1,6 @@
 import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
-import { authApi } from '@/api'
+import { clientApi } from '@/api'
 import { validatePassword, validatePasswordRequired } from '@/utils/validators'
 import Button from '@/components/Button'
 import Input from '@/components/Input'
@@ -13,11 +13,8 @@ interface ChangePasswordFormFields {
 
 const ChangePasswordForm = () => {
   const onSubmit = async (values: ChangePasswordFormFields) => {
-    try {
-      await authApi.changePassword(values)
-    } catch (error) {
-      return { [FORM_ERROR]: 'Invalid current password' }
-    }
+    const { error } = await clientApi.auth.changePassword(values)
+    if (error) return { [FORM_ERROR]: error.message }
   }
 
   return (

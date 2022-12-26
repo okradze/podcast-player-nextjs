@@ -84,4 +84,18 @@ export class ApiClient {
       return this.handleError(error)
     }
   }
+
+  async patch<T>(url: string, body?: unknown, config?: RequestConfig): Promise<Result<T>> {
+    try {
+      const { data, headers } = await this.httpClient.patch<T>(
+        url,
+        body,
+        this.getRequestConfig(config),
+      )
+
+      return { data, error: null, headers }
+    } catch (error) {
+      return this.handleError(error)
+    }
+  }
 }

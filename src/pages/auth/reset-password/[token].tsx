@@ -1,21 +1,16 @@
 import { GetServerSideProps } from 'next'
-import { authApi } from '@/api'
 import { withAuth } from '@/helpers/auth'
 import ResetPassword from '@/views/Auth/ResetPassword'
 
 export default ResetPassword
 
 export const getServerSideProps: GetServerSideProps = withAuth({
-  callback: async ({ user, ctx }) => {
+  callback: async ({ user, ctx, api }) => {
     const token = ctx.params?.token
     if (!token || typeof token !== 'string' || user)
       return { redirect: { destination: '/', permanent: false } }
 
-    try {
-      const { data } = await authApi.fetchResetPasswordUser(token)
-      return { props: data }
-    } catch (error) {
-      return { props: { isTokenExpired: true } }
-    }
+    const { data, error } = await api.auth.fetchResetPasswordUser(token)
+    return error ? { props: { isTokenExpired: true } } : { props: data }
   },
 })

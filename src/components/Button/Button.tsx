@@ -1,5 +1,4 @@
 import React, { forwardRef, LegacyRef } from 'react'
-import { ForwardRefRenderFunction } from 'react'
 import styles from './Button.module.scss'
 
 type ButtonProps = {

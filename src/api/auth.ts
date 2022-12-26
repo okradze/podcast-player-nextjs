@@ -6,8 +6,26 @@ import client, { ApiClient } from './client'
 export class AuthApi {
   constructor(private readonly client: ApiClient) {}
 
+  signUp(body: ISignUpBody) {
+    return this.client.post<Me>('/auth/sign-up', body)
+  }
+
+  signIn(body: ISignInBody) {
+    return this.client.post<Me>('/auth/sign-in', body)
+  }
+
+  signOut() {
+    return this.client.post('/auth/sign-out')
+  }
+
   me() {
     return this.client.get<Me>('/auth/me')
+  }
+
+  refresh(refreshToken: string) {
+    return this.client.post<ITokensResponse>('/auth/refresh', undefined, {
+      headers: { Authorization: `Bearer ${refreshToken}` },
+    })
   }
 }
 
@@ -20,29 +38,10 @@ export interface ISignUpBody extends ISignInBody {
   fullName: string
 }
 
-export const signUp = (body: ISignUpBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/sign-up', body)
-
 export interface ISignInBody {
   email: string
   password: string
 }
-
-export const signIn = (body: ISignInBody) =>
-  client.post<any, AxiosResponse<Me>>('/auth/sign-in', body)
-
-export const signOut = () => client.post('/auth/sign-out')
-
-export const refresh = (token?: string) =>
-  client.post<any, AxiosResponse<ITokensResponse>>('/auth/refresh', undefined, {
-    headers: { Authorization: `Bearer ${token}` },
-    skipAuthRefresh: true,
-  })
-
-export const me = (token?: string) =>
-  client.get<any, AxiosResponse<Me>>('/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  })
 
 export interface IForgotPasswordBody {
   email: string
@@ -83,17 +82,17 @@ interface IUpdateUserBody {
 export const updateUser = (body: IUpdateUserBody) =>
   client.patch<any, AxiosResponse<Me>>('/auth/update-user', body)
 
-const refreshAuthLogic = async (failedRequest: any) => {
-  // console.log(failedRequest)
-  console.log('refresh auth logic')
+// const refreshAuthLogic = async (failedRequest: any) => {
+//   // console.log(failedRequest)
+//   console.log('refresh auth logic')
 
-  return refresh().then(res => {
-    const cookie = res.headers['set-cookie']
-    failedRequest.response.config.headers['set-cookie'] = cookie
-    // console.log({ failedRequest, cookie })
-    return Promise.resolve()
-  })
-  // .catch(console.log)
-}
+//   return refresh().then(res => {
+//     const cookie = res.headers['set-cookie']
+//     failedRequest.response.config.headers['set-cookie'] = cookie
+//     // console.log({ failedRequest, cookie })
+//     return Promise.resolve()
+//   })
+//   // .catch(console.log)
+// }
 
-createAuthRefreshInterceptor(client, refreshAuthLogic)
+// createAuthRefreshInterceptor(client, refreshAuthLogic)

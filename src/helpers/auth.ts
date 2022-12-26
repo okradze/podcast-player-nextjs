@@ -1,7 +1,7 @@
 import { AnyAction, Store } from '@reduxjs/toolkit'
 import { GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { Api, authApi } from '@/api'
+import { Api } from '@/api'
 import { wrapper } from '@/store'
 import { RootState } from '@/store/rootReducer'
 import { Me, reset, setMe } from '@/store/auth/authSlice'
@@ -43,17 +43,18 @@ export const withAuth = ({ callback }: WithAuthProps) =>
     }
 
     if (!accessToken) {
-      try {
-        const { data, headers } = await authApi.refresh(refreshToken)
-        const cookies = headers['set-cookie']
-        accessToken = data.accessToken
+      const { data, error, headers } = await api.auth.refresh(refreshToken)
 
-        if (cookies) {
-          ctx.res.setHeader('set-cookie', cookies)
-        }
-      } catch (error) {
+      if (error) {
         store.dispatch(reset())
         return callback ? callback({ user, store, ctx, api }) : { props: {} }
+      }
+
+      const cookies = headers['set-cookie']
+      accessToken = data.accessToken
+
+      if (cookies) {
+        ctx.res.setHeader('set-cookie', cookies)
       }
     }
 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import * as authApi from '@/api/auth'
+import { clientApi } from '@/api'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
 import styles from './ProfileButton.module.scss'
@@ -13,7 +13,7 @@ export const ProfileButton = ({ fullName }: ProfileButtonProps) => {
   const router = useRouter()
 
   const handleSignOut = async () => {
-    await authApi.signOut()
+    await clientApi.auth.signOut()
     router.reload()
   }
 

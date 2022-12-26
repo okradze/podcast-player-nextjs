@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Field, Form } from 'react-final-form'
 import { FormApi, FORM_ERROR } from 'final-form'
-import { authApi } from '@/api'
+import { authApi, clientApi } from '@/api'
 import { setMe } from '@/store/auth/authSlice'
 import useAuthReset from '@/hooks/useAuthReset'
 import { validateFullName, validateEmail, validatePassword } from '@/utils/validators'
@@ -25,15 +25,16 @@ const SignUp: NextPage = () => {
   const resetAuth = useAuthReset()
 
   const onSubmit = async (values: SignUpFields, form: FormApi<SignUpFields, SignUpFields>) => {
-    try {
-      const { data } = await authApi.signUp(values)
-      resetAuth()
-      dispatch(setMe(data))
-      router.push('/')
-    } catch (error) {
+    const { data, error } = await clientApi.auth.signUp(values)
+
+    if (error) {
       form.restart()
-      return { [FORM_ERROR]: 'Failed to sign up' }
+      return { [FORM_ERROR]: error.message }
     }
+
+    resetAuth()
+    dispatch(setMe(data))
+    router.push('/')
   }
 
   return (

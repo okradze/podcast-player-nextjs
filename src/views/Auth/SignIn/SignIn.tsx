@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Field, Form } from 'react-final-form'
 import { FormApi, FORM_ERROR } from 'final-form'
-import { authApi } from '@/api'
+import { authApi, clientApi } from '@/api'
 import { setMe } from '@/store/auth/authSlice'
 import useAuthReset from '@/hooks/useAuthReset'
 import { validateEmail, validatePasswordRequired } from '@/utils/validators'
@@ -24,15 +24,16 @@ const SignIn: NextPage = () => {
   const resetAuth = useAuthReset()
 
   const onSubmit = async (values: SignInFields, form: FormApi<SignInFields, SignInFields>) => {
-    try {
-      const { data } = await authApi.signIn(values)
-      resetAuth()
-      dispatch(setMe(data))
-      router.push('/')
-    } catch (error) {
+    const { data, error } = await clientApi.auth.signIn(values)
+
+    if (error) {
       form.restart()
-      return { [FORM_ERROR]: 'Email or password is incorrect' }
+      return { [FORM_ERROR]: error.message }
     }
+
+    resetAuth()
+    dispatch(setMe(data))
+    router.push('/')
   }
 
   return (

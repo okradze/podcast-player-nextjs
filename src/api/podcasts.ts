@@ -1,5 +1,17 @@
 import { AxiosResponse } from 'axios'
-import client from './client'
+import client, { ApiClient } from './client'
+
+export class PodcastsApi {
+  constructor(private readonly client: ApiClient) {}
+
+  fetchBestPodcasts(page: number) {
+    return this.client.get<IBestPodcasts>(`/podcasts/best?page=${page}`)
+  }
+
+  fetchCuratedPodcasts(page: number) {
+    return this.client.get<ICuratedPodcasts>(`/podcasts/curated?page=${page}`)
+  }
+}
 
 export interface IPodcast {
   id: string
@@ -15,11 +27,6 @@ export interface IBestPodcasts {
   page_number: number
 }
 
-export const fetchBestPodcasts = (page: number, token?: string) =>
-  client.get<any, AxiosResponse<IBestPodcasts>>(`/podcasts/best?page=${page}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-
 export interface ICuratedPodcastList {
   id: string
   title: string
@@ -31,11 +38,6 @@ export interface ICuratedPodcasts {
   has_next: boolean
   page_number: number
 }
-
-export const fetchCuratedPodcasts = (page: number, token?: string) =>
-  client.get<any, AxiosResponse<ICuratedPodcasts>>(`/podcasts/curated?page=${page}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
 
 export interface IPodcastDetails extends IPodcast {
   episodes: IEpisode[]

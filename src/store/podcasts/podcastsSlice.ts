@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import { podcastsApi } from '@/api'
+import { clientApi } from '@/api'
 import { IBestPodcasts, IPodcast } from '@/api/podcasts'
 
 export interface PodcastsState {
@@ -8,7 +8,6 @@ export interface PodcastsState {
   lastFetchedPage: number | null
   hasNextPage: boolean
   podcasts: IPodcast[]
-  error: string | null
 }
 
 export const initialState: PodcastsState = {
@@ -16,7 +15,6 @@ export const initialState: PodcastsState = {
   lastFetchedPage: null,
   hasNextPage: false,
   podcasts: [],
-  error: null,
 }
 
 export const podcastsSlice = createSlice({
@@ -30,7 +28,6 @@ export const podcastsSlice = createSlice({
       const { has_next, page_number, podcasts } = action.payload
 
       state.isFetching = false
-      state.error = null
       state.hasNextPage = has_next
       state.lastFetchedPage = page_number
       state.podcasts = [...state.podcasts, ...podcasts]
@@ -41,9 +38,6 @@ export const podcastsSlice = createSlice({
       if (podcast) {
         podcast.isFavorite = !podcast.isFavorite
       }
-    },
-    setError(state, action) {
-      state.error = action.payload
     },
     reset() {
       return { ...initialState }
@@ -62,17 +56,12 @@ export const podcastsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPodcasts, setError, reset, toggleFavoritePodcast } =
-  podcastsSlice.actions
+export const { setLoading, setPodcasts, reset, toggleFavoritePodcast } = podcastsSlice.actions
 
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
-  try {
-    dispatch(setLoading())
-    const { data } = await podcastsApi.fetchBestPodcasts(page)
-    dispatch(setPodcasts(data))
-  } catch (error) {
-    dispatch(setError(error))
-  }
+  dispatch(setLoading())
+  const { data } = await clientApi.podcasts.fetchBestPodcasts(page)
+  if (data) dispatch(setPodcasts(data))
 }
 
 export default podcastsSlice.reducer

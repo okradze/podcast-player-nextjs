@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import { podcastsApi } from '@/api'
+import { clientApi } from '@/api'
 import { ICuratedPodcastList, ICuratedPodcasts } from '@/api/podcasts'
 
 export interface DiscoverPodcastsState {
@@ -8,7 +8,6 @@ export interface DiscoverPodcastsState {
   lastFetchedPage: number | null
   hasNextPage: boolean
   curated_lists: ICuratedPodcastList[]
-  error: string | null
 }
 
 export const initialState: DiscoverPodcastsState = {
@@ -16,7 +15,6 @@ export const initialState: DiscoverPodcastsState = {
   isFetching: false,
   hasNextPage: false,
   lastFetchedPage: null,
-  error: null,
 }
 
 export const discoverPodcastsSlice = createSlice({
@@ -30,7 +28,6 @@ export const discoverPodcastsSlice = createSlice({
       const { has_next, page_number, curated_lists } = action.payload
 
       state.isFetching = false
-      state.error = null
       state.hasNextPage = has_next
       state.lastFetchedPage = page_number
       state.curated_lists = [...state.curated_lists, ...curated_lists]
@@ -44,9 +41,7 @@ export const discoverPodcastsSlice = createSlice({
         }
       })
     },
-    setError(state, action) {
-      state.error = action.payload
-    },
+
     reset() {
       return { ...initialState }
     },
@@ -64,17 +59,13 @@ export const discoverPodcastsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPodcastLists, toggleFavoritePodcast, setError, reset } =
+export const { setLoading, setPodcastLists, toggleFavoritePodcast, reset } =
   discoverPodcastsSlice.actions
 
 export const fetchPodcastLists = async (dispatch: Dispatch, page: number) => {
-  try {
-    dispatch(setLoading())
-    const { data } = await podcastsApi.fetchCuratedPodcasts(page)
-    dispatch(setPodcastLists(data))
-  } catch (error) {
-    dispatch(setError(error))
-  }
+  dispatch(setLoading())
+  const { data } = await clientApi.podcasts.fetchCuratedPodcasts(page)
+  if (data) dispatch(setPodcastLists(data))
 }
 
 export default discoverPodcastsSlice.reducer

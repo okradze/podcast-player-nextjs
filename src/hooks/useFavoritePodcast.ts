@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux'
-import { podcastsApi } from '@/api'
+import { clientApi } from '@/api'
 import { addFavorite, removeFavoriteById } from '@/store/favorites/favoritesSlice'
-import { toggleFavoritePodcast } from '@/store/podcasts/podcastsSlice'
+import { toggleFavoritePodcast as toggleFavoritePodcastInHome } from '@/store/podcasts/podcastsSlice'
 import { toggleFavoritePodcast as toggleFavoritePodcastInDiscover } from '@/store/discoverPodcasts/discoverPodcastsSlice'
 import {
   toggleFavoritePodcastInRecommendations,
-  toggleFavoritePodcast as toggleFavoriteInPodcastDetails,
+  toggleFavoritePodcast as toggleFavoritePodcastInDetails,
 } from '@/store/podcast/podcastSlice'
 
 type UseFavoritePodcastProps = {
@@ -16,26 +16,24 @@ type UseFavoritePodcastProps = {
 const useFavoritePodcast = ({ isFavorite = false, id }: UseFavoritePodcastProps) => {
   const dispatch = useDispatch()
 
-  const updateFavoritePodcast = () => {
-    dispatch(toggleFavoritePodcast(id))
+  const toggleFavoritePodcast = () => {
+    dispatch(toggleFavoritePodcastInHome(id))
     dispatch(toggleFavoritePodcastInDiscover(id))
     dispatch(toggleFavoritePodcastInRecommendations(id))
-    dispatch(toggleFavoriteInPodcastDetails(id))
+    dispatch(toggleFavoritePodcastInDetails(id))
   }
 
   const addOrRemoveFavorite = async () => {
-    try {
-      updateFavoritePodcast()
+    toggleFavoritePodcast()
 
-      if (isFavorite) {
-        await podcastsApi.removePodcastFromFavorites(id)
-        dispatch(removeFavoriteById(id))
-      } else {
-        const { data } = await podcastsApi.addPodcastToFavorites(id)
-        dispatch(addFavorite(data))
-      }
-    } catch (error) {
-      updateFavoritePodcast()
+    if (isFavorite) {
+      const { error } = await clientApi.podcasts.removePodcastFromFavorites(id)
+      if (error) return toggleFavoritePodcast()
+      dispatch(removeFavoriteById(id))
+    } else {
+      const { data, error } = await clientApi.podcasts.addPodcastToFavorites(id)
+      if (error) return toggleFavoritePodcast()
+      if (data) dispatch(addFavorite(data))
     }
   }
 

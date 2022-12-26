@@ -1,5 +1,4 @@
-import { AxiosResponse } from 'axios'
-import client, { ApiClient } from './client'
+import { ApiClient } from './client'
 
 export class PodcastsApi {
   constructor(private readonly client: ApiClient) {}
@@ -10,6 +9,35 @@ export class PodcastsApi {
 
   fetchCuratedPodcasts(page: number) {
     return this.client.get<ICuratedPodcasts>(`/podcasts/curated?page=${page}`)
+  }
+
+  fetchPodcast(podcastId: string) {
+    return this.client.get<IPodcastDetails>(`/podcasts/${podcastId}`)
+  }
+
+  fetchRecommendations(podcastId: string) {
+    return this.client.get<IRecommendations>(`/podcasts/${podcastId}/recommendations`)
+  }
+
+  fetchEpisodes(podcastId: string, nextEpisodePubDate: number) {
+    return this.client.get<IPodcastDetails>(
+      `/podcasts/${podcastId}?nextEpisodePubDate=${nextEpisodePubDate}`,
+    )
+  }
+
+  fetchTypeahead(searchTerm: string) {
+    return this.client.get<ITypeahead>(`/podcasts/typeahead?q=${searchTerm}`)
+  }
+  fetchFavoritePodcasts() {
+    return this.client.get<IPodcast[]>('/podcasts/favorites')
+  }
+
+  addPodcastToFavorites(id: string) {
+    return this.client.post<IPodcast>(`/podcasts/favorites/${id}`)
+  }
+
+  removePodcastFromFavorites(id: string) {
+    return this.client.delete(`/podcasts/favorites/${id}`)
   }
 }
 
@@ -54,24 +82,9 @@ export interface IEpisode {
   audio_length_sec: number
 }
 
-export const fetchPodcast = (podcastId: string, token?: string) =>
-  client.get<any, AxiosResponse<IPodcastDetails>>(`/podcasts/${podcastId}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-
 export interface IRecommendations {
   recommendations: IPodcast[]
 }
-
-export const fetchRecommendations = (podcastId: string, token?: string) =>
-  client.get<any, AxiosResponse<IRecommendations>>(`/podcasts/${podcastId}/recommendations`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-
-export const fetchEpisodes = (podcastId: string, nextEpisodePubDate: number) =>
-  client.get<any, AxiosResponse<IPodcastDetails>>(
-    `/podcasts/${podcastId}?nextEpisodePubDate=${nextEpisodePubDate}`,
-  )
 
 export interface ITypeahead {
   podcasts: ITypeaheadPodcast[]
@@ -83,15 +96,3 @@ export interface ITypeaheadPodcast {
   publisher_original: string
   thumbnail: string
 }
-
-export const fetchTypeahead = (searchTerm: string) =>
-  client.get<any, AxiosResponse<ITypeahead>>(`/podcasts/typeahead?q=${searchTerm}`)
-
-export const fetchFavoritePodcasts = (token?: string) =>
-  client.get<any, AxiosResponse<IPodcast[]>>('/podcasts/favorites', {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-
-export const addPodcastToFavorites = (id: string) => client.post(`/podcasts/favorites/${id}`)
-
-export const removePodcastFromFavorites = (id: string) => client.delete(`/podcasts/favorites/${id}`)

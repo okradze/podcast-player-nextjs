@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
-import { podcastsApi } from '@/api'
+import { clientApi } from '@/api'
 import { IPodcast, IPodcastDetails } from '@/api/podcasts'
 
 export interface PodcastState {
@@ -76,13 +76,9 @@ export const fetchEpisodes = async (
   podcastId: string,
   next_episode_pub_date: number,
 ) => {
-  try {
-    dispatch(setEpisodesLoading())
-
-    const { data } = await podcastsApi.fetchEpisodes(podcastId, next_episode_pub_date)
-
-    dispatch(setEpisodes(data))
-  } catch (error) {}
+  dispatch(setEpisodesLoading())
+  const { data } = await clientApi.podcasts.fetchEpisodes(podcastId, next_episode_pub_date)
+  if (data) dispatch(setEpisodes(data))
 }
 
 export default podcastSlice.reducer

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { podcastsApi } from '@/api'
+import { clientApi } from '@/api'
 import { ITypeaheadPodcast } from '@/api/podcasts'
 import Spinner from '@/components/Spinner'
 import SearchBarItem from './SearchBarItem'
@@ -11,16 +11,14 @@ export const SearchBar = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (searchTerm) {
-      const search = async () => {
-        setIsLoading(true)
-        const {
-          data: { podcasts },
-        } = await podcastsApi.fetchTypeahead(searchTerm)
-        if (podcasts.length) setSearchResults(podcasts)
-        setIsLoading(false)
-      }
+    const search = async () => {
+      setIsLoading(true)
+      const { data } = await clientApi.podcasts.fetchTypeahead(searchTerm)
+      if (data?.podcasts.length) setSearchResults(data.podcasts)
+      setIsLoading(false)
+    }
 
+    if (searchTerm) {
       search()
     } else {
       setSearchResults(undefined)

@@ -71,6 +71,15 @@ export class ApiClient {
     }
   }
 
+  async delete<T>(url: string, config?: RequestConfig): Promise<Result<T>> {
+    try {
+      const { data, headers } = await this.httpClient.delete<T>(url, this.getRequestConfig(config))
+      return { data, error: null, headers }
+    } catch (error) {
+      return this.handleError(error)
+    }
+  }
+
   async post<T>(url: string, body?: unknown, config?: RequestConfig): Promise<Result<T>> {
     try {
       const { data, headers } = await this.httpClient.post<T>(

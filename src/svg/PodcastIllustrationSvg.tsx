@@ -1,10 +1,5 @@
 const PodcastIllustrationSvg = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    data-name='Layer 1'
-    viewBox='0 0 727.48999 721.33535'
-    {...props}
-  >
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 727.48999 721.33535' {...props}>
     <path
       d='M463.813,126.50433V582.27464H758.516v-466.796A361.626,361.626,0,0,0,463.813,126.50433Z'
       transform='translate(-236.255 -89.33232)'

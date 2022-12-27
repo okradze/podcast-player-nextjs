@@ -1,0 +1,21 @@
+.section {
+  padding-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.svgWrapper {
+  margin: 6rem auto 0 auto;
+  max-width: 40rem;
+
+  @media screen and (max-width: 768px) {
+    max-width: 30rem;
+  }
+}
+
+.svg {
+  max-width: 100%;
+}

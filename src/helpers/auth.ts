@@ -15,7 +15,6 @@ export type ContextWithStore = Omit<
 
 export type CallbackArgs = {
   user: Me | null
-  accessToken?: string
   store: Store<RootState, AnyAction>
   ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
   api: Api
@@ -65,5 +64,5 @@ export const withAuth = ({ callback }: WithAuthProps) =>
       store.dispatch(setMe(user))
     }
 
-    return callback ? callback({ user, accessToken, store, ctx, api }) : { props: {} }
+    return callback ? callback({ user, store, ctx, api }) : { props: {} }
   })

@@ -3,13 +3,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Field, Form } from 'react-final-form'
-import { FormApi, FORM_ERROR } from 'final-form'
+import { FORM_ERROR } from 'final-form'
 import { clientApi } from '@/api'
 import { setMe } from '@/store/auth/authSlice'
 import useAuthReset from '@/hooks/useAuthReset'
 import { validateFullName, validateEmail, validatePassword } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
-import Input from '@/components/Input'
+import { EmailInput, PasswordInput, FullNameInput } from '@/components/Input'
 import Button from '@/components/Button'
 import styles from './SignUp.module.scss'
 
@@ -24,7 +24,7 @@ const SignUp: NextPage = () => {
   const router = useRouter()
   const resetAuth = useAuthReset()
 
-  const onSubmit = async (values: SignUpFields, form: FormApi<SignUpFields, SignUpFields>) => {
+  const onSubmit = async (values: SignUpFields) => {
     const { data, error } = await clientApi.auth.signUp(values)
     if (error) return { [FORM_ERROR]: error.message }
 
@@ -42,38 +42,11 @@ const SignUp: NextPage = () => {
       <Form onSubmit={onSubmit}>
         {({ handleSubmit, submitting, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <Field name='fullName' validate={validateFullName}>
-              {({ input, meta }) => (
-                <Input
-                  label='Full Name'
-                  placeholder='John Doe'
-                  error={meta.touched && meta.error}
-                  {...input}
-                />
-              )}
-            </Field>
+            <Field name='fullName' component={FullNameInput} validate={validateFullName} />
 
-            <Field name='email' validate={validateEmail}>
-              {({ input, meta }) => (
-                <Input
-                  label='Email'
-                  placeholder='mail@website.com'
-                  error={meta.touched && meta.error}
-                  {...input}
-                />
-              )}
-            </Field>
+            <Field name='email' component={EmailInput} validate={validateEmail} />
 
-            <Field name='password' validate={validatePassword}>
-              {({ input, meta }) => (
-                <Input
-                  label='Password'
-                  type='password'
-                  error={meta.touched && meta.error}
-                  {...input}
-                />
-              )}
-            </Field>
+            <Field name='password' component={PasswordInput} validate={validatePassword} />
 
             {submitError && <p className={styles.error}>{submitError}</p>}
 

@@ -3,13 +3,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Field, Form } from 'react-final-form'
-import { FormApi, FORM_ERROR } from 'final-form'
+import { FORM_ERROR } from 'final-form'
 import { clientApi } from '@/api'
 import { setMe } from '@/store/auth/authSlice'
 import useAuthReset from '@/hooks/useAuthReset'
 import { validateEmail, validatePasswordRequired } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
-import Input from '@/components/Input'
+import { EmailInput, PasswordInput } from '@/components/Input'
 import Button from '@/components/Button'
 import styles from './SignIn.module.scss'
 
@@ -41,31 +41,9 @@ const SignIn: NextPage = () => {
       <Form onSubmit={onSubmit}>
         {({ handleSubmit, submitting, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <Field name='email' validate={validateEmail}>
-              {({ input, meta }) => {
-                console.log({ ...meta })
+            <Field name='email' component={EmailInput} validate={validateEmail} />
 
-                return (
-                  <Input
-                    {...input}
-                    label='Email'
-                    placeholder='mail@website.com'
-                    error={meta.touched && meta.error}
-                  />
-                )
-              }}
-            </Field>
-
-            <Field name='password' validate={validatePasswordRequired}>
-              {({ input, meta }) => (
-                <Input
-                  {...input}
-                  label='Password'
-                  type='password'
-                  error={meta.touched && meta.error}
-                />
-              )}
-            </Field>
+            <Field name='password' component={PasswordInput} validate={validatePasswordRequired} />
 
             <p className={styles.forgetPassword}>
               <Link passHref href='/auth/forgot-password'>

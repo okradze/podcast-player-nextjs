@@ -15,7 +15,7 @@ interface ForgotPasswordFields {
 const ForgotPassword: NextPage = () => {
   const onSubmit = async (values: ForgotPasswordFields) => {
     const { error } = await clientApi.auth.forgotPassword(values)
-    if (error) return { [FORM_ERROR]: 'Something went wrong' }
+    if (error) return { [FORM_ERROR]: error.message }
   }
 
   return (
@@ -25,7 +25,7 @@ const ForgotPassword: NextPage = () => {
       subtitle='Enter your email to recover account'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitSucceeded, submitError }) => (
+        {({ handleSubmit, submitting, submitSucceeded, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='email' validate={validateEmail}>
               {({ input, meta }) => (
@@ -47,7 +47,7 @@ const ForgotPassword: NextPage = () => {
 
             <Button
               className={styles.button}
-              disabled={submitting || submitSucceeded}
+              disabled={submitting || submitSucceeded || hasValidationErrors}
               type='submit'
             >
               Send me a recovery link

@@ -23,13 +23,9 @@ const SignIn: NextPage = () => {
   const router = useRouter()
   const resetAuth = useAuthReset()
 
-  const onSubmit = async (values: SignInFields, form: FormApi<SignInFields, SignInFields>) => {
+  const onSubmit = async (values: SignInFields) => {
     const { data, error } = await clientApi.auth.signIn(values)
-
-    if (error) {
-      form.restart()
-      return { [FORM_ERROR]: error.message }
-    }
+    if (error) return { [FORM_ERROR]: error.message }
 
     resetAuth()
     dispatch(setMe(data))
@@ -43,17 +39,21 @@ const SignIn: NextPage = () => {
       subtitle='Sign in to see your favorite podcasts'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitError }) => (
+        {({ handleSubmit, submitting, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='email' validate={validateEmail}>
-              {({ input, meta }) => (
-                <Input
-                  {...input}
-                  label='Email'
-                  placeholder='mail@website.com'
-                  error={meta.touched && meta.error}
-                />
-              )}
+              {({ input, meta }) => {
+                console.log({ ...meta })
+
+                return (
+                  <Input
+                    {...input}
+                    label='Email'
+                    placeholder='mail@website.com'
+                    error={meta.touched && meta.error}
+                  />
+                )
+              }}
             </Field>
 
             <Field name='password' validate={validatePasswordRequired}>
@@ -77,7 +77,11 @@ const SignIn: NextPage = () => {
 
             {submitError && <p className={styles.error}>{submitError}</p>}
 
-            <Button className={styles.button} disabled={submitting} type='submit'>
+            <Button
+              className={styles.button}
+              disabled={submitting || hasValidationErrors}
+              type='submit'
+            >
               Sign In
             </Button>
           </form>

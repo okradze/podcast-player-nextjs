@@ -27,7 +27,7 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
 
   const onSubmit = async (values: ResetPasswordFields) => {
     const { error } = await clientApi.auth.resetPassword(token, values)
-    if (error) return { [FORM_ERROR]: 'Something went wrong' }
+    if (error) return { [FORM_ERROR]: error.message }
   }
 
   return (
@@ -37,7 +37,7 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
       subtitle='Enter your new password'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitError, submitSucceeded }) => (
+        {({ handleSubmit, submitting, submitError, hasValidationErrors, submitSucceeded }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='password' validate={validatePassword}>
               {({ input, meta }) => (
@@ -73,7 +73,7 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
 
             <Button
               className={styles.button}
-              disabled={submitting || submitSucceeded}
+              disabled={submitting || submitSucceeded || hasValidationErrors}
               type='submit'
             >
               Set new password

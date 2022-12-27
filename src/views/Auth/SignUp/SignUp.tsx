@@ -26,11 +26,7 @@ const SignUp: NextPage = () => {
 
   const onSubmit = async (values: SignUpFields, form: FormApi<SignUpFields, SignUpFields>) => {
     const { data, error } = await clientApi.auth.signUp(values)
-
-    if (error) {
-      form.restart()
-      return { [FORM_ERROR]: error.message }
-    }
+    if (error) return { [FORM_ERROR]: error.message }
 
     resetAuth()
     dispatch(setMe(data))
@@ -44,7 +40,7 @@ const SignUp: NextPage = () => {
       subtitle='Sign up to save favorite podcasts'
     >
       <Form onSubmit={onSubmit}>
-        {({ handleSubmit, submitting, submitError }) => (
+        {({ handleSubmit, submitting, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <Field name='fullName' validate={validateFullName}>
               {({ input, meta }) => (
@@ -81,7 +77,11 @@ const SignUp: NextPage = () => {
 
             {submitError && <p className={styles.error}>{submitError}</p>}
 
-            <Button className={styles.button} disabled={submitting} type='submit'>
+            <Button
+              className={styles.button}
+              disabled={submitting || hasValidationErrors}
+              type='submit'
+            >
               Sign Up
             </Button>
           </form>

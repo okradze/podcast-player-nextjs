@@ -14,7 +14,7 @@
   height: 4.3rem;
   padding: 0 2rem;
   border: 1px solid var(--light-text);
-  transition: all 0.2s;
+  transition: all 0.3s ease-in-out;
   font-size: 1.5rem;
 
   &::placeholder {

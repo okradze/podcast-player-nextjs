@@ -15,12 +15,12 @@ export const EpisodeList = () => {
   const areMoreEpisodes = episodes.length < total_episodes
 
   return (
-    <div>
-      <div data-testid='episodes' className={styles.List}>
+    <section>
+      <ul data-testid='episodes' className={styles.list}>
         {episodes.map(episode => (
           <EpisodeItem key={episode.id} podcastId={id} episode={episode} />
         ))}
-      </div>
+      </ul>
 
       {areEpisodesFetching && <Spinner />}
       {!areEpisodesFetching && areMoreEpisodes && (
@@ -33,7 +33,7 @@ export const EpisodeList = () => {
           Load More
         </Button>
       )}
-    </div>
+    </section>
   )
 }
 

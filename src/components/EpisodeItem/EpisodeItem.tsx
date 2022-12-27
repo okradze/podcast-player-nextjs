@@ -17,7 +17,7 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
   const { thumbnail, audio_length_sec, title } = episode
 
   return (
-    <div className={styles.Episode} data-testid='episode'>
+    <li className={styles.Episode} data-testid='episode'>
       <div className={styles.ImageWrapper}>
         <Image width={40} height={40} src={thumbnail} alt='' />
       </div>
@@ -26,9 +26,9 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
           <EllipsisText tagName='h4' className={styles.Title}>
             {title}
           </EllipsisText>
-          <span className={styles.Duration}>
+          <time className={styles.Duration}>
             {new Date(audio_length_sec * 1000).toISOString().substr(11, 8)}
-          </span>
+          </time>
         </div>
 
         <PlaySvg
@@ -38,7 +38,7 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
           onClick={() => dispatch(playEpisode({ podcastId, episode }))}
         />
       </div>
-    </div>
+    </li>
   )
 }
 

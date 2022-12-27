@@ -14,10 +14,10 @@ const Layout = ({ children }: LayoutProps) => (
     <div className='container app'>
       <Sidebar />
       <AudioPlayer />
-      <div className='main-page'>
+      <main className='main-page'>
         <Header />
         {children}
-      </div>
+      </main>
     </div>
   </ErrorBoundary>
 )

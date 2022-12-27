@@ -16,7 +16,7 @@ export const PodcastItem = ({ id, thumbnail, title, publisher, isFavorite }: IPo
         <EllipsisText tagName='p' className={styles.publisher}>
           {publisher}
         </EllipsisText>
-        <EllipsisText tagName='h4' className={styles.title}>
+        <EllipsisText tagName='h3' className={styles.title}>
           {title}
         </EllipsisText>
 

@@ -1,3 +1,15 @@
+import { FieldValidator } from 'final-form'
+import { ReactElement } from 'react'
+
+export const composeValidators =
+  <FieldValue>(...validators: FieldValidator<FieldValue>[]): FieldValidator<FieldValue> =>
+  (...args): ReactElement | undefined =>
+    validators.reduce(
+      (error: ReactElement | undefined, validator: FieldValidator<FieldValue>) =>
+        error || validator(...args),
+      undefined,
+    )
+
 export const validatePasswordRequired = (password?: string) => {
   if (!password) return 'Password is required'
 }

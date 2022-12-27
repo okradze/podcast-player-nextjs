@@ -5,7 +5,7 @@ import { clientApi } from '@/api'
 import { validateEmail } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
-import Input from '@/components/Input'
+import { EmailInput } from '@/components/Input'
 import styles from './ForgotPassword.module.scss'
 
 interface ForgotPasswordFields {
@@ -27,16 +27,7 @@ const ForgotPassword: NextPage = () => {
       <Form onSubmit={onSubmit}>
         {({ handleSubmit, submitting, submitSucceeded, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <Field name='email' validate={validateEmail}>
-              {({ input, meta }) => (
-                <Input
-                  {...input}
-                  label='Email'
-                  placeholder='mail@website.com'
-                  error={meta.touched && meta.error}
-                />
-              )}
-            </Field>
+            <Field name='email' component={EmailInput} validate={validateEmail} />
 
             {submitError && <p className={styles.error}>{submitError}</p>}
             {submitSucceeded && (

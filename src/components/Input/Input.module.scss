@@ -17,6 +17,11 @@
   transition: all 0.3s ease-in-out;
   font-size: 1.5rem;
 
+  &:disabled {
+    background: var(--bg);
+    cursor: not-allowed;
+  }
+
   &::placeholder {
     font-size: 1.5rem;
   }

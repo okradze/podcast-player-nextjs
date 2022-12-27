@@ -3,10 +3,10 @@ import { FORM_ERROR } from 'final-form'
 import { useRouter } from 'next/router'
 import { Field, Form } from 'react-final-form'
 import { clientApi } from '@/api'
-import { validatePassword } from '@/utils/validators'
+import { composeValidators, validatePassword } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
-import Input from '@/components/Input'
+import { PasswordInput } from '@/components/Input'
 import styles from './ResetPassword.module.scss'
 
 export type ResetPasswordProps = {
@@ -39,32 +39,16 @@ const ResetPassword: NextPage = ({ isTokenExpired, fullName }: ResetPasswordProp
       <Form onSubmit={onSubmit}>
         {({ handleSubmit, submitting, submitError, hasValidationErrors, submitSucceeded }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <Field name='password' validate={validatePassword}>
-              {({ input, meta }) => (
-                <Input
-                  {...input}
-                  label='Password'
-                  type='password'
-                  error={meta.touched && meta.error}
-                />
-              )}
-            </Field>
+            <Field name='password' component={PasswordInput} validate={validatePassword} />
 
             <Field
               name='repeatPassword'
-              validate={(value, allValues: any) => {
+              label='Repeat Password'
+              component={PasswordInput}
+              validate={composeValidators(validatePassword, (value, allValues: any) => {
                 if (value !== allValues.password) return 'Passwords must match'
-              }}
-            >
-              {({ input, meta }) => (
-                <Input
-                  {...input}
-                  label='Repeat Password'
-                  type='password'
-                  error={meta.touched && meta.error}
-                />
-              )}
-            </Field>
+              })}
+            />
 
             {submitError && <p className={styles.error}>{submitError}</p>}
             {submitSucceeded && (

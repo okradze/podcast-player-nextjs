@@ -5,7 +5,7 @@ import styles from './HeaderAuthLinks.module.scss'
 const HeaderAuthLinks = () => (
   <ul className={styles.links}>
     <li>
-      <Link passHref href='/auth/signin'>
+      <Link passHref href='/auth/sign-in'>
         <Button className={styles.link} element='link' variant='outlined'>
           Sign In
         </Button>
@@ -13,7 +13,7 @@ const HeaderAuthLinks = () => (
     </li>
 
     <li>
-      <Link passHref href='/auth/signup'>
+      <Link passHref href='/auth/sign-up'>
         <Button className={styles.link} element='link' variant='contained'>
           Sign Up
         </Button>

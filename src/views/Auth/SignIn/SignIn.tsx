@@ -68,7 +68,7 @@ const SignIn: NextPage = () => {
 
       <p className={styles.registerText}>
         Not registered yet?{' '}
-        <Link passHref href='/auth/signup'>
+        <Link passHref href='/auth/sign-up'>
           <Button element='link' variant='text'>
             Create an account
           </Button>

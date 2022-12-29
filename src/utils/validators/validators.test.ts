@@ -3,9 +3,20 @@ import {
   validateEmail,
   validatePassword,
   validatePasswordRequired,
+  composeValidators,
 } from './validators'
 
 describe('Validators', () => {
+  it('composes validators', () => {
+    const validateRequired = (value?: string) => {
+      if (!value) return 'Value is required'
+    }
+    const validate = composeValidators(validateRequired, validateEmail)
+
+    expect(validate('')).toBe('Value is required')
+    expect(validate('test')).toBe('Email is not valid')
+  })
+
   it('validates full name', () => {
     const errorMessage = 'Full name is required'
     expect(validateFullName()).toBe(errorMessage)

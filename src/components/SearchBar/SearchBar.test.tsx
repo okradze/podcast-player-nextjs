@@ -12,8 +12,10 @@ import { SEARCH_FIXTURE } from '@/fixtures/search'
 afterEach(cleanup)
 
 jest.mock('@/api', () => ({
-  podcastsApi: {
-    fetchTypeahead: jest.fn().mockImplementation(() => Promise.resolve({ data: SEARCH_FIXTURE })),
+  clientApi: {
+    podcasts: {
+      fetchTypeahead: jest.fn().mockImplementation(() => Promise.resolve({ data: SEARCH_FIXTURE })),
+    },
   },
 }))
 

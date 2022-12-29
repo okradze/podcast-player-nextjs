@@ -24,13 +24,15 @@ beforeEach(() => {
 let resolveFetchEpisodes: (value: unknown) => void
 
 jest.mock('@/api', () => ({
-  podcastsApi: {
-    fetchEpisodes: jest.fn().mockImplementation(
-      () =>
-        new Promise((resolve, reject) => {
-          resolveFetchEpisodes = resolve
-        }),
-    ),
+  clientApi: {
+    podcasts: {
+      fetchEpisodes: jest.fn().mockImplementation(
+        () =>
+          new Promise((resolve, reject) => {
+            resolveFetchEpisodes = resolve
+          }),
+      ),
+    },
   },
 }))
 

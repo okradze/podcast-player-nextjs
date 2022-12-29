@@ -12,8 +12,10 @@ import {
   toggleMinimize,
 } from '@/store/playingPodcast/playingPodcastSlice'
 import { IEpisode } from '@/api/podcasts'
+import { VolumeSvg } from '@/svg'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import EllipsisText from '../EllipsisText'
-import { PlaySvg, PauseSvg, VolumeSvg } from '@/svg'
 import 'rc-slider/assets/index.css'
 import styles from './AudioPlayer.module.scss'
 
@@ -104,11 +106,16 @@ const AudioPlayer = () => {
       </div>
 
       <div className={styles.ControllsWrapper}>
-        {isPlaying ? (
-          <PauseSvg tabIndex={0} onClick={() => audio.pause()} className={styles.Pause} />
-        ) : (
-          <PlaySvg tabIndex={0} onClick={() => audio.play()} className={styles.Play} />
-        )}
+        <button
+          className={styles.playButton}
+          onClick={() => (isPlaying ? audio.pause() : audio.play())}
+        >
+          {isPlaying ? (
+            <PauseCircleIcon className={styles.playButtonSvg} />
+          ) : (
+            <PlayCircleIcon className={styles.playButtonSvg} />
+          )}
+        </button>
 
         {!minimized && (
           <>

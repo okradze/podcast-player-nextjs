@@ -35,18 +35,25 @@
   color: var(--light-text);
 }
 
-.Play {
-  flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
+.button {
+  width: 4rem;
+  height: 4rem;
   margin-left: 2rem;
-  fill: var(--primary);
-  cursor: pointer;
+  border: 0;
+  background: transparent;
+  flex-shrink: 0;
   border-radius: 50%;
+  cursor: pointer;
   transition: box-shadow 0.15s ease-in-out;
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
   }
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--primary);
 }

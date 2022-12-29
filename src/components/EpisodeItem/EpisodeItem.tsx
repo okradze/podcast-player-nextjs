@@ -1,9 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IEpisode } from '@/api/podcasts'
+import { RootState } from '@/store/rootReducer'
 import { playEpisode } from '@/store/playingPodcast/playingPodcastSlice'
-import { PlaySvg } from '@/svg'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import EllipsisText from '../EllipsisText'
 import styles from './EpisodeItem.module.scss'
 
@@ -14,7 +16,10 @@ type EpisodeItemProps = {
 
 export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
   const dispatch = useDispatch()
+  const playingEpisode = useSelector((state: RootState) => state.playingPodcast.playingEpisode)
   const { thumbnail, audio_length_sec, title } = episode
+
+  const isPlaying = playingEpisode?.id === episode.id
 
   return (
     <li className={styles.Episode} data-testid='episode'>
@@ -31,12 +36,16 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
           </time>
         </div>
 
-        <PlaySvg
-          role='button'
-          tabIndex={0}
-          className={styles.Play}
+        <button
+          className={styles.button}
           onClick={() => dispatch(playEpisode({ podcastId, episode }))}
-        />
+        >
+          {isPlaying ? (
+            <PauseCircleIcon className={styles.svg} />
+          ) : (
+            <PlayCircleIcon className={styles.svg} />
+          )}
+        </button>
       </div>
     </li>
   )

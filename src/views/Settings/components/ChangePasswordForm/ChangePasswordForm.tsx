@@ -3,7 +3,7 @@ import { Field, Form } from 'react-final-form'
 import { clientApi } from '@/api'
 import { composeValidators, validatePassword, validatePasswordRequired } from '@/utils/validators'
 import Button from '@/components/Button'
-import Input, { PasswordInput } from '@/components/Input'
+import { PasswordInput } from '@/components/Input'
 import styles from './ChangePasswordForm.module.scss'
 
 interface ChangePasswordFormFields {

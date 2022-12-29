@@ -12,7 +12,6 @@ import {
   toggleMinimize,
 } from '@/store/playingPodcast/playingPodcastSlice'
 import { IEpisode } from '@/api/podcasts'
-import { VolumeSvg } from '@/svg'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'

@@ -28,7 +28,7 @@ jest.mock('@/api', () => ({
     podcasts: {
       fetchEpisodes: jest.fn().mockImplementation(
         () =>
-          new Promise((resolve, reject) => {
+          new Promise(resolve => {
             resolveFetchEpisodes = resolve
           }),
       ),

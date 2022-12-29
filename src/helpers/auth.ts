@@ -22,7 +22,7 @@ export type CallbackArgs = {
 
 export type Callback = (
   params: CallbackArgs,
-) => Promise<GetServerSidePropsResult<{ [key: string]: any }>>
+) => Promise<GetServerSidePropsResult<{ [key: string]: unknown }>>
 
 type WithAuthProps = {
   callback?: Callback

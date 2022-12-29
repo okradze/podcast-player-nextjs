@@ -15,6 +15,7 @@ import { IEpisode } from '@/api/podcasts'
 import { VolumeSvg } from '@/svg'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
+import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import EllipsisText from '../EllipsisText'
 import 'rc-slider/assets/index.css'
 import styles from './AudioPlayer.module.scss'
@@ -155,7 +156,7 @@ const AudioPlayer = () => {
                   className={styles.Slider}
                 />
               </div>
-              <VolumeSvg className={styles.VolumeIcon} />
+              <VolumeUpIcon className={styles.VolumeIcon} />
             </div>
           </>
         )}

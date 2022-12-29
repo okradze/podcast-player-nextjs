@@ -2,6 +2,7 @@ import React from 'react'
 
 const NoDataIllustrationSvg = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 647.636 632.174' {...props}>
+    <title>No data illustration</title>
     <path
       fill='#f2f2f2'
       d='M411.146 142.174h-174.51a15.018 15.018 0 00-15 15v387.85l-2 .61-42.81 13.11a8.007 8.007 0 01-9.99-5.31l-127.34-415.95a8.003 8.003 0 015.31-9.99l65.97-20.2 191.25-58.54 65.97-20.2a7.99 7.99 0 019.99 5.3l32.55 106.32z'

@@ -6,7 +6,7 @@ import { setMe } from '@/store/auth/authSlice'
 import useMe from '@/hooks/useMe'
 import { validateFullName } from '@/utils/validators'
 import Button from '@/components/Button'
-import Input, { EmailInput, FullNameInput } from '@/components/Input'
+import { EmailInput, FullNameInput } from '@/components/Input'
 import styles from './UpdateUserForm.module.scss'
 
 interface UpdateUserFormFields {

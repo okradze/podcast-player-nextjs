@@ -40,6 +40,7 @@ const makeStore = () => {
       }),
   })
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   store.__persistor = persistStore(store)
   return store

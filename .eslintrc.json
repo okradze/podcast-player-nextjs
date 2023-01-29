@@ -5,7 +5,8 @@
     "plugin:react/recommended",
     "next/core-web-vitals",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:import/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "jest"],
@@ -15,6 +16,28 @@
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [["builtin", "external"]],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "pathGroups": [
+          {
+            "pattern": "*.scss",
+            "group": "index",
+            "patternOptions": { "matchBase": true },
+            "position": "after"
+          }
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "import/no-duplicates": "error"
   }
 }

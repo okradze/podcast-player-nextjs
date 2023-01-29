@@ -2,10 +2,12 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/store/rootReducer'
-import PodcastList from '@/components/PodcastList'
+
 import EpisodeList from '@/components/EpisodeList'
 import PodcastFavoriteButton from '@/components/PodcastFavoriteButton'
+import PodcastList from '@/components/PodcastList'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './Podcast.module.scss'
 
 const Podcast: NextPage = () => {

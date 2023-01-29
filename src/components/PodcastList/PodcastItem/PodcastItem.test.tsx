@@ -1,9 +1,10 @@
+import { render, screen, cleanup } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, screen, cleanup } from '@testing-library/react'
+
+import { PodcastItem } from './PodcastItem'
 import { PODCAST_FIXTURE } from '@/fixtures/podcast'
 import { createTestStore } from '@/utils/createTestStore'
-import { PodcastItem } from './PodcastItem'
 
 afterEach(cleanup)
 

@@ -1,10 +1,11 @@
 import { AnyAction, Store } from '@reduxjs/toolkit'
 import { GetServerSidePropsContext, GetServerSidePropsResult, PreviewData } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+
 import { Api } from '@/api'
 import { wrapper } from '@/store'
-import { RootState } from '@/store/rootReducer'
 import { Me, reset, setMe } from '@/store/auth/authSlice'
+import { RootState } from '@/store/rootReducer'
 
 export type ContextWithStore = Omit<
   GetServerSidePropsContext & {

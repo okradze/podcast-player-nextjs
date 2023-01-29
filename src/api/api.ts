@@ -1,5 +1,5 @@
-import { ApiClient } from './client'
 import { AuthApi } from './auth'
+import { ApiClient } from './client'
 import { PodcastsApi } from './podcasts'
 
 export class Api {

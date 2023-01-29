@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+
 import { withAuth } from '@/helpers/auth'
 import ForgotPassword from '@/views/Auth/ForgotPassword'
 

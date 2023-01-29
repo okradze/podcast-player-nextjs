@@ -1,4 +1,5 @@
 import { PageNotFoundSvg } from '@/svg'
+
 import styles from './PageNotFound.module.scss'
 
 const PageNotFound = () => (

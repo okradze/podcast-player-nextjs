@@ -1,10 +1,12 @@
-import { SwitchTransition, CSSTransition } from 'react-transition-group'
-import useMe from '@/hooks/useMe'
-import useFavoritePodcast from '@/hooks/useFavoritePodcast'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import styles from './PodcastFavoriteButton.module.scss'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useRef } from 'react'
+import { SwitchTransition, CSSTransition } from 'react-transition-group'
+
+import useFavoritePodcast from '@/hooks/useFavoritePodcast'
+import useMe from '@/hooks/useMe'
+
+import styles from './PodcastFavoriteButton.module.scss'
 
 type PodcastFavoriteButtonProps = {
   isFavorite?: boolean

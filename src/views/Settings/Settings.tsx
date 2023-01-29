@@ -1,6 +1,7 @@
-import useMe from '@/hooks/useMe'
 import ChangePasswordForm from './components/ChangePasswordForm'
 import UpdateUserForm from './components/UpdateUserForm'
+import useMe from '@/hooks/useMe'
+
 import styles from './Settings.module.scss'
 
 const Settings = () => {

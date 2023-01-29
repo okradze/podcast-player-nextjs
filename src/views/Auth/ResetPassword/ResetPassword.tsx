@@ -1,8 +1,9 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import AuthLayout from '@/components/AuthLayout'
+
 import ResetLinkExpired from './components/ResetLinkExpired'
 import ResetPasswordForm from './components/ResetPasswordForm'
+import AuthLayout from '@/components/AuthLayout'
 
 export type ResetPasswordProps = {
   isTokenExpired?: boolean

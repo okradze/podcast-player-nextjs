@@ -1,16 +1,18 @@
+import { FORM_ERROR } from 'final-form'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
 import { Field, Form } from 'react-final-form'
-import { FORM_ERROR } from 'final-form'
+import { useDispatch } from 'react-redux'
+
 import { clientApi } from '@/api'
-import { setMe } from '@/store/auth/authSlice'
-import useAuthReset from '@/hooks/useAuthReset'
-import { validateFullName, validateEmail, validatePassword } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
-import { EmailInput, PasswordInput, FullNameInput } from '@/components/Input'
 import Button from '@/components/Button'
+import { EmailInput, PasswordInput, FullNameInput } from '@/components/Input'
+import useAuthReset from '@/hooks/useAuthReset'
+import { setMe } from '@/store/auth/authSlice'
+import { validateFullName, validateEmail, validatePassword } from '@/utils/validators'
+
 import styles from './SignUp.module.scss'
 
 interface SignUpFields {

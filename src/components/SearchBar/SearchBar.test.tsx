@@ -1,4 +1,5 @@
 import { render, cleanup, fireEvent, waitFor, screen, waitForElementToBeRemoved } from '@testing-library/react'
+
 import { SearchBar } from './SearchBar'
 import { SEARCH_FIXTURE } from '@/fixtures/search'
 

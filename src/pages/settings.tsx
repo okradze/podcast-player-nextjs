@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next'
+
 import { withAuth } from '@/helpers/auth'
 import Settings from '@/views/Settings'
 

@@ -1,8 +1,9 @@
 import NextNProgress from 'nextjs-progressbar'
-import ErrorBoundary from '../ErrorBoundary'
-import Sidebar from '../Sidebar'
+
 import AudioPlayer from '../AudioPlayer'
+import ErrorBoundary from '../ErrorBoundary'
 import Header from '../Header'
+import Sidebar from '../Sidebar'
 
 type LayoutProps = {
   children: React.ReactNode

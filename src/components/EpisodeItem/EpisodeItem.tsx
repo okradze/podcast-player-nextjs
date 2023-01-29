@@ -1,12 +1,14 @@
-import React from 'react'
-import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
-import { IEpisode } from '@/api/podcasts'
-import { RootState } from '@/store/rootReducer'
-import { playEpisode } from '@/store/playingPodcast/playingPodcastSlice'
-import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import Image from 'next/image'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import EllipsisText from '../EllipsisText'
+import { IEpisode } from '@/api/podcasts'
+import { playEpisode } from '@/store/playingPodcast/playingPodcastSlice'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './EpisodeItem.module.scss'
 
 type EpisodeItemProps = {

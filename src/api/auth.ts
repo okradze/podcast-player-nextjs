@@ -1,5 +1,5 @@
-import { Me } from '@/store/auth/authSlice'
 import { ApiClient } from './client'
+import { Me } from '@/store/auth/authSlice'
 
 export class AuthApi {
   constructor(private readonly client: ApiClient) {}

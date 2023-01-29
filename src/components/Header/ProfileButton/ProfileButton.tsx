@@ -1,8 +1,10 @@
+import LogoutIcon from '@mui/icons-material/Logout'
+import SettingsIcon from '@mui/icons-material/Settings'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+
 import { clientApi } from '@/api'
-import SettingsIcon from '@mui/icons-material/Settings'
-import LogoutIcon from '@mui/icons-material/Logout'
+
 import styles from './ProfileButton.module.scss'
 
 type ProfileButtonProps = {

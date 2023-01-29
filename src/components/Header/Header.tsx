@@ -1,7 +1,8 @@
-import useMe from '@/hooks/useMe'
-import SearchBar from '../SearchBar'
-import ProfileButton from './ProfileButton'
 import HeaderAuthLinks from './HeaderAuthLinks'
+import ProfileButton from './ProfileButton'
+import SearchBar from '../SearchBar'
+import useMe from '@/hooks/useMe'
+
 import styles from './Header.module.scss'
 
 const Header = () => {

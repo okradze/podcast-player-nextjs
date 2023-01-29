@@ -1,11 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
 import authReducer from './auth/authSlice'
-import podcastsReducer from './podcasts/podcastsSlice'
 import discoverPodcastsReducer from './discoverPodcasts/discoverPodcastsSlice'
 import favoritesReducer from './favorites/favoritesSlice'
-import podcastReducer from './podcast/podcastSlice'
 import playingPodcastReducer from './playingPodcast/playingPodcastSlice'
+import podcastReducer from './podcast/podcastSlice'
+import podcastsReducer from './podcasts/podcastsSlice'
 
 export type RootState = ReturnType<typeof rootReducer>
 

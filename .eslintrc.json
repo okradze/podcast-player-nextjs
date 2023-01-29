@@ -38,6 +38,7 @@
         }
       }
     ],
+    "import/no-named-as-default": "off",
     "import/newline-after-import": ["error", { "count": 1 }],
     "import/no-duplicates": "error"
   }

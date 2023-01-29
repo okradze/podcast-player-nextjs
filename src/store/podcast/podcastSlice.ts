@@ -1,5 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
+
 import { clientApi } from '@/api'
 import { IPodcast, IPodcastDetails } from '@/api/podcasts'
 

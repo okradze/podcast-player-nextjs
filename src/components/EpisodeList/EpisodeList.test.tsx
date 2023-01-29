@@ -1,10 +1,11 @@
+import { render, screen, cleanup, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, screen, cleanup, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+
 import { EpisodeList } from './EpisodeList'
+import { PODCAST_FIXTURE, PODCAST_FIXTURE_PAGE_2 } from '@/fixtures/podcast'
 import { setPodcast } from '@/store/podcast/podcastSlice'
 import { createTestStore } from '@/utils/createTestStore'
-import { PODCAST_FIXTURE, PODCAST_FIXTURE_PAGE_2 } from '@/fixtures/podcast'
 
 afterEach(cleanup)
 

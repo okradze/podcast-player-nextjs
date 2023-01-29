@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next'
+
 import { withAuth } from '@/helpers/auth'
 import { setPodcastLists } from '@/store/discoverPodcasts/discoverPodcastsSlice'
 import Discover from '@/views/Discover'

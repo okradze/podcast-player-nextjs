@@ -1,4 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react'
+
 import { SearchBarItem } from './SearchBarItem'
 import { SEARCH_FIXTURE } from '@/fixtures/search'
 

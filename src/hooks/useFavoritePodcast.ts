@@ -1,12 +1,13 @@
 import { useDispatch } from 'react-redux'
+
 import { clientApi } from '@/api'
-import { addFavorite, removeFavoriteById } from '@/store/favorites/favoritesSlice'
-import { toggleFavoritePodcast as toggleFavoritePodcastInHome } from '@/store/podcasts/podcastsSlice'
 import { toggleFavoritePodcast as toggleFavoritePodcastInDiscover } from '@/store/discoverPodcasts/discoverPodcastsSlice'
+import { addFavorite, removeFavoriteById } from '@/store/favorites/favoritesSlice'
 import {
   toggleFavoritePodcastInRecommendations,
   toggleFavoritePodcast as toggleFavoritePodcastInDetails,
 } from '@/store/podcast/podcastSlice'
+import { toggleFavoritePodcast as toggleFavoritePodcastInHome } from '@/store/podcasts/podcastsSlice'
 
 type UseFavoritePodcastProps = {
   isFavorite?: boolean

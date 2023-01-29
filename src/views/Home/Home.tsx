@@ -2,11 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { createRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store/rootReducer'
-import { fetchPodcasts } from '@/store/podcasts/podcastsSlice'
-import useOnScreen from '@/hooks/useOnScreen'
+
 import PodcastList from '@/components/PodcastList'
 import Spinner from '@/components/Spinner'
+import useOnScreen from '@/hooks/useOnScreen'
+import { fetchPodcasts } from '@/store/podcasts/podcastsSlice'
+import { RootState } from '@/store/rootReducer'
 
 const Home: NextPage = () => {
   const dispatch = useDispatch()

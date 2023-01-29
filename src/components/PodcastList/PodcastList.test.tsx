@@ -1,9 +1,10 @@
+import { render, cleanup, screen } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, cleanup, screen } from '@testing-library/react'
+
+import { PodcastList } from './PodcastList'
 import { BEST_PODCASTS_FIXTURE } from '@/fixtures/podcasts'
 import { createTestStore } from '@/utils/createTestStore'
-import { PodcastList } from './PodcastList'
 
 afterEach(cleanup)
 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+
+import SearchBarItem from './SearchBarItem'
 import { clientApi } from '@/api'
 import { ITypeaheadPodcast } from '@/api/podcasts'
 import Spinner from '@/components/Spinner'
-import SearchBarItem from './SearchBarItem'
+
 import styles from './SearchBar.module.scss'
 
 export const SearchBar = () => {

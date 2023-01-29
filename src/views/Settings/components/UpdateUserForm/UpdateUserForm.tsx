@@ -1,12 +1,14 @@
 import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
 import { useDispatch } from 'react-redux'
+
 import { clientApi } from '@/api'
-import { setMe } from '@/store/auth/authSlice'
-import useMe from '@/hooks/useMe'
-import { validateFullName } from '@/utils/validators'
 import Button from '@/components/Button'
 import { EmailInput, FullNameInput } from '@/components/Input'
+import useMe from '@/hooks/useMe'
+import { setMe } from '@/store/auth/authSlice'
+import { validateFullName } from '@/utils/validators'
+
 import styles from './UpdateUserForm.module.scss'
 
 interface UpdateUserFormFields {

@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store/rootReducer'
-import { fetchEpisodes } from '@/store/podcast/podcastSlice'
-import EpisodeItem from '../EpisodeItem'
+
 import Button from '../Button'
+import EpisodeItem from '../EpisodeItem'
 import Spinner from '../Spinner'
+import { fetchEpisodes } from '@/store/podcast/podcastSlice'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './EpisodeList.module.scss'
 
 export const EpisodeList = () => {

@@ -1,10 +1,11 @@
+import { render, screen, cleanup } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, screen, cleanup } from '@testing-library/react'
-import { createTestStore } from '@/utils/createTestStore'
+
 import Favorites from './Favorites'
-import { setFavorites } from '@/store/favorites/favoritesSlice'
 import { BEST_PODCASTS_FIXTURE } from '@/fixtures/podcasts'
+import { setFavorites } from '@/store/favorites/favoritesSlice'
+import { createTestStore } from '@/utils/createTestStore'
 
 afterEach(cleanup)
 

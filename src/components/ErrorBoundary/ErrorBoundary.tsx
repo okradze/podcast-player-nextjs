@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './ErrorBoundary.module.scss'
 
 type ErrorBoundaryProps = {

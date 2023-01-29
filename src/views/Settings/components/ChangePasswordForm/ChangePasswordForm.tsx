@@ -1,9 +1,11 @@
 import { FORM_ERROR } from 'final-form'
 import { Field, Form } from 'react-final-form'
+
 import { clientApi } from '@/api'
-import { composeValidators, validatePassword, validatePasswordRequired } from '@/utils/validators'
 import Button from '@/components/Button'
 import { PasswordInput } from '@/components/Input'
+import { composeValidators, validatePassword, validatePasswordRequired } from '@/utils/validators'
+
 import styles from './ChangePasswordForm.module.scss'
 
 interface ChangePasswordFormFields {

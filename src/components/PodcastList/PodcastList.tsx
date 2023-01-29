@@ -1,7 +1,9 @@
 import React from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import { IPodcast } from '@/api/podcasts'
+
 import PodcastItem from './PodcastItem'
+import { IPodcast } from '@/api/podcasts'
+
 import styles from './PodcastList.module.scss'
 
 type PodcastListProps = {

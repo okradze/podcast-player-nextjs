@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store/rootReducer'
-import useMe from '@/hooks/useMe'
-import HomeIcon from '@mui/icons-material/Home'
-import SearchIcon from '@mui/icons-material/Search'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import HomeIcon from '@mui/icons-material/Home'
 import PodcastsIcon from '@mui/icons-material/Podcasts'
+import SearchIcon from '@mui/icons-material/Search'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+
+import useMe from '@/hooks/useMe'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {

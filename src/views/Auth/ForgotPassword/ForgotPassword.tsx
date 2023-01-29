@@ -1,11 +1,13 @@
-import { NextPage } from 'next'
 import { FORM_ERROR } from 'final-form'
+import { NextPage } from 'next'
 import { Field, Form } from 'react-final-form'
+
 import { clientApi } from '@/api'
-import { validateEmail } from '@/utils/validators'
 import AuthLayout from '@/components/AuthLayout'
 import Button from '@/components/Button'
 import { EmailInput } from '@/components/Input'
+import { validateEmail } from '@/utils/validators'
+
 import styles from './ForgotPassword.module.scss'
 
 interface ForgotPasswordFields {

@@ -1,9 +1,10 @@
+import { render, screen, cleanup } from '@testing-library/react'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, screen, cleanup } from '@testing-library/react'
-import { createTestStore } from '@/utils/createTestStore'
+
 import PodcastFavoriteButton from './PodcastFavoriteButton'
 import { setMe } from '@/store/auth/authSlice'
+import { createTestStore } from '@/utils/createTestStore'
 
 afterEach(cleanup)
 

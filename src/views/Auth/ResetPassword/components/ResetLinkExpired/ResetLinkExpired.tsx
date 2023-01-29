@@ -1,4 +1,5 @@
 import { NoDataIllustrationSvg } from '@/svg'
+
 import styles from './ResetLinkExpired.module.scss'
 
 const ResetLinkExpired = () => (

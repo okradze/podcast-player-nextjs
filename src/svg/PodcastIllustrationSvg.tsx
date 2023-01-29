@@ -108,22 +108,8 @@ const PodcastIllustrationSvg = (props: React.SVGProps<SVGSVGElement>) => (
       transform='translate(-236.255 -89.33232)'
       fill='#3f3d56'
     />
-    <rect
-      x='490.5228'
-      y='330.40498'
-      width='43.45085'
-      height='9.29145'
-      rx='3.26417'
-      fill='#6c63ff'
-    />
-    <rect
-      x='468.4556'
-      y='348.98789'
-      width='87.58526'
-      height='9.29145'
-      rx='3.26417'
-      fill='#6c63ff'
-    />
+    <rect x='490.5228' y='330.40498' width='43.45085' height='9.29145' rx='3.26417' fill='#6c63ff' />
+    <rect x='468.4556' y='348.98789' width='87.58526' height='9.29145' rx='3.26417' fill='#6c63ff' />
     <rect x='468.4556' y='367.5708' width='87.58526' height='9.29145' rx='3.26417' fill='#6c63ff' />
     <ellipse cx='361.36915' cy='490.68826' rx='20.13233' ry='6.42521' fill='#3f3d56' />
     <ellipse cx='361.36915' cy='486.40479' rx='20.13233' ry='6.42521' fill='#3f3d56' />
@@ -132,14 +118,7 @@ const PodcastIllustrationSvg = (props: React.SVGProps<SVGSVGElement>) => (
       transform='translate(-236.255 -89.33232)'
       fill='#3f3d56'
     />
-    <rect
-      x='272.27287'
-      y='320.20596'
-      width='14.56381'
-      height='59.96865'
-      rx='7.2819'
-      fill='#6c63ff'
-    />
+    <rect x='272.27287' y='320.20596' width='14.56381' height='59.96865' rx='7.2819' fill='#6c63ff' />
     <path
       d='M510.71352,482.01747a21.89,21.89,0,0,1-21.85743-21.61524l-.24707-23.00537,3-.03222.24707,23.00634a18.82625,18.82625,0,0,0,30.47608,14.585l20.41553-16.083,1.85644,2.35742-20.41553,16.083A21.73337,21.73337,0,0,1,510.71352,482.01747Z'
       transform='translate(-236.255 -89.33232)'

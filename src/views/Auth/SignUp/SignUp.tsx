@@ -34,11 +34,7 @@ const SignUp: NextPage = () => {
   }
 
   return (
-    <AuthLayout
-      pageTitle='Sign Up - Podcast Player'
-      title='Sign Up'
-      subtitle='Sign up to save favorite podcasts'
-    >
+    <AuthLayout pageTitle='Sign Up - Podcast Player' title='Sign Up' subtitle='Sign up to save favorite podcasts'>
       <Form onSubmit={onSubmit}>
         {({ handleSubmit, submitting, hasValidationErrors, submitError }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -50,11 +46,7 @@ const SignUp: NextPage = () => {
 
             {submitError && <p className={styles.error}>{submitError}</p>}
 
-            <Button
-              className={styles.button}
-              disabled={submitting || hasValidationErrors}
-              type='submit'
-            >
+            <Button className={styles.button} disabled={submitting || hasValidationErrors} type='submit'>
               Sign Up
             </Button>
           </form>

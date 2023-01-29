@@ -4,13 +4,7 @@ import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import Slider from 'rc-slider/lib/Slider'
 import { RootState } from '@/store/rootReducer'
-import {
-  play,
-  pause,
-  setVolume,
-  setCurrentTime,
-  toggleMinimize,
-} from '@/store/playingPodcast/playingPodcastSlice'
+import { play, pause, setVolume, setCurrentTime, toggleMinimize } from '@/store/playingPodcast/playingPodcastSlice'
 import { IEpisode } from '@/api/podcasts'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
@@ -83,12 +77,7 @@ const AudioPlayer = () => {
   return (
     <div className={`${styles.AudioPlayer} ${minimized ? styles.AudioPlayerMinimized : ''}`}>
       <div className={styles.MinimizeWrapper}>
-        <span
-          onClick={() => dispatch(toggleMinimize())}
-          tabIndex={0}
-          role='button'
-          className={styles.Minimize}
-        />
+        <span onClick={() => dispatch(toggleMinimize())} tabIndex={0} role='button' className={styles.Minimize} />
       </div>
 
       <div className={styles.EpisodeWrapper}>
@@ -106,10 +95,7 @@ const AudioPlayer = () => {
       </div>
 
       <div className={styles.ControllsWrapper}>
-        <button
-          className={styles.playButton}
-          onClick={() => (isPlaying ? audio.pause() : audio.play())}
-        >
+        <button className={styles.playButton} onClick={() => (isPlaying ? audio.pause() : audio.play())}>
           {isPlaying ? (
             <PauseCircleIcon className={styles.playButtonSvg} />
           ) : (

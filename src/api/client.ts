@@ -1,9 +1,4 @@
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponseHeaders,
-} from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponseHeaders } from 'axios'
 
 interface ApiError {
   message: string
@@ -75,11 +70,7 @@ export class ApiClient {
 
   async post<T>(url: string, body?: unknown, config?: RequestConfig): Promise<Result<T>> {
     try {
-      const { data, headers } = await this.httpClient.post<T>(
-        url,
-        body,
-        this.getRequestConfig(config),
-      )
+      const { data, headers } = await this.httpClient.post<T>(url, body, this.getRequestConfig(config))
 
       return { data, error: null, headers }
     } catch (error) {
@@ -89,11 +80,7 @@ export class ApiClient {
 
   async patch<T>(url: string, body?: unknown, config?: RequestConfig): Promise<Result<T>> {
     try {
-      const { data, headers } = await this.httpClient.patch<T>(
-        url,
-        body,
-        this.getRequestConfig(config),
-      )
+      const { data, headers } = await this.httpClient.patch<T>(url, body, this.getRequestConfig(config))
 
       return { data, error: null, headers }
     } catch (error) {

@@ -11,14 +11,7 @@ type ButtonProps = {
   React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const Button = (
-  {
-    variant = 'contained',
-    color = 'primary',
-    element = 'button',
-    children,
-    className,
-    ...otherProps
-  }: ButtonProps,
+  { variant = 'contained', color = 'primary', element = 'button', children, className, ...otherProps }: ButtonProps,
   ref: LegacyRef<HTMLAnchorElement | HTMLButtonElement>,
 ) => {
   const classNames = `${styles.button} ${styles[variant]} ${styles[color]} ${className || ''}`
@@ -28,12 +21,7 @@ const Button = (
       {children}
     </a>
   ) : (
-    <button
-      ref={ref as LegacyRef<HTMLButtonElement>}
-      type='button'
-      className={classNames}
-      {...otherProps}
-    >
+    <button ref={ref as LegacyRef<HTMLButtonElement>} type='button' className={classNames} {...otherProps}>
       {children}
     </button>
   )

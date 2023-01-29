@@ -1,12 +1,7 @@
 import React from 'react'
 
 const PageNotFoundSvg = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    data-name='Layer 1'
-    viewBox='0 0 860.131 571.148'
-    {...props}
-  >
+  <svg xmlns='http://www.w3.org/2000/svg' data-name='Layer 1' viewBox='0 0 860.131 571.148' {...props}>
     <title>404 Error Illustration</title>
 
     <path
@@ -75,10 +70,7 @@ const PageNotFoundSvg = (props: React.SVGProps<SVGSVGElement>) => (
     <circle cx='728.249' cy='559' r='11' fill='#3f3d56'></circle>
     <circle cx='755.249' cy='419' r='11' fill='#3f3d56'></circle>
     <circle cx='723.249' cy='317' r='11' fill='#3f3d56'></circle>
-    <path
-      fill='#3f3d56'
-      d='M264.249 419a10.949 10.949 0 11-.21-2.16 10.992 10.992 0 01.21 2.16z'
-    ></path>
+    <path fill='#3f3d56' d='M264.249 419a10.949 10.949 0 11-.21-2.16 10.992 10.992 0 01.21 2.16z'></path>
     <circle cx='484.249' cy='349' r='11' fill='#3f3d56'></circle>
     <path
       fill='#3f3d56'
@@ -86,10 +78,7 @@ const PageNotFoundSvg = (props: React.SVGProps<SVGSVGElement>) => (
     ></path>
     <circle cx='599.249' cy='443' r='11' fill='#3f3d56'></circle>
     <circle cx='426.249' cy='338' r='16' fill='#3f3d56'></circle>
-    <path
-      fill='#cacaca'
-      d='M858.94 570.84l-857.75.308a1.19 1.19 0 110-2.381l857.75-.308a1.19 1.19 0 010 2.382z'
-    ></path>
+    <path fill='#cacaca' d='M858.94 570.84l-857.75.308a1.19 1.19 0 110-2.381l857.75-.308a1.19 1.19 0 010 2.382z'></path>
   </svg>
 )
 

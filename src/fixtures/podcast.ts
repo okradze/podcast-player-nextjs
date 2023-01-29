@@ -19,8 +19,7 @@ export const PODCAST_FIXTURE = {
   earliest_pub_date_ms: 1437782400246,
   language: 'English',
   country: 'United States',
-  website:
-    'http://www.janetlansbury.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
+  website: 'http://www.janetlansbury.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
   extra: {
     twitter_handle: '',
     facebook_handle: '',
@@ -81,8 +80,7 @@ export const PODCAST_FIXTURE = {
     },
     {
       id: '7430fb9544504ca5bdc2d7a177a02d1c',
-      title:
-        'It Had to Be You - The Struggles and Joys of Raising a Child with Disabilities (with Loryn Brantz)',
+      title: 'It Had to Be You - The Struggles and Joys of Raising a Child with Disabilities (with Loryn Brantz)',
       description:
         'Loryn Brantz is an author, illustrator, and comic creator raising a daughter with disabilities.  Dalia was born with a rare genetic abnormality that made feeding an all-night process, and doctors were not confident she would ever crawl, much less walk. Throughout their journey, Loryn has supported Dalia with acceptance, optimism, and love. In return, she is continually inspired. \u201cI see her disability and her uniqueness as part of what makes her so amazing and special. And everything she does is going to be more amazing because of what she\u2019s had to go through to get there.\u201d Janet believes Loryn has found the formula for happiness as a parent \u2013 accepting, cherishing, and truly enjoying our children for who they are.\n\nThanks to Mack Weldon for sponsoring this episode. Check out their "Daily Wear System" and get 20% off your first order by going to www.MackWeldon.com/respect and using the promo code RESPECT. \n\nFor more advice on common parenting issues, please check out Janet\'s best-selling books on Audible, FREE with a 30-day trial membership if you use this link: adbl.co/2OBVztZ. Paperbacks and e-books are also available at Amazon, Google Play, Barnes & Noble, Apple Books, or pretty much anywhere e-books are sold.\n\nJanet\'s exclusive audio series "Sessions" is available for download. This is a collection of recorded one-on-one consultations with parents discussing their most immediate and pressing concerns (www.SessionsAudio.com)',
       pub_date_ms: 1638377131000,

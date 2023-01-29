@@ -18,8 +18,7 @@ export const getServerSideProps: GetServerSideProps = withAuth({
     ])
 
     if (podcast.data) store.dispatch(setPodcast(podcast.data))
-    if (recommendations.data)
-      store.dispatch(setRecommendations(recommendations.data.recommendations))
+    if (recommendations.data) store.dispatch(setRecommendations(recommendations.data.recommendations))
 
     return {
       props: {},

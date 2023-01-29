@@ -31,20 +31,11 @@ export const EpisodeItem = ({ episode, podcastId }: EpisodeItemProps) => {
           <EllipsisText tagName='h4' className={styles.Title}>
             {title}
           </EllipsisText>
-          <time className={styles.Duration}>
-            {new Date(audio_length_sec * 1000).toISOString().substr(11, 8)}
-          </time>
+          <time className={styles.Duration}>{new Date(audio_length_sec * 1000).toISOString().substr(11, 8)}</time>
         </div>
 
-        <button
-          className={styles.button}
-          onClick={() => dispatch(playEpisode({ podcastId, episode }))}
-        >
-          {isPlaying ? (
-            <PauseCircleIcon className={styles.svg} />
-          ) : (
-            <PlayCircleIcon className={styles.svg} />
-          )}
+        <button className={styles.button} onClick={() => dispatch(playEpisode({ podcastId, episode }))}>
+          {isPlaying ? <PauseCircleIcon className={styles.svg} /> : <PlayCircleIcon className={styles.svg} />}
         </button>
       </div>
     </li>

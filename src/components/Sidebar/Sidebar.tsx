@@ -30,14 +30,10 @@ export const Sidebar = () => {
         onClick={() => setIsSidebarVisible(!isSidebarVisible)}
         className={styles.toggle}
       >
-        <span
-          className={`${styles.toggleIcon} ${isSidebarVisible ? styles.toggleIconWhenVisible : ''}`}
-        />
+        <span className={`${styles.toggleIcon} ${isSidebarVisible ? styles.toggleIconWhenVisible : ''}`} />
       </span>
 
-      <section
-        className={`${styles.sidebar} ${isSidebarVisible ? styles.sidebarMobileVisible : ''}`}
-      >
+      <section className={`${styles.sidebar} ${isSidebarVisible ? styles.sidebarMobileVisible : ''}`}>
         <h1 className={styles.logo}>
           <Link href='/' scroll={false}>
             <a onClick={closeSidebar} className={styles.logoLink}>
@@ -65,9 +61,7 @@ export const Sidebar = () => {
               <Link href='/discover' scroll={false}>
                 <a
                   onClick={closeSidebar}
-                  className={`${styles.link} ${
-                    router.pathname === '/discover' ? styles.activeLink : ''
-                  }`}
+                  className={`${styles.link} ${router.pathname === '/discover' ? styles.activeLink : ''}`}
                 >
                   <SearchIcon className={styles.linkIcon} />
                   Discover
@@ -80,9 +74,7 @@ export const Sidebar = () => {
                 <Link href='/favorites' scroll={false}>
                   <a
                     onClick={closeSidebar}
-                    className={`${styles.link} ${
-                      router.pathname === '/favorites' ? styles.activeLink : ''
-                    }`}
+                    className={`${styles.link} ${router.pathname === '/favorites' ? styles.activeLink : ''}`}
                   >
                     {router.pathname === '/favorites' ? (
                       <FavoriteIcon className={styles.linkIcon} />

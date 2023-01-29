@@ -1,13 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import {
-  render,
-  screen,
-  cleanup,
-  fireEvent,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { render, screen, cleanup, fireEvent, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { EpisodeList } from './EpisodeList'
 import { setPodcast } from '@/store/podcast/podcastSlice'
 import { createTestStore } from '@/utils/createTestStore'

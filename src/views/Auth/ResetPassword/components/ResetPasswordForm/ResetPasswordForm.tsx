@@ -36,9 +36,7 @@ const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
           />
 
           {submitError && <p className={styles.error}>{submitError}</p>}
-          {submitSucceeded && (
-            <p className={styles.success}>New password is set. You can sign in now.</p>
-          )}
+          {submitSucceeded && <p className={styles.success}>New password is set. You can sign in now.</p>}
 
           <Button
             className={styles.button}

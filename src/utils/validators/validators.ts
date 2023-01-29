@@ -5,8 +5,7 @@ export const composeValidators =
   <FieldValue>(...validators: FieldValidator<FieldValue>[]): FieldValidator<FieldValue> =>
   (...args): ReactElement | undefined =>
     validators.reduce(
-      (error: ReactElement | undefined, validator: FieldValidator<FieldValue>) =>
-        error || validator(...args),
+      (error: ReactElement | undefined, validator: FieldValidator<FieldValue>) => error || validator(...args),
       undefined,
     )
 

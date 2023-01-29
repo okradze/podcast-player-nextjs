@@ -7,10 +7,8 @@ export const BEST_PODCASTS_FIXTURE = {
       id: 'cff636eefb264790864342bbb645b74d',
       title: 'Significant Others',
       publisher: 'Team Coco',
-      image:
-        'https://cdn-images-1.listennotes.com/podcasts/significant-others-waoY7WCE8JV-KzCZVI0HcAR.300x300.jpg',
-      thumbnail:
-        'https://cdn-images-1.listennotes.com/podcasts/significant-others-waoY7WCE8JV-KzCZVI0HcAR.300x300.jpg',
+      image: 'https://cdn-images-1.listennotes.com/podcasts/significant-others-waoY7WCE8JV-KzCZVI0HcAR.300x300.jpg',
+      thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/significant-others-waoY7WCE8JV-KzCZVI0HcAR.300x300.jpg',
       listennotes_url: 'https://www.listennotes.com/c/cff636eefb264790864342bbb645b74d/',
       listen_score:
         'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -58,8 +56,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -73,10 +70,8 @@ export const BEST_PODCASTS_FIXTURE = {
       id: '14a585ada7f94b7684177f4bf58474aa',
       title: 'The Deck',
       publisher: 'audiochuck',
-      image:
-        'https://cdn-images-1.listennotes.com/podcasts/the-deck-c7q4fhvOCSa-r2NtCIwi31a.300x300.jpg',
-      thumbnail:
-        'https://cdn-images-1.listennotes.com/podcasts/the-deck-c7q4fhvOCSa-r2NtCIwi31a.300x300.jpg',
+      image: 'https://cdn-images-1.listennotes.com/podcasts/the-deck-c7q4fhvOCSa-r2NtCIwi31a.300x300.jpg',
+      thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/the-deck-c7q4fhvOCSa-r2NtCIwi31a.300x300.jpg',
       listennotes_url: 'https://www.listennotes.com/c/14a585ada7f94b7684177f4bf58474aa/',
       listen_score:
         'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -124,8 +119,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -139,10 +133,8 @@ export const BEST_PODCASTS_FIXTURE = {
       id: 'b43c2f9a73114a418818923e4b2aafd6',
       title: 'Basic!',
       publisher: 'Pantheon, SiriusXM',
-      image:
-        'https://cdn-images-1.listennotes.com/podcasts/basic-IaoJ7RmrQhf-1k9mq8lpMPQ.300x300.jpg',
-      thumbnail:
-        'https://cdn-images-1.listennotes.com/podcasts/basic-IaoJ7RmrQhf-1k9mq8lpMPQ.300x300.jpg',
+      image: 'https://cdn-images-1.listennotes.com/podcasts/basic-IaoJ7RmrQhf-1k9mq8lpMPQ.300x300.jpg',
+      thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/basic-IaoJ7RmrQhf-1k9mq8lpMPQ.300x300.jpg',
       listennotes_url: 'https://www.listennotes.com/c/b43c2f9a73114a418818923e4b2aafd6/',
       listen_score:
         'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -190,8 +182,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -205,10 +196,8 @@ export const BEST_PODCASTS_FIXTURE = {
       id: '16bd1572f2d04de390bed3df479a8ef6',
       title: 'Scamfluencers',
       publisher: 'Wondery',
-      image:
-        'https://cdn-images-1.listennotes.com/podcasts/scamfluencers-RusDg-jOYSB-E8DluKYeRCf.300x300.jpg',
-      thumbnail:
-        'https://cdn-images-1.listennotes.com/podcasts/scamfluencers-RusDg-jOYSB-E8DluKYeRCf.300x300.jpg',
+      image: 'https://cdn-images-1.listennotes.com/podcasts/scamfluencers-RusDg-jOYSB-E8DluKYeRCf.300x300.jpg',
+      thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/scamfluencers-RusDg-jOYSB-E8DluKYeRCf.300x300.jpg',
       listennotes_url: 'https://www.listennotes.com/c/16bd1572f2d04de390bed3df479a8ef6/',
       listen_score:
         'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -256,8 +245,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'serial',
       looking_for: {
         sponsors: false,
@@ -322,8 +310,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -388,8 +375,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -454,8 +440,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -520,8 +505,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -586,8 +570,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -652,8 +635,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -690,8 +672,7 @@ export const BEST_PODCASTS_FIXTURE = {
       earliest_pub_date_ms: 1421867321259,
       language: 'English',
       country: 'United States',
-      website:
-        'http://www.seedcamp.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
+      website: 'http://www.seedcamp.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
       extra: {
         twitter_handle:
           'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -718,8 +699,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -784,8 +764,7 @@ export const BEST_PODCASTS_FIXTURE = {
         url3: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       },
       is_claimed: false,
-      email:
-        'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
+      email: 'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
       type: 'episodic',
       looking_for: {
         sponsors: false,
@@ -889,8 +868,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 6,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/6-biotech-industry-and-life-sciences-mnYDlhQotTk/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/6-biotech-industry-and-life-sciences-mnYDlhQotTk/',
     },
     {
       id: 'LDnNxhSgFU2',
@@ -920,8 +898,7 @@ export const PODCAST_LISTS = {
           id: 'a11eda1b5c9f4d358897f66444102dbb',
           title: 'Franchise Voice',
           publisher: 'Bill Meierling',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/franchise-voice-85nCw1_0UxM--Z4vCYk1Gac.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/franchise-voice-85nCw1_0UxM--Z4vCYk1Gac.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/franchise-voice-85nCw1_0UxM--Z4vCYk1Gac.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/a11eda1b5c9f4d358897f66444102dbb/',
@@ -974,8 +951,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 13,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/16-franchise-podcasts-for-the-LDnNxhSgFU2/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/16-franchise-podcasts-for-the-LDnNxhSgFU2/',
     },
     {
       id: 'NpSbzqW3UP0',
@@ -1075,8 +1051,7 @@ export const PODCAST_LISTS = {
           id: 'e7bc464fd8db482d886623bbfa111c5e',
           title: 'Trials To Triumphs',
           publisher: 'Ashley Blaine Featherson-Jenkins',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/trials-to-triumphs-nNZCW0yMzv9-_tReCmkG9zu.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/trials-to-triumphs-nNZCW0yMzv9-_tReCmkG9zu.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/trials-to-triumphs-nNZCW0yMzv9-_tReCmkG9zu.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/e7bc464fd8db482d886623bbfa111c5e/',
@@ -1143,8 +1118,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 15,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/16-black-podcasts-were-listening-to-5ILJSqt3RT6/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/16-black-podcasts-were-listening-to-5ILJSqt3RT6/',
     },
     {
       id: 'JKEWY5ird2y',
@@ -1229,13 +1203,11 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 11,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/anything-goes-with-emma-chamberlain-JKEWY5ird2y/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/anything-goes-with-emma-chamberlain-JKEWY5ird2y/',
     },
     {
       id: 'biVK1NMDB_0',
-      title:
-        'Best podcasts of the week: Inside the lives turned upside down by Afghanistan\u2019s fall to the Taliban',
+      title: 'Best podcasts of the week: Inside the lives turned upside down by Afghanistan\u2019s fall to the Taliban',
       description:
         '\u201cIn this week\u2019s newsletter: Journalist Nelufar Hedayat hears from everyday people whose lives changed forever just one year ago in Kabul Falling. Plus: five of the best podcasts for better mental health.\u201d',
       source_url:
@@ -1275,8 +1247,7 @@ export const PODCAST_LISTS = {
           id: '8d8970470ead450aa5a9d2a1d223d938',
           title: 'Song Exploder',
           publisher: 'Hrishikesh Hirway',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/song-exploder-song-exploder-Ut3fuw2xdYv.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/song-exploder-song-exploder-Ut3fuw2xdYv.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/song-exploder-song-exploder-Ut3fuw2xdYv.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/8d8970470ead450aa5a9d2a1d223d938/',
@@ -1315,8 +1286,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 9,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/best-podcasts-of-the-week-inside-the-biVK1NMDB_0/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/best-podcasts-of-the-week-inside-the-biVK1NMDB_0/',
     },
     {
       id: 'BwvGh0VTn7X',
@@ -1400,8 +1370,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 17,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/these-15-best-horror-podcasts-will-BwvGh0VTn7X/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/these-15-best-horror-podcasts-will-BwvGh0VTn7X/',
     },
     {
       id: 'hPeO08Ws-2D',
@@ -1485,8 +1454,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 8,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/the-best-travel-podcasts-to-inspire-hPeO08Ws-2D/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/the-best-travel-podcasts-to-inspire-hPeO08Ws-2D/',
     },
     {
       id: 'N9qYx6iUdRy',
@@ -1502,8 +1470,7 @@ export const PODCAST_LISTS = {
           id: '24f3b568c365420a8c93f3b48d46fed9',
           title: 'Games and Feelings',
           publisher: 'Multitude',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/games-and-feelings-5xtOE8auMAG-wvYBJKmQC5s.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/games-and-feelings-5xtOE8auMAG-wvYBJKmQC5s.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/games-and-feelings-5xtOE8auMAG-wvYBJKmQC5s.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/24f3b568c365420a8c93f3b48d46fed9/',
@@ -1570,8 +1537,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 12,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/12-essential-podcasts-for-gamers-N9qYx6iUdRy/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/12-essential-podcasts-for-gamers-N9qYx6iUdRy/',
     },
     {
       id: 'D5L0ytuTOCi',
@@ -1615,10 +1581,8 @@ export const PODCAST_LISTS = {
           id: '1a2c7a53feab469b8e0fd8b8876e6237',
           title: 'This Is Gay',
           publisher: 'Kirk Flash',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/this-is-gay-R-pSJuWPDt1-4YPl5im_Heb.300x300.jpg',
-          thumbnail:
-            'https://cdn-images-1.listennotes.com/podcasts/this-is-gay-R-pSJuWPDt1-4YPl5im_Heb.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/this-is-gay-R-pSJuWPDt1-4YPl5im_Heb.300x300.jpg',
+          thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/this-is-gay-R-pSJuWPDt1-4YPl5im_Heb.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/1a2c7a53feab469b8e0fd8b8876e6237/',
           listen_score:
             'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -1655,8 +1619,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 5,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/british-podcast-awards-our-top-five-D5L0ytuTOCi/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/british-podcast-awards-our-top-five-D5L0ytuTOCi/',
     },
     {
       id: 'ILrMdHlw8Zk',
@@ -1825,14 +1788,12 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 5,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/7-music-industry-podcasts-that-help-ute-_ND0M8I/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/7-music-industry-podcasts-that-help-ute-_ND0M8I/',
     },
     {
       id: 'WFTkMcOvtZK',
       title: '10 Health & Fitness Podcasts to Liven Up Your Library',
-      description:
-        '"If you want to learn more about health and fitness, you can choose from several podcasts."',
+      description: '"If you want to learn more about health and fitness, you can choose from several podcasts."',
       source_url:
         'https://www.makeuseof.com/health-and-fitness-podcasts/?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
       source_domain: 'www.makeuseof.com',
@@ -1915,8 +1876,7 @@ export const PODCAST_LISTS = {
     },
     {
       id: 'TvOuoSB5wAa',
-      title:
-        'The best podcasts and books to help you ditch diet culture and fight against fatphobia',
+      title: 'The best podcasts and books to help you ditch diet culture and fight against fatphobia',
       description:
         '"A lot of people make a lot of money by making people feel bad about their bodies. So maybe let\u2019s not let them? It\u2019s time to let go of the idea that fat=bad. Ditch diet culture and fight against fatphobia to prevent further harm to fat people and protect your self worth. Here\u2019s what to listen to and read to develop a more body-inclusive outlook."',
       source_url:
@@ -1942,8 +1902,7 @@ export const PODCAST_LISTS = {
           id: '2faa0404c3f648799e0f52c050c26165',
           title: 'Burnt Toast',
           publisher: 'Food52',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/burnt-toast-food52-q4Hkt_GLgiS-pX-l6n4deBD.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/burnt-toast-food52-q4Hkt_GLgiS-pX-l6n4deBD.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/burnt-toast-food52-q4Hkt_GLgiS-pX-l6n4deBD.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/2faa0404c3f648799e0f52c050c26165/',
@@ -1968,8 +1927,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 3,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/the-best-podcasts-and-books-to-help-TvOuoSB5wAa/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/the-best-podcasts-and-books-to-help-TvOuoSB5wAa/',
     },
     {
       id: 'vf8e7n-EsZD',
@@ -2053,8 +2011,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 14,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/best-true-crime-podcasts-2022-the-15-vf8e7n-EsZD/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/best-true-crime-podcasts-2022-the-15-vf8e7n-EsZD/',
     },
     {
       id: 'RVTjZv-J94o',
@@ -2138,8 +2095,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 5,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/five-true-crime-podcasts-you-need-to-RVTjZv-J94o/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/five-true-crime-podcasts-you-need-to-RVTjZv-J94o/',
     },
     {
       id: 'QyCFfk6zT8L',
@@ -2281,8 +2237,7 @@ export const PODCAST_LISTS = {
         {
           id: '46c2c2fc91de4973b51b6faad5066747',
           title: 'Unlimited Spanish podcast with Oscar',
-          publisher:
-            '\u00d2scar Pellus: Founder of Unlimited Spanish. Author of Spanish courses. Hel',
+          publisher: '\u00d2scar Pellus: Founder of Unlimited Spanish. Author of Spanish courses. Hel',
           image:
             'https://cdn-images-1.listennotes.com/podcasts/the-unlimited-spanish-podcast-aprende-iAnvtNJI5Ms-bPH746SUWF3.300x300.jpg',
           thumbnail:
@@ -2309,8 +2264,7 @@ export const PODCAST_LISTS = {
         },
       ],
       total: 6,
-      listennotes_url:
-        'https://www.listennotes.com/curated-podcasts/eight-spanish-podcasts-for-spanish-4A81s5mhNMH/',
+      listennotes_url: 'https://www.listennotes.com/curated-podcasts/eight-spanish-podcasts-for-spanish-4A81s5mhNMH/',
     },
     {
       id: 'i58EF6qHmOr',
@@ -2354,8 +2308,7 @@ export const PODCAST_LISTS = {
           id: 'df816b24256a409cb81666e44ba6b7c3',
           title: 'Miami On The Rocks',
           publisher: 'miaontherocks',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/miami-on-the-rocks-L16iPG4Zjb0-1nyj72urYTt.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/miami-on-the-rocks-L16iPG4Zjb0-1nyj72urYTt.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/miami-on-the-rocks-L16iPG4Zjb0-1nyj72urYTt.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/df816b24256a409cb81666e44ba6b7c3/',
@@ -2425,10 +2378,8 @@ export const PODCAST_LISTS = {
           id: '69d0674bd6e24d10add7c8a98bc474fe',
           title: 'Rubirosa',
           publisher: 'Witness Docs & Workhouse Media',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/rubirosa-MlsZUBp105O-SEXtAPZcWaM.300x300.jpg',
-          thumbnail:
-            'https://cdn-images-1.listennotes.com/podcasts/rubirosa-MlsZUBp105O-SEXtAPZcWaM.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/rubirosa-MlsZUBp105O-SEXtAPZcWaM.300x300.jpg',
+          thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/rubirosa-MlsZUBp105O-SEXtAPZcWaM.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/69d0674bd6e24d10add7c8a98bc474fe/',
           listen_score:
             'Please upgrade to PRO or ENTERPRISE plan to see this field. Learn more: listennotes.com/api/pricing',
@@ -2453,8 +2404,7 @@ export const PODCAST_LISTS = {
           id: 'bfc47866961142e1aff3f725d06640d2',
           title: 'Moment of Truth',
           publisher: 'BBC Radio 5 live',
-          image:
-            'https://cdn-images-1.listennotes.com/podcasts/moment-of-truth-9LU40dKIxpH-vu6PJolxwtz.300x300.jpg',
+          image: 'https://cdn-images-1.listennotes.com/podcasts/moment-of-truth-9LU40dKIxpH-vu6PJolxwtz.300x300.jpg',
           thumbnail:
             'https://cdn-images-1.listennotes.com/podcasts/moment-of-truth-9LU40dKIxpH-vu6PJolxwtz.300x300.jpg',
           listennotes_url: 'https://www.listennotes.com/c/bfc47866961142e1aff3f725d06640d2/',

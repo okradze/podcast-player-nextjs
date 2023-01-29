@@ -29,12 +29,7 @@ const ChangePasswordForm = () => {
               validate={validatePasswordRequired}
             />
 
-            <Field
-              name='password'
-              label='New Password'
-              component={PasswordInput}
-              validate={validatePassword}
-            />
+            <Field name='password' label='New Password' component={PasswordInput} validate={validatePassword} />
 
             <Field
               name='repeatPassword'
@@ -48,11 +43,7 @@ const ChangePasswordForm = () => {
             {submitError && <p className={styles.error}>{submitError}</p>}
             {submitSucceeded && <p className={styles.success}>Password is changed</p>}
 
-            <Button
-              className={styles.button}
-              disabled={submitting || hasValidationErrors}
-              type='submit'
-            >
+            <Button className={styles.button} disabled={submitting || hasValidationErrors} type='submit'>
               Change password
             </Button>
           </form>

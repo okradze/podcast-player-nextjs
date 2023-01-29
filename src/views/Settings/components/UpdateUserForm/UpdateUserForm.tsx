@@ -36,11 +36,7 @@ const UpdateUserForm = () => {
             {submitError && <p className={styles.error}>{submitError}</p>}
             {submitSucceeded && <p className={styles.success}>User profile has been updated</p>}
 
-            <Button
-              className={styles.button}
-              disabled={submitting || hasValidationErrors}
-              type='submit'
-            >
+            <Button className={styles.button} disabled={submitting || hasValidationErrors} type='submit'>
               Update Profile
             </Button>
           </form>

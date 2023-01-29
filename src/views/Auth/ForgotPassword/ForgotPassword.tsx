@@ -31,9 +31,7 @@ const ForgotPassword: NextPage = () => {
 
             {submitError && <p className={styles.error}>{submitError}</p>}
             {submitSucceeded && (
-              <p className={styles.success}>
-                Reset link will be sent if user with this email exists
-              </p>
+              <p className={styles.success}>Reset link will be sent if user with this email exists</p>
             )}
 
             <Button

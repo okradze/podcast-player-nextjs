@@ -59,8 +59,7 @@ export const discoverPodcastsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPodcastLists, toggleFavoritePodcast, reset } =
-  discoverPodcastsSlice.actions
+export const { setLoading, setPodcastLists, toggleFavoritePodcast, reset } = discoverPodcastsSlice.actions
 
 export const fetchPodcastLists = async (dispatch: Dispatch, page: number) => {
   dispatch(setLoading())

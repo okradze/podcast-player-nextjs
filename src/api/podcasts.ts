@@ -20,9 +20,7 @@ export class PodcastsApi {
   }
 
   fetchEpisodes(podcastId: string, nextEpisodePubDate: number) {
-    return this.client.get<IPodcastDetails>(
-      `/podcasts/${podcastId}?nextEpisodePubDate=${nextEpisodePubDate}`,
-    )
+    return this.client.get<IPodcastDetails>(`/podcasts/${podcastId}?nextEpisodePubDate=${nextEpisodePubDate}`)
   }
 
   fetchTypeahead(searchTerm: string) {

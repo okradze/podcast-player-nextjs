@@ -71,11 +71,7 @@ export const {
   toggleFavoritePodcastInRecommendations,
 } = podcastSlice.actions
 
-export const fetchEpisodes = async (
-  dispatch: Dispatch,
-  podcastId: string,
-  next_episode_pub_date: number,
-) => {
+export const fetchEpisodes = async (dispatch: Dispatch, podcastId: string, next_episode_pub_date: number) => {
   dispatch(setEpisodesLoading())
   const { data } = await clientApi.podcasts.fetchEpisodes(podcastId, next_episode_pub_date)
   if (data) dispatch(setEpisodes(data))

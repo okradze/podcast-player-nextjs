@@ -11,16 +11,7 @@ const makeStore = () => {
     })
   }
 
-  const {
-    persistStore,
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-  } = require('redux-persist')
+  const { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } = require('redux-persist')
   const storage = require('redux-persist/lib/storage').default
 
   const persistConfig = {

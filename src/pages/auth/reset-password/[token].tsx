@@ -7,8 +7,7 @@ export default ResetPassword
 export const getServerSideProps: GetServerSideProps = withAuth({
   callback: async ({ user, ctx, api }) => {
     const token = ctx.params?.token
-    if (!token || typeof token !== 'string' || user)
-      return { redirect: { destination: '/', permanent: false } }
+    if (!token || typeof token !== 'string' || user) return { redirect: { destination: '/', permanent: false } }
 
     const { data, error } = await api.auth.fetchResetPasswordUser(token)
     return error ? { props: { isTokenExpired: true } } : { props: data }

@@ -47,7 +47,6 @@ export const playingPodcastSlice = createSlice({
   },
 })
 
-export const { playEpisode, setCurrentTime, setVolume, play, pause, toggleMinimize } =
-  playingPodcastSlice.actions
+export const { playEpisode, setCurrentTime, setVolume, play, pause, toggleMinimize } = playingPodcastSlice.actions
 
 export default playingPodcastSlice.reducer

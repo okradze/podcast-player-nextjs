@@ -9,7 +9,7 @@ export class Api {
   readonly podcasts: PodcastsApi
 
   constructor() {
-    this.client = new ApiClient(config.apiUrlV1)
+    this.client = new ApiClient(`${config.apiUrl}/api/v1`, config.apiUrl)
     this.auth = new AuthApi(this.client)
     this.podcasts = new PodcastsApi(this.client)
   }

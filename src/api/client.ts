@@ -26,10 +26,13 @@ type Result<T> = ResultSuccess<T> | ResultError
 export class ApiClient {
   private readonly httpClient: AxiosInstance
 
-  constructor(baseURL: string) {
+  constructor(baseURL: string, origin: string) {
     this.httpClient = axios.create({
       baseURL,
       withCredentials: true,
+      headers: {
+        origin,
+      },
     })
   }
 

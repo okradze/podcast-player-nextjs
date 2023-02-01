@@ -9,7 +9,10 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8000/:path*',
+        destination:
+          process.env.NODE_ENV === 'production'
+            ? 'https://podcast-player-nest-api.herokuapp.com/:path/*'
+            : 'http://localhost:8000/:path*',
       },
     ]
   },

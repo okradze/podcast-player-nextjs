@@ -5,7 +5,7 @@ const config = {
     apiUrlV1: 'http://localhost:3000/api/v1/',
   },
   production: {
-    apiUrlV1: 'https://podcast-player-nest-api.herokuapp.com/api/v1/',
+    apiUrlV1: 'https://okradze-podcasts.netlify.app/api/v1/',
   },
   test: {
     apiUrlV1: 'http://localhost:3000/api/v1/',

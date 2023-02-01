@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.forgetPassword {
+  text-align: end;
+}
+
+.button {
+  height: 4.3rem;
+}
+
+.registerText {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.error {
+  color: var(--error);
+  font-size: 1.5rem;
+}

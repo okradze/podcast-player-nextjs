@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IEpisode } from '../../api/listenNotesApi'
+
+import { IEpisode } from '@/api/podcasts'
 
 export interface PlayingPodcastState {
   minimized: boolean
@@ -47,7 +48,6 @@ export const playingPodcastSlice = createSlice({
   },
 })
 
-export const { playEpisode, setCurrentTime, setVolume, play, pause, toggleMinimize } =
-  playingPodcastSlice.actions
+export const { playEpisode, setCurrentTime, setVolume, play, pause, toggleMinimize } = playingPodcastSlice.actions
 
 export default playingPodcastSlice.reducer

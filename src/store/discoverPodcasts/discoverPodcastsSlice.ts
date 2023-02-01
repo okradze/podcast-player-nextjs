@@ -1,15 +1,14 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
-import listenNotesApi, {
-  ICuratedPodcastList,
-  ICuratedPodcasts,
-} from '../../api/listenNotesApi'
+import { HYDRATE } from 'next-redux-wrapper'
+
+import { clientApi } from '@/api'
+import { ICuratedPodcastList, ICuratedPodcasts } from '@/api/podcasts'
 
 export interface DiscoverPodcastsState {
   isFetching: boolean
   lastFetchedPage: number | null
   hasNextPage: boolean
   curated_lists: ICuratedPodcastList[]
-  error: string | null
 }
 
 export const initialState: DiscoverPodcastsState = {
@@ -17,7 +16,6 @@ export const initialState: DiscoverPodcastsState = {
   isFetching: false,
   hasNextPage: false,
   lastFetchedPage: null,
-  error: null,
 }
 
 export const discoverPodcastsSlice = createSlice({
@@ -31,27 +29,43 @@ export const discoverPodcastsSlice = createSlice({
       const { has_next, page_number, curated_lists } = action.payload
 
       state.isFetching = false
-      state.error = null
       state.hasNextPage = has_next
       state.lastFetchedPage = page_number
       state.curated_lists = [...state.curated_lists, ...curated_lists]
     },
-    setError(state, action) {
-      state.error = action.payload
+    toggleFavoritePodcast(state, action: PayloadAction<string>) {
+      state.curated_lists.forEach(list => {
+        const podcast = list.podcasts.find(podcast => podcast.id === action.payload)
+
+        if (podcast) {
+          podcast.isFavorite = !podcast.isFavorite
+        }
+      })
+    },
+
+    reset() {
+      return { ...initialState }
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      if (state.curated_lists.length > 0) return state
+
+      return {
+        ...state,
+        ...action.payload.discoverPodcasts,
+        curated_lists: action.payload.discoverPodcasts.curated_lists,
+      }
     },
   },
 })
 
-export const { setLoading, setPodcastLists, setError } = discoverPodcastsSlice.actions
+export const { setLoading, setPodcastLists, toggleFavoritePodcast, reset } = discoverPodcastsSlice.actions
 
 export const fetchPodcastLists = async (dispatch: Dispatch, page: number) => {
-  try {
-    dispatch(setLoading())
-    const { data } = await listenNotesApi.fetchCuratedPodcasts(page)
-    dispatch(setPodcastLists(data))
-  } catch (error) {
-    dispatch(setError(error))
-  }
+  dispatch(setLoading())
+  const { data } = await clientApi.podcasts.fetchCuratedPodcasts(page)
+  if (data) dispatch(setPodcastLists(data))
 }
 
 export default discoverPodcastsSlice.reducer

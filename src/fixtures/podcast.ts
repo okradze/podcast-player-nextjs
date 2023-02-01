@@ -9,7 +9,7 @@ export const PODCAST_FIXTURE = {
   listennotes_url: 'https://www.listennotes.com/c/7d1eaa65505446b68149ff0dfc352bb3/',
   listen_score: 'Please upgrade to PRO or ENTERPRISE plan to see this field',
   listen_score_global_rank: 'Please upgrade to PRO or ENTERPRISE plan to see this field',
-  total_episodes: 254,
+  total_episodes: 12,
   explicit_content: false,
   description:
     'Each episode addresses a reader\'s parenting issue through the lens of Janet\'s respectful parenting philosophy, consistently offering a perspective shift that ultimately frees parents of the need for tips, tricks, and tactics. \n\nJanet is a parenting author and consultant whose website (JanetLansbury.com) is visited by millions of readers annually.  Her work informs, inspires, and supports caregivers of infants and toddlers across the globe, helping to create authentic relationships of respect, trust, and love. Her best-selling books \u201cNo Bad Kids: Toddler Discipline without Shame\u201d and "Elevating Child Care: A Guide to Respectful Parenting" are available in all formats at  Amazon, Apple, Barnes & Noble, Google Play, and free at Audible (https://adbl.co/2OBVztZ) with a trial subscription.  Episodes of "Sessions," a collection of intimate recorded phone consultations with parents, are available exclusively at SessionsAudio.com.\n\nRecommended Best Parenting Podcast by The New York Times, The Washington Post, The Bump, Fatherly, "Early Childhood Education Zone," and many, many more. \n\nCopyright JLML Press (2022) All Rights Reserved',
@@ -19,8 +19,7 @@ export const PODCAST_FIXTURE = {
   earliest_pub_date_ms: 1437782400246,
   language: 'English',
   country: 'United States',
-  website:
-    'http://www.janetlansbury.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
+  website: 'http://www.janetlansbury.com?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
   extra: {
     twitter_handle: '',
     facebook_handle: '',
@@ -81,8 +80,7 @@ export const PODCAST_FIXTURE = {
     },
     {
       id: '7430fb9544504ca5bdc2d7a177a02d1c',
-      title:
-        'It Had to Be You - The Struggles and Joys of Raising a Child with Disabilities (with Loryn Brantz)',
+      title: 'It Had to Be You - The Struggles and Joys of Raising a Child with Disabilities (with Loryn Brantz)',
       description:
         'Loryn Brantz is an author, illustrator, and comic creator raising a daughter with disabilities.  Dalia was born with a rare genetic abnormality that made feeding an all-night process, and doctors were not confident she would ever crawl, much less walk. Throughout their journey, Loryn has supported Dalia with acceptance, optimism, and love. In return, she is continually inspired. \u201cI see her disability and her uniqueness as part of what makes her so amazing and special. And everything she does is going to be more amazing because of what she\u2019s had to go through to get there.\u201d Janet believes Loryn has found the formula for happiness as a parent \u2013 accepting, cherishing, and truly enjoying our children for who they are.\n\nThanks to Mack Weldon for sponsoring this episode. Check out their "Daily Wear System" and get 20% off your first order by going to www.MackWeldon.com/respect and using the promo code RESPECT. \n\nFor more advice on common parenting issues, please check out Janet\'s best-selling books on Audible, FREE with a 30-day trial membership if you use this link: adbl.co/2OBVztZ. Paperbacks and e-books are also available at Amazon, Google Play, Barnes & Noble, Apple Books, or pretty much anywhere e-books are sold.\n\nJanet\'s exclusive audio series "Sessions" is available for download. This is a collection of recorded one-on-one consultations with parents discussing their most immediate and pressing concerns (www.SessionsAudio.com)',
       pub_date_ms: 1638377131000,
@@ -234,4 +232,58 @@ export const PODCAST_FIXTURE = {
     },
   ],
   next_episode_pub_date: 1631204234002,
+}
+
+export const PODCAST_FIXTURE_PAGE_2 = {
+  id: '7d1eaa65505446b68149ff0dfc352bb3',
+  title: 'Respectful Parenting: Janet Lansbury Unruffled',
+  publisher: 'JLML Press',
+  image:
+    'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+  thumbnail:
+    'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+  total_episodes: 12,
+  description:
+    'Each episode addresses a reader\'s parenting issue through the lens of Janet\'s respectful parenting philosophy, consistently offering a perspective shift that ultimately frees parents of the need for tips, tricks, and tactics. \n\nJanet is a parenting author and consultant whose website (JanetLansbury.com) is visited by millions of readers annually.  Her work informs, inspires, and supports caregivers of infants and toddlers across the globe, helping to create authentic relationships of respect, trust, and love. Her best-selling books \u201cNo Bad Kids: Toddler Discipline without Shame\u201d and "Elevating Child Care: A Guide to Respectful Parenting" are available in all formats at  Amazon, Apple, Barnes & Noble, Google Play, and free at Audible (https://adbl.co/2OBVztZ) with a trial subscription.  Episodes of "Sessions," a collection of intimate recorded phone consultations with parents, are available exclusively at SessionsAudio.com.\n\nRecommended Best Parenting Podcast by The New York Times, The Washington Post, The Bump, Fatherly, "Early Childhood Education Zone," and many, many more. \n\nCopyright JLML Press (2022) All Rights Reserved',
+  episodes: [
+    {
+      id: '92c27689a33a4d77b80cbf510c472028',
+      title: 'When Children Seem Troubled by Our Moods and Emotions',
+      description:
+        "A parent writes that she and her husband are concerned their toddler feels responsible for their emotions. This is a trait they both recognize from their own backgrounds.  \u201cHe asks again and again, \u2018Happy, mommy?\u2019 as if he\u2019s trying to help me be happy.\u201d This mom says that if she admits that, no, she is not entirely happy at the moment, he gives her hugs and cuddles and persists in asking if she's happy. While these parents want to foster their child\u2019s empathy and sensitivity, they don\u2019t want him taking on the burden of other people\u2019s emotions. They\u2019re hoping Janet has some advice to help manage this delicate balancing act.\n\nThanks again to Ritual Vitamins for supporting this podcast. Turn healthy habits into a Ritual today and get 10% off your first 3 months by visiting www.ritual/respect. \n\nFor more advice on common parenting issues, please check out Janet's best-selling books on Audible, FREE with a 30-day trial membership if you use this link: adbl.co/2OBVztZ. Paperbacks and e-books are also available at Amazon, Google Play, Barnes & Noble and Apple Books. \n\nJanet's exclusive audio series \"Sessions\" is available for download. This is a collection of recorded one-on-one consultations with parents discussing their most immediate and pressing concerns (www.SessionsAudio.com).",
+      pub_date_ms: 1641440213000,
+      audio: 'https://www.listennotes.com/e/p/92c27689a33a4d77b80cbf510c473027/',
+      audio_length_sec: 1335,
+      listennotes_url: 'https://www.listennotes.com/e/92c27689a33a4d77b80cbf510c473027/',
+      image:
+        'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+      thumbnail:
+        'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+      maybe_audio_invalid: false,
+      listennotes_edit_url: 'https://www.listennotes.com/e/92c27689a33a4d77b80cbf510c473027/#edit',
+      explicit_content: false,
+      link: 'https://soundcloud.com/janet-lansbury/when-children-seem-troubled-by-our-moods-and-emotions?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
+      guid_from_rss: 'tag:soundcloud,2010:tracks/1191144610',
+    },
+    {
+      id: 'bb0dad1e1aca4071aedb7601486b2b4e',
+      title: 'A Holistic Approach to Baby and Toddler Sleep (with Grace Koinange)',
+      description:
+        "Pediatric sleep expert Grace Koinange joins Janet this week to share her experience, knowledge, and a few secrets for helping babies and toddlers to sleep. Janet had the privilege of seeing Grace in action and was impressed by her ability to tune in to a baby's most subtle cues and support his individual sleep rhythm. Grace and Janet discuss consistency, self-confidence, nurturing sleep from infancy, helping a toddler transition to a new sleeping arrangement, and trust in the child as an active participant in the sleep process.\n\nThanks again to Ritual Vitamins for supporting this podcast. Turn healthy habits into a Ritual today and get 10% off your first 3 months by visiting www.ritual/respect. \n\nFor more advice on common parenting issues, please check out Janet's best-selling books on Audible, FREE with a 30-day trial membership if you use this link: adbl.co/2OBVztZ. Paperbacks and e-books are also available at Amazon, Google Play, Barnes & Noble and Apple Books. \n\nJanet's exclusive audio series \"Sessions\" is available for download. This is a collection of recorded one-on-one consultations with parents discussing their most immediate and pressing concerns (www.SessionsAudio.com).",
+      pub_date_ms: 1639585211000,
+      audio: 'https://www.listennotes.com/e/p/bb0dad1e1aca4071aedb7601486c2b4e/',
+      audio_length_sec: 2600,
+      listennotes_url: 'https://www.listennotes.com/e/bb0dad1e1aca4071aedb7601486c2b4e/',
+      image:
+        'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+      thumbnail:
+        'https://cdn-images-1.listennotes.com/podcasts/respectful-parenting-janet-lansbury-f8mKed6Hw9E-NZJW1vpUdmz.300x300.jpg',
+      maybe_audio_invalid: false,
+      listennotes_edit_url: 'https://www.listennotes.com/e/bb0dad1e1aca4071aedb7601486c2b4e/#edit',
+      explicit_content: false,
+      link: 'https://soundcloud.com/janet-lansbury/a-holistic-approach-to-baby-and-toddler-sleep-with-grace-koinange?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
+      guid_from_rss: 'tag:soundcloud,2010:tracks/1178374321',
+    },
+  ],
+  next_episode_pub_date: null,
 }

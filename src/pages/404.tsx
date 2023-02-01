@@ -1,5 +1,3 @@
-import CustomPageError from '../components/CustomPageError'
+import PageNotFound from '@/views/PageNotFound'
 
-const Custom404 = () => <CustomPageError title='404 - Page Not Found' />
-
-export default Custom404
+export default PageNotFound

@@ -1,0 +1,17 @@
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+
+  .link {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: end;
+    grid-template-columns: 10rem 10rem;
+  }
+}

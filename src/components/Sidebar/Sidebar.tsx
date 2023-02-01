@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import HomeIcon from '@mui/icons-material/Home'
+import PodcastsIcon from '@mui/icons-material/Podcasts'
+import SearchIcon from '@mui/icons-material/Search'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/rootReducer'
-import { HomeSvg, SearchSvg, PodcastSvg } from '../../svg'
+
+import useMe from '@/hooks/useMe'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './Sidebar.module.scss'
 
 export const Sidebar = () => {
   const router = useRouter()
+  const me = useMe()
   const playingPodcastId = useSelector((state: RootState) => state.playingPodcast.podcastId)
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
@@ -22,63 +30,75 @@ export const Sidebar = () => {
         role='button'
         aria-label='Toggle menu'
         onClick={() => setIsSidebarVisible(!isSidebarVisible)}
-        className={styles.Toggle}
+        className={styles.toggle}
       >
-        <span
-          className={`${styles.ToggleIcon} ${isSidebarVisible ? styles.ToggleIconWhenVisible : ''}`}
-        />
+        <span className={`${styles.toggleIcon} ${isSidebarVisible ? styles.toggleIconWhenVisible : ''}`} />
       </span>
 
-      <section
-        className={`${styles.Sidebar} ${isSidebarVisible ? styles.SidebarMobileVisible : ''}`}
-      >
-        <h1 className={styles.Logo}>
+      <section className={`${styles.sidebar} ${isSidebarVisible ? styles.sidebarMobileVisible : ''}`}>
+        <h1 className={styles.logo}>
           <Link href='/' scroll={false}>
-            <a onClick={closeSidebar} className={styles.LogoLink}>
+            <a onClick={closeSidebar} className={styles.logoLink}>
               Podcast
             </a>
           </Link>
         </h1>
 
-        <nav className={styles.Nav}>
-          <h4 className={styles.Title}>PODCAST</h4>
+        <nav className={styles.nav}>
+          <h4 className={styles.title}>PODCAST</h4>
           <ul>
-            <li className={styles.ListItem}>
+            <li className={styles.listItem}>
               <Link href='/' scroll={false}>
                 <a
                   onClick={closeSidebar}
-                  className={`${styles.Link} ${router.pathname === '/' ? styles.ActiveLink : 0}`}
+                  className={`${styles.link} ${router.pathname === '/' ? styles.activeLink : 0}`}
                 >
-                  <HomeSvg className={styles.LinkIcon} />
+                  <HomeIcon className={styles.linkIcon} />
                   Home
                 </a>
               </Link>
             </li>
 
-            <li className={styles.ListItem}>
+            <li className={styles.listItem}>
               <Link href='/discover' scroll={false}>
                 <a
                   onClick={closeSidebar}
-                  className={`${styles.Link} ${
-                    router.pathname === '/discover' ? styles.ActiveLink : 0
-                  }`}
+                  className={`${styles.link} ${router.pathname === '/discover' ? styles.activeLink : ''}`}
                 >
-                  <SearchSvg className={styles.LinkIcon} />
+                  <SearchIcon className={styles.linkIcon} />
                   Discover
                 </a>
               </Link>
             </li>
 
+            {me && (
+              <li className={styles.listItem}>
+                <Link href='/favorites' scroll={false}>
+                  <a
+                    onClick={closeSidebar}
+                    className={`${styles.link} ${router.pathname === '/favorites' ? styles.activeLink : ''}`}
+                  >
+                    {router.pathname === '/favorites' ? (
+                      <FavoriteIcon className={styles.linkIcon} />
+                    ) : (
+                      <FavoriteBorderIcon className={styles.linkIcon} />
+                    )}
+                    Favorites
+                  </a>
+                </Link>
+              </li>
+            )}
+
             {playingPodcastId && (
-              <li className={styles.ListItem}>
+              <li className={styles.listItem}>
                 <Link href={`/podcast/${playingPodcastId}`} scroll={false}>
                   <a
                     onClick={closeSidebar}
-                    className={`${styles.Link} ${
-                      router.pathname === '/podcast/' ? styles.ActiveLink : 0
+                    className={`${styles.link} ${
+                      router.asPath === `/podcast/${playingPodcastId}` ? styles.activeLink : ''
                     }`}
                   >
-                    <PodcastSvg className={styles.LinkIcon} />
+                    <PodcastsIcon className={styles.linkIcon} />
                     Now Playing
                   </a>
                 </Link>

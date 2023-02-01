@@ -1,25 +1,34 @@
 import React from 'react'
-import { IPodcast } from '../../api/listenNotesApi'
-import PodcastItem from '../PodcastItem'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+
+import PodcastItem from './PodcastItem'
+import { IPodcast } from '@/api/podcasts'
+
 import styles from './PodcastList.module.scss'
 
 type PodcastListProps = {
   podcasts: IPodcast[]
   title?: string
+  isSmallerTitle?: boolean
 }
 
-export const PodcastList = ({ podcasts, title }: PodcastListProps) => (
-  <section className={styles.Wrapper}>
-    <h2 className={`${styles.Title} ${title && styles.SmallTitle}`}>
-      {title || 'Popular Podcasts'}
-    </h2>
-    <ul className={styles.List}>
+export const PodcastList = ({ podcasts, title, isSmallerTitle }: PodcastListProps) => (
+  <section className={styles.section}>
+    <h2 className={`${styles.title} ${isSmallerTitle ? styles.smallTitle : ''}`}>{title}</h2>
+    <TransitionGroup component='ul' className={styles.list}>
       {podcasts.map(podcast => (
-        <li className={styles.Item} key={podcast.id}>
+        <CSSTransition
+          key={podcast.id}
+          timeout={300}
+          unmountOnExit
+          classNames={{
+            exitActive: styles.itemExitActive,
+          }}
+        >
           <PodcastItem {...podcast} />
-        </li>
+        </CSSTransition>
       ))}
-    </ul>
+    </TransitionGroup>
   </section>
 )
 

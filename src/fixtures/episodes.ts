@@ -8,10 +8,8 @@ const EPISODES = [
     audio: 'https://www.listennotes.com/e/p/ef6167d40fb449e982d21d3adc2b097d/',
     audio_length_sec: 2048,
     listennotes_url: 'https://www.listennotes.com/e/ef6167d40fb449e982d21d3adc2b097d/',
-    image:
-      'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
-    thumbnail:
-      'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
+    image: 'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
+    thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
     maybe_audio_invalid: false,
     listennotes_edit_url: 'https://www.listennotes.com/e/ef6167d40fb449e982d21d3adc2b097d/#edit',
     explicit_content: false,
@@ -26,10 +24,8 @@ const EPISODES = [
     audio: 'https://www.listennotes.com/e/p/a47160f4ce31458ebe03166dfee2382f/',
     audio_length_sec: 1843,
     listennotes_url: 'https://www.listennotes.com/e/a47160f4ce31458ebe03166dfee2382f/',
-    image:
-      'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
-    thumbnail:
-      'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
+    image: 'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
+    thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/unfictional-kcrw-SqjEeFXNKk7-RiDjOlNuLve.300x300.jpg',
     maybe_audio_invalid: false,
     listennotes_edit_url: 'https://www.listennotes.com/e/a47160f4ce31458ebe03166dfee2382f/#edit',
     explicit_content: false,

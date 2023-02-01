@@ -1,19 +1,31 @@
-import React from 'react'
+import React, { forwardRef, LegacyRef } from 'react'
+
 import styles from './Button.module.scss'
 
 type ButtonProps = {
+  variant?: 'contained' | 'outlined' | 'text'
+  color?: 'primary' | 'secondary'
   children: React.ReactNode
-  inverted?: boolean
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+  element?: 'button' | 'link'
+  className?: string
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>
 
-export const Button = ({ children, inverted, ...otherProps }: ButtonProps) => (
-  <button
-    type='button'
-    className={`${styles.Button} ${inverted ? styles.Inverted : ''}`}
-    {...otherProps}
-  >
-    {children}
-  </button>
-)
+const Button = (
+  { variant = 'contained', color = 'primary', element = 'button', children, className, ...otherProps }: ButtonProps,
+  ref: LegacyRef<HTMLAnchorElement | HTMLButtonElement>,
+) => {
+  const classNames = `${styles.button} ${styles[variant]} ${styles[color]} ${className || ''}`
 
-export default Button
+  return element === 'link' ? (
+    <a ref={ref as LegacyRef<HTMLAnchorElement>} className={classNames} {...otherProps}>
+      {children}
+    </a>
+  ) : (
+    <button ref={ref as LegacyRef<HTMLButtonElement>} type='button' className={classNames} {...otherProps}>
+      {children}
+    </button>
+  )
+}
+
+export default forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(Button)

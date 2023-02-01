@@ -1,12 +1,14 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
-import listenNotesApi, { IBestPodcasts, IPodcast } from '../../api/listenNotesApi'
+import { HYDRATE } from 'next-redux-wrapper'
+
+import { clientApi } from '@/api'
+import { IBestPodcasts, IPodcast } from '@/api/podcasts'
 
 export interface PodcastsState {
   isFetching: boolean
   lastFetchedPage: number | null
   hasNextPage: boolean
   podcasts: IPodcast[]
-  error: string | null
 }
 
 export const initialState: PodcastsState = {
@@ -14,7 +16,6 @@ export const initialState: PodcastsState = {
   lastFetchedPage: null,
   hasNextPage: false,
   podcasts: [],
-  error: null,
 }
 
 export const podcastsSlice = createSlice({
@@ -28,27 +29,40 @@ export const podcastsSlice = createSlice({
       const { has_next, page_number, podcasts } = action.payload
 
       state.isFetching = false
-      state.error = null
       state.hasNextPage = has_next
       state.lastFetchedPage = page_number
       state.podcasts = [...state.podcasts, ...podcasts]
     },
-    setError(state, action) {
-      state.error = action.payload
+    toggleFavoritePodcast(state, action: PayloadAction<string>) {
+      const podcast = state.podcasts.find(podcast => podcast.id === action.payload)
+
+      if (podcast) {
+        podcast.isFavorite = !podcast.isFavorite
+      }
+    },
+    reset() {
+      return { ...initialState }
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      if (state.podcasts.length > 0) return state
+
+      return {
+        ...state,
+        ...action.payload.podcasts,
+        podcasts: action.payload.podcasts.podcasts,
+      }
     },
   },
 })
 
-export const { setLoading, setPodcasts, setError } = podcastsSlice.actions
+export const { setLoading, setPodcasts, reset, toggleFavoritePodcast } = podcastsSlice.actions
 
 export const fetchPodcasts = async (dispatch: Dispatch, page: number) => {
-  try {
-    dispatch(setLoading())
-    const { data } = await listenNotesApi.fetchBestPodcasts(page)
-    dispatch(setPodcasts(data))
-  } catch (error) {
-    dispatch(setError(error))
-  }
+  dispatch(setLoading())
+  const { data } = await clientApi.podcasts.fetchBestPodcasts(page)
+  if (data) dispatch(setPodcasts(data))
 }
 
 export default podcastsSlice.reducer

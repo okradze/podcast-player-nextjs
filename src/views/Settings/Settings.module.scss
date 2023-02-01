@@ -1,0 +1,17 @@
+.section {
+  padding-bottom: 8rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.forms {
+  display: flex;
+  gap: 6rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}

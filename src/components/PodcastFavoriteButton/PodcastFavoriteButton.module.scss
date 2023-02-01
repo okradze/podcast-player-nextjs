@@ -1,0 +1,38 @@
+.button {
+  background: none;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--primary);
+  width: 2rem;
+  height: 2rem;
+}
+
+.enter {
+  opacity: 0;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.enterActive {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+}
+
+.enterActive,
+.exitActive {
+  transition: opacity 0.2s;
+}

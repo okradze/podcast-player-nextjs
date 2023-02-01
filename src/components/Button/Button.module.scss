@@ -1,25 +1,96 @@
-@import '../../styles/utils';
-
-.Button {
+.button {
   text-align: center;
-  padding: 1rem 2rem;
-  background-color: $primary;
-  color: $offset;
-  border: none;
-  border-radius: 100px;
+  font-size: 1.5rem;
   font-weight: 600;
+  display: inline-block;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  transition: box-shadow 0.15s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.contained,
+.outlined {
+  padding: 0.8rem 2rem;
+  border-radius: 100px;
+  border: 2px solid transparent;
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px $offset, 0 0 0 4px $primary;
+  }
+
+  &:disabled {
+    opacity: 0.6;
   }
 }
 
-.Inverted {
-  background-color: $offset;
-  color: $primary;
+.contained {
+  color: var(--offset);
+}
+
+.contained.primary {
+  background-color: var(--primary);
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--primary);
+  }
+}
+
+.contained.secondary {
+  background-color: var(--secondary);
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--offset), 0 0 0 4px var(--secondary);
+  }
+}
+
+.outlined.primary {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--offset);
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary);
+    color: var(--offset);
+  }
+}
+
+.outlined.secondary {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  background-color: var(--offset);
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary);
+    color: var(--offset);
+  }
+}
+
+.text {
+  border: 0;
+  background: 0;
+}
+
+.text.primary {
+  color: var(--primary);
+  outline: 2px solid transparent;
+  outline-offset: 5px;
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary);
+  }
+}
+
+.text.secondary {
+  color: var(--secondary);
 }

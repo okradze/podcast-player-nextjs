@@ -1,31 +1,27 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { StyledEngineProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import NextNProgress from 'nextjs-progressbar'
-import { store, persistor } from '../store'
-import ErrorBoundary from '../components/ErrorBoundary'
-import Sidebar from '../components/Sidebar'
-import AudioPlayer from '../components/AudioPlayer'
-import SearchBar from '../components/SearchBar'
+
+import Layout from '@/components/Layout'
+import { wrapper } from '@/store'
 import '../styles/globals.scss'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, ...rest }: AppProps) => {
+  const { store, props } = wrapper.useWrappedStore(rest)
+
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ErrorBoundary>
-          <NextNProgress color='#5071ed' height={4} options={{ showSpinner: false }} />
-          <div className='container app'>
-            <Sidebar />
-            <AudioPlayer />
-            <div className='main-page'>
-              <SearchBar />
-              <Component {...pageProps} />
-            </div>
-          </div>
-        </ErrorBoundary>
-      </PersistGate>
-    </Provider>
+    <StyledEngineProvider injectFirst>
+      <Provider store={store}>
+        {/* @ts-ignore */}
+        <PersistGate persistor={store.__persistor}>
+          <Layout>
+            <Component {...props.pageProps} />
+          </Layout>
+        </PersistGate>
+      </Provider>
+    </StyledEngineProvider>
   )
 }
 

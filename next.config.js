@@ -5,6 +5,14 @@ const nextConfig = {
   images: {
     domains: ['cdn-images-1.listennotes.com', 'production.listennotes.com'],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8000/:path*',
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

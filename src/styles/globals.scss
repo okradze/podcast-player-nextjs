@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
-@import './utils';
+@import './normalize.scss';
 
 *,
 *::before,
@@ -7,6 +7,18 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+}
+
+:root {
+  --primary: #5071ed;
+  --primary-hover: #405abe;
+  --secondary: #806dde;
+  --text: #464555;
+  --offset: #fff;
+  --light-text: #9f9fad;
+  --bg: #f7f7f7;
+  --light-border: #eee8e8;
+  --error: #dd3939;
 }
 
 html {
@@ -23,7 +35,7 @@ html {
     background: #f4f4f4;
   }
   ::-webkit-scrollbar-thumb {
-    background: $primary;
+    background: var(--primary);
   }
 }
 
@@ -31,8 +43,7 @@ body {
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
-  color: $text;
-  overflow-y: scroll;
+  color: var(--text);
 }
 
 .app {
@@ -42,18 +53,8 @@ body {
   padding: 4rem 2rem;
   min-height: 100vh;
 
-  @media only screen and (max-width: 850px) {
-    grid-column-gap: 0;
-    grid-template-columns: 1fr;
-  }
-}
-
-.main-page {
-  grid-column-start: 2;
-  padding-bottom: 10rem;
-
-  @media only screen and (max-width: 850px) {
-    grid-column-start: 1;
+  @media only screen and (max-width: 976px) {
+    display: block;
   }
 }
 
@@ -64,6 +65,15 @@ body {
 
   @media (min-width: 1600px) {
     max-width: 1600px;
+  }
+}
+
+.main-page {
+  grid-column-start: 2;
+  padding-bottom: 10rem;
+
+  @media only screen and (max-width: 976px) {
+    grid-column-start: 1;
   }
 }
 

@@ -1,0 +1,36 @@
+.Item {
+  list-style: none;
+}
+
+.Link {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: var(--text);
+  transition: background-color 0.15s ease-in-out;
+
+  &:focus,
+  &:hover {
+    outline: 0;
+    background-color: var(--bg);
+  }
+}
+
+.Image {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.Title {
+  color: var(--text);
+  font-size: 1.5rem;
+}
+
+.Publisher {
+  color: var(--light-text);
+  font-size: 1.4rem;
+}

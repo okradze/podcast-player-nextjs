@@ -1,19 +1,17 @@
-import React, { useEffect, useRef } from 'react'
-import Link from 'next/link'
+import PauseCircleIcon from '@mui/icons-material/PauseCircle'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import Image from 'next/image'
-import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
 import Slider from 'rc-slider/lib/Slider'
-import { RootState } from '../../store/rootReducer'
-import {
-  play,
-  pause,
-  setVolume,
-  setCurrentTime,
-  toggleMinimize,
-} from '../../store/playingPodcast/playingPodcastSlice'
-import { IEpisode } from '../../api/listenNotesApi'
+import React, { useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import EllipsisText from '../EllipsisText'
-import { PlaySvg, PauseSvg, VolumeSvg } from '../../svg'
+import { IEpisode } from '@/api/podcasts'
+import { play, pause, setVolume, setCurrentTime, toggleMinimize } from '@/store/playingPodcast/playingPodcastSlice'
+import { RootState } from '@/store/rootReducer'
+
 import 'rc-slider/assets/index.css'
 import styles from './AudioPlayer.module.scss'
 
@@ -81,12 +79,7 @@ const AudioPlayer = () => {
   return (
     <div className={`${styles.AudioPlayer} ${minimized ? styles.AudioPlayerMinimized : ''}`}>
       <div className={styles.MinimizeWrapper}>
-        <span
-          onClick={() => dispatch(toggleMinimize())}
-          tabIndex={0}
-          role='button'
-          className={styles.Minimize}
-        />
+        <span onClick={() => dispatch(toggleMinimize())} tabIndex={0} role='button' className={styles.Minimize} />
       </div>
 
       <div className={styles.EpisodeWrapper}>
@@ -104,11 +97,13 @@ const AudioPlayer = () => {
       </div>
 
       <div className={styles.ControllsWrapper}>
-        {isPlaying ? (
-          <PauseSvg tabIndex={0} onClick={() => audio.pause()} className={styles.Pause} />
-        ) : (
-          <PlaySvg tabIndex={0} onClick={() => audio.play()} className={styles.Play} />
-        )}
+        <button className={styles.playButton} onClick={() => (isPlaying ? audio.pause() : audio.play())}>
+          {isPlaying ? (
+            <PauseCircleIcon className={styles.playButtonSvg} />
+          ) : (
+            <PlayCircleIcon className={styles.playButtonSvg} />
+          )}
+        </button>
 
         {!minimized && (
           <>
@@ -148,7 +143,7 @@ const AudioPlayer = () => {
                   className={styles.Slider}
                 />
               </div>
-              <VolumeSvg className={styles.VolumeIcon} />
+              <VolumeUpIcon className={styles.VolumeIcon} />
             </div>
           </>
         )}

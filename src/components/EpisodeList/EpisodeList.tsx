@@ -1,42 +1,41 @@
-import { Dispatch, SetStateAction, useState } from 'react'
-import listenNotesApi, { IPodcastDetails } from '../../api/listenNotesApi'
-import EpisodeItem from '../EpisodeItem'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Button from '../Button'
+import EpisodeItem from '../EpisodeItem'
 import Spinner from '../Spinner'
+import { fetchEpisodes } from '@/store/podcast/podcastSlice'
+import { RootState } from '@/store/rootReducer'
+
 import styles from './EpisodeList.module.scss'
 
-type EpisodeListProps = {
-  podcast: IPodcastDetails
-  setPodcast: Dispatch<SetStateAction<IPodcastDetails | undefined>>
-}
-export const EpisodeList = ({ podcast, setPodcast }: EpisodeListProps) => {
-  const [loading, setLoading] = useState(false)
-  const { episodes, id, next_episode_pub_date } = podcast
-  const areMoreEpisodes = !!next_episode_pub_date
+export const EpisodeList = () => {
+  const dispatch = useDispatch()
+  const { areEpisodesFetching, podcast } = useSelector((state: RootState) => state.podcast)
 
-  const fetchEpisodes = async () => {
-    setLoading(true)
-    const { data } = await listenNotesApi.fetchEpisodes(id, next_episode_pub_date)
-
-    setPodcast(prev => ({
-      ...data,
-      episodes: [...(prev?.episodes || []), ...data.episodes],
-    }))
-
-    setLoading(false)
-  }
+  if (!podcast) return null
+  const { episodes, id, next_episode_pub_date, total_episodes } = podcast
+  const areMoreEpisodes = episodes.length < total_episodes
 
   return (
-    <div>
-      <div data-testid='episodes' className={styles.List}>
+    <section>
+      <ul data-testid='episodes' className={styles.list}>
         {episodes.map(episode => (
           <EpisodeItem key={episode.id} podcastId={id} episode={episode} />
         ))}
-      </div>
+      </ul>
 
-      {loading && <Spinner />}
-      {!loading && areMoreEpisodes && <Button onClick={fetchEpisodes}>Load More</Button>}
-    </div>
+      {areEpisodesFetching && <Spinner />}
+      {!areEpisodesFetching && areMoreEpisodes && (
+        <Button
+          variant='outlined'
+          color='primary'
+          onClick={() => fetchEpisodes(dispatch, id, next_episode_pub_date)}
+          className={styles.button}
+        >
+          Load More
+        </Button>
+      )}
+    </section>
   )
 }
 
